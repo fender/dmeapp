@@ -2,11 +2,11 @@
 
 Before using this application you'll want to make sure you have all the required dependencies. Here is a quick guide on getting started.
 
-1. Install Node, `brew install node`.
-2. Install Compass, Susy and Breakpoint ruby gems, `gem install compass susy breakpoint`.
+1. Install [Node](http://nodejs.org/), `brew install node`.
+2. Install [Compass](http://compass-style.org/), [Susy](http://susy.oddbird.net/) and [Breakpoint](http://breakpoint-sass.com/) ruby gems, `gem install compass susy breakpoint`.
 3. Clone this repository and navigate to the root.
 4. Install required node packages, `npm install`.
-5. Run `grunt prod` to build and compile the app files.
+5. Run `grunt prod` to build and compile the app files with [Grunt](http://gruntjs.com/).
 5. Run a local server, `npm start`.
 6. Point your browser to `http://localhost:8000/`.
 
@@ -22,7 +22,7 @@ Here is a quick run down on the file structure of this repository.
   * `/scss` - Contains our Sass. The root folder contains our initializers, mixins and variables.
     * `/components` - All of our components style is written here.
     * `/sprites` - Sprite image files are separated by sprite map name. Compass uses each folder to create a sprite image.
-  * `vendor` - Contains all vendor packages that are installed via Bower. Hands off!
+  * `vendor` - Contains all vendor packages that are installed via [Bower](http://bower.io/). Hands off!
   * `Gruntfile.js` - This file tells Grunt about our automated workflows.
   * `bower.json` - Contains the vendor packages that our app requires. Bower uses this file to install/update packages.
   * `.bowerrc` - Bower configuration file pointing to where installed packages exist.
