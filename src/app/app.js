@@ -1,6 +1,6 @@
 angular.module('dmeApp', ['ngRoute', 'dmeApp.library'])
 
-.config(function($routeProvider, $locationProvider) {
+.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/library', {
       templateUrl: 'library.html',
@@ -14,9 +14,9 @@ angular.module('dmeApp', ['ngRoute', 'dmeApp.library'])
     });
 
   $locationProvider.html5Mode(true);
-})
-.controller('NavController', function($scope, $location) {
+}])
+.controller('NavController', ['$scope', '$location', function($scope, $location) {
   $scope.linkIsActive = function(viewLocation) {
     return viewLocation === $location.path();
   };
-});
+}]);

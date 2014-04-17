@@ -1,4 +1,4 @@
 angular.module('dmeApp.library', [])
 
- .controller('LibraryController', function($scope) {
- });
+ .controller('LibraryController', ['$scope', function($scope) {
+ }]);

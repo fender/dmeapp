@@ -34,8 +34,8 @@ module.exports = function(grunt) {
     vendor_files: {
       js: [
         // Uncomment the lines below if you want to develop offline.
-        'vendor/angular/angular.js',
-        'vendor/angular-route/angular-route.js',
+        // 'vendor/angular/angular.js',
+        // 'vendor/angular-route/angular-route.js',
       ],
       assets: []
     },
