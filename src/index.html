@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Drupalize.Me</title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <!-- <script type="text/javascript" src="//use.typekit.net/fuf6cds.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script> -->
+  </head>
+  <body ng-app="dmeApp">
+    <header class="l-header">
+      <div class="l-container">
+        <div class="left">
+          <a class="site-logo global-logo" href="/">Drupalize.Me</a>
+        </div>
+        <div class="toggle-responsive-nav right">
+          <a href="#" ng-click="toggleNav = !toggleNav" ng-init="toggleNav = false">Menu</a>
+        </div>
+        <nav ng-controller="NavController">
+          <ul class="l-header-menu no-bullet" ng-class="{ open: toggleNav }">
+            <li>
+              <a href="/" ng-class="{ active: linkIsActive('/') }">Home</a>
+            </li>
+            <li>
+              <a href="#">Account</a>
+            </li>
+            <li>
+              <a href="/library" ng-class="{ active: linkIsActive('/library') }">Library</a>
+            </li>
+            <li>
+              <a href="#">Blog</a>
+            </li>
+            <li>
+              <a href="#">Logout</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main" class="l-main">
+      <div ng-view></div>
+    </main>
+
+    <footer class="l-footer text-center">
+      <div class="l-container">
+        <ul class="l-footer-menu no-bullet">
+          <li>
+            <a href="">About</a>
+          </li>
+          <li>
+            <a href="">Apps</a>
+          </li>
+          <li>
+            <a href="">Gift Certificates</a>
+          </li>
+          <li>
+            <a href="">FAQ</a>
+          </li>
+          <li>
+            <a href="">Help</a>
+          </li>
+          <li>
+            <a href="">Affiliate Program</a>
+          </li>
+          <li>
+            <a href="">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="">Legal</a>
+          </li>
+          <li>
+            <a href="">Contact us</a>
+          </li>
+        </ul>
+        <ul class="social-links no-bullet">
+          <li><a class="global-drupal" href="https://drupal.org/marketplace/drupalizeme" alt="Drupal.org" target="_blank">Drupal.org</a></li>
+          <li><a class="global-twitter" href="http://twitter.com/drupalizeme" alt="Twitter" target="_blank">Twitter</a></li>
+          <li><a class="global-facebook" href="https://www.facebook.com/pages/Drupalizeme/226965084026508" alt="Facebook" target="_blank">Facebook</a></li>
+          <li><a class="global-google-plus" href="https://plus.google.com/104131087331701396621/posts" alt="Google+" target="_blank">Google+</a></li>
+          <li><a class="global-itunes" href="https://itunes.apple.com/us/podcast/lullabot-lullabot-podcast/id117672529" alt="iTunes" target="_blank">iTunes</a></li>
+          <li><a class="global-rss" href="#" alt="RSS">RSS</a></li>
+        </ul>
+        <div class="copyright">© Copyright 2014 Lullabot. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script> -->
+    <script type="text/javascript" src="js/dmeapp-0.0.0.js"></script>
+  </body>
+</html>

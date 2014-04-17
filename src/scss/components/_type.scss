@@ -1,0 +1,152 @@
+//
+// Typography styles.
+//
+
+// Typography resets
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+th,
+td {
+  margin:0;
+  padding:0;
+}
+
+// Links.
+a {
+  color: $blue;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    color: $orange;
+  }
+}
+
+// Headers.
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $dark-charcoal;
+  font-weight: bold;
+  margin-top: 0.2em;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.750em;
+}
+
+h3 {
+  font-size: 1.375em;
+}
+
+h4 {
+  font-size: 1.125em;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: 0.875em;
+}
+
+.subheader {
+  color: $charcoal;
+  font-weight: normal;
+}
+
+// Paragraphs.
+p {
+  margin-bottom: 1.25em;
+}
+
+// Lists.
+ul,
+ol {
+  margin-bottom: 0.75em;
+
+  li {
+    ul,
+    ol {
+      list-style: inherit;
+      margin-bottom: 0;
+    }
+  }
+}
+
+ul {
+  margin-left: 1.2em;
+}
+
+ol {
+  margin-left: 1.5em;
+}
+
+.inline-list {
+  list-style: none;
+  margin-left: 0;
+
+  li {
+    display: inline-block;
+    margin-right: 1.1em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.no-bullet {
+  list-style: none;
+}
+
+// Horizontal rules.
+hr {
+  border: solid $silver-border;
+  border-width: 1px 0 0;
+  clear: both;
+  margin: 2em 0;
+  height: 0;
+}
+
+// Blockquotes.
+blockquote {
+  border-left: 1px solid $silver-border;
+  color: lighten($charcoal, 10%);
+  margin-bottom: 1em;
+  padding: 0.5em 1em;
+
+  cite {
+    display: block;
+    font-size: 0.75em;
+    color: $charcoal;
+
+    &:before {
+      content: "\2014 \0020";
+    }
+  }
+}

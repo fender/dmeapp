@@ -1,0 +1,24 @@
+//
+// Layout styles that define our default Susy responsive grid.
+//
+
+$susy: (
+  columns: 12,
+);
+
+.l-container {
+  @include container(67.5em);
+  @include pad(1em);
+}
+
+@include breakpoint(48em) {
+  .l-has-sidebar {
+    .l-content {
+      @include span(9);
+    }
+
+    .l-sidebar {
+      @include span(last 3);
+    }
+  }
+}
