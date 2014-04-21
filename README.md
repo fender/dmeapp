@@ -72,3 +72,7 @@ There is also a few simple coding standards to follow when writing SCSS in this 
 * Use `//` for comment blocks (instead of `/* */`).
 
 AngularJS coding standards coming soon..
+
+### Known issues
+
+If you navigate to a sub-page (e.g. http://localhost:8000/library) and hit refresh you will receive a 404. This is because we need to rewrite all URLs to point to the root index.html which handles our app routing.
