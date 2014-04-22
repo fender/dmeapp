@@ -62,7 +62,7 @@ For our vendor packages (front-end assets that we want to include in our app) we
 
 ### Coding standards
 
-We write our [SMACSS](http://smacss.com/) adhering CSS using [Sass](http://sass-lang.com/) [Compass](http://compass-style.org/) and [Susy](http://susy.oddbird.net/). You should probably know how all of those work before attempting to write any SCSS!
+We write our [SMACSS](http://smacss.com/) adhering CSS using [Sass](http://sass-lang.com/), [Compass](http://compass-style.org/) and [Susy](http://susy.oddbird.net/). You should probably know how all of those work before attempting to write any SCSS!
 
 There is also a few simple coding standards to follow when writing SCSS in this app:
 * Use soft-tabs with a two space indent.
@@ -72,3 +72,7 @@ There is also a few simple coding standards to follow when writing SCSS in this 
 * Use `//` for comment blocks (instead of `/* */`).
 
 AngularJS coding standards coming soon..
+
+### Known issues
+
+If you navigate to a sub-page (e.g. http://localhost:8000/library) and hit refresh you will receive a 404. This is because we need to rewrite all URLs to point to the root index.html which handles our app routing.
