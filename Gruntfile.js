@@ -180,7 +180,7 @@ module.exports = function(grunt) {
      */
     watch: {
       compass: {
-        files: ['src/scss/**/*.{scss,sass}'],
+        files: ['src/**/*.{scss,sass}'],
         tasks: ['compass:dev']
       },
       js: {
