@@ -3,12 +3,13 @@
 Before using this application you'll want to make sure you have all the required dependencies. Here is a quick guide on getting started.
 
 1. Install [Node](http://nodejs.org/), `brew install node`.
-2. Install [Compass](http://compass-style.org/), [Susy](http://susy.oddbird.net/) and [Breakpoint](http://breakpoint-sass.com/) ruby gems, `gem install compass susy breakpoint`.
+2. Install [Bundler](http://bundler.io) `gem install bundler`
 3. Clone this repository and navigate to the root.
 4. Install required node packages, `npm install`.
-5. Run `grunt prod` to build and compile the app files with [Grunt](http://gruntjs.com/).
-5. Run a local server, `npm start`.
-6. Point your browser to `http://localhost:8000/`.
+5. Using Bundler, install required gems, `bundle install`.
+6. Run `grunt prod` to build and compile the app files with [Grunt](http://gruntjs.com/).
+7. Run a local server, `npm start`.
+8. Point your browser to `http://localhost:8000/`.
 
 ### File structure
 
@@ -31,7 +32,7 @@ Here is a quick run down on the file structure of this repository.
 
 There is also 2 directories you may notice that are not part of the git repo as they are added to our `.gitignore`.
 * `dist` - Compiled code ends up here. This is ultimately the folder that we serve clients.
-* `node_modules` - Required node modules are installed here. 
+* `node_modules` - Required node modules are installed here.
 
 ### Development
 
