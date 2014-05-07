@@ -25,6 +25,9 @@ module.exports = function(grunt) {
      * directly in our index.html. However, if you want to develop offline
      * you can comment that line out and uncomment the angular incluedes below.
      *
+     * The `vendor_files.test_js` property holds references to vendor scripts
+     * required for running our Karma unit tests.
+     *
      * The `vendor_files.assets` property holds any assets to be copied along
      * with our app's assets. This structure is flattened, so it is not
      * recommended that you use wildcards.
@@ -32,10 +35,13 @@ module.exports = function(grunt) {
      * Any vendor SCSS to be compiled is defined in `src/scss/main.scss`.
      */
     vendor_files: {
-      js: [
-        // Uncomment the lines below if you want to develop offline.
-        // 'vendor/angular/angular.js',
-        // 'vendor/angular-route/angular-route.js',
+      js: [],
+      test_js: [
+        'vendor/angular-mocks/angular-mocks.js'
+      ],
+      offline_js: [
+        'vendor/angular/angular.js',
+        'vendor/angular-route/angular-route.js',
       ],
       assets: []
     },
@@ -144,13 +150,26 @@ module.exports = function(grunt) {
     },
 
     /**
+     * Our Karma configuration.
+     */
+     karma: {
+       unit: {
+        options: {
+          files: [],
+        }
+       } 
+     },
+
+    /**
      * This concatenates all of our JS source files into a single file.
+     * When the --offline command line parameter is present, the `offline`
+     * target is used instead.
      */
     concat: {
-      compile_js: {
-        options: {
-          banner: '<%= banner %>'
-        },
+      options: {
+        banner: '<%= banner %>'
+      },
+      all: {
         src: [
           '<%= vendor_files.js %>',
           'module.prefix',
@@ -158,7 +177,36 @@ module.exports = function(grunt) {
           'module.suffix'
         ],
         dest: 'dist/js/<%= pkg.name %>-<%= pkg.version %>.js'
-      }
+      },
+      offline: {
+        src: [
+          '<%= vendor_files.js %>',
+          '<%= vendor_files.offline_js %>',
+          'module.prefix',
+          'src/**/*.js',
+          'module.suffix'
+        ],
+        dest: 'dist/js/<%= pkg.name %>-<%= pkg.version %>.js'
+      }   
+    },
+
+    /**
+     * When the command line parameter --offline is present, we set the
+     * OFFLINE variable to true. We then preprocess our index.html file
+     * which can then conditionally load external script files.
+     */
+    preprocess: {
+      options: {
+        inline: true,
+        context: {
+          OFFLINE: grunt.option('offline') || false
+        }         
+      },
+      all: {
+        src: [
+          'dist/index.html', 
+        ],
+      },
     },
 
     /**
@@ -170,7 +218,7 @@ module.exports = function(grunt) {
           banner: '<%= banner %>'
         },
         files: {
-          '<%= concat.compile_js.dest %>': '<%= concat.compile_js.dest %>'
+          '<%= concat.all.dest %>': '<%= concat.all.dest %>'
         }
       }
     },
@@ -185,7 +233,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['src/**/*.js'],
-        tasks: ['jshint', 'concat:compile_js']
+        tasks: ['jshint', 'concat:all']
       },
       html: {
         files: ['src/**/*.html'],
@@ -204,15 +252,18 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-preprocess');
 
   /**
    * Default tasks.
    */
-  grunt.registerTask('default', ['clean', 'jshint', 'compass:dev', 'copy', 'concat', 'watch']);
+  var concat_target = grunt.option('offline') ? 'offline' : 'all';
+  grunt.registerTask('default', ['clean', 'jshint', 'compass:dev', 'copy', 'concat:' + concat_target, 'preprocess', 'watch']);
 
   /**
    * Production tasks. Same as `default` except we minify JS and SCSS files.
    */
-  grunt.registerTask('prod', ['clean', 'jshint', 'compass:prod', 'copy', 'concat', 'uglify']);
+  grunt.registerTask('prod', ['clean', 'jshint', 'compass:prod', 'copy', 'concat:all', 'preprocess', 'uglify']);
 
 };

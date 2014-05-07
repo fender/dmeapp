@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Drupalize.Me</title>
     <link rel="stylesheet" href="css/main.css"/>
+    <!-- @if OFFLINE=false -->
     <script type="text/javascript" src="//use.typekit.net/fuf6cds.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <!-- @endif -->
   </head>
   <body ng-app="dmeApp">
     <header class="l-header">
@@ -86,9 +88,10 @@
         <div class="copyright">© Copyright 2014 Lullabot. All rights reserved.</div>
       </div>
     </footer>
-
+    <!-- @if OFFLINE=false -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
+    <!-- @endif -->
     <script type="text/javascript" src="js/dmeapp-0.0.0.js"></script>
   </body>
 </html>
