@@ -19,6 +19,7 @@
     "grunt-preprocess": "^4.0.0",
     "http-server": "^0.6.1",
     "karma": "^0.12.14",
+    "karma-jasmine": "^0.1.5",
     "shelljs": "^0.2.6"
   },
   "scripts": {

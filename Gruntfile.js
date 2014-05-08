@@ -47,6 +47,14 @@ module.exports = function(grunt) {
     },
 
     /**
+     * `app_files.js` makes it easier to reference our app JS and exclude test
+     * spec files.
+     */
+    app_files: {
+      js: ['src/**/*.js', '!src/**/*.spec.js'],
+    },
+
+    /**
      * Empty our dist directory when `grunt clean` is executed.
      */
     clean: [
@@ -130,7 +138,7 @@ module.exports = function(grunt) {
     jshint: {
       all: {
         files: {
-          src: ['src/**/*.js']
+          src: ['<%= app_files.js %>']
         },
         options: {
           curly: true,
@@ -153,11 +161,23 @@ module.exports = function(grunt) {
      * Our Karma configuration.
      */
      karma: {
-       unit: {
-        options: {
-          files: [],
-        }
-       } 
+      options: {
+        files: [
+          '<%= vendor_files.js %>',
+          '<%= vendor_files.offline_js %>',
+          '<%= vendor_files.test_js %>',
+          'src/**/*.js',
+        ],
+        browsers: ['Chrome'],
+        frameworks: ['jasmine'],        
+      },
+      dev: {
+        reporters: 'dots',
+        background: true,
+      },
+      continuous: {
+        singleRun: true,
+      },
      },
 
     /**
@@ -173,7 +193,7 @@ module.exports = function(grunt) {
         src: [
           '<%= vendor_files.js %>',
           'module.prefix',
-          'src/**/*.js',
+          '<%= app_files.js %>',
           'module.suffix'
         ],
         dest: 'dist/js/<%= pkg.name %>-<%= pkg.version %>.js'
@@ -183,7 +203,7 @@ module.exports = function(grunt) {
           '<%= vendor_files.js %>',
           '<%= vendor_files.offline_js %>',
           'module.prefix',
-          'src/**/*.js',
+          '<%= app_files.js %>',
           'module.suffix'
         ],
         dest: 'dist/js/<%= pkg.name %>-<%= pkg.version %>.js'
@@ -232,12 +252,16 @@ module.exports = function(grunt) {
         tasks: ['compass:dev']
       },
       js: {
-        files: ['src/**/*.js'],
+        files: ['<%= app_files.js %>'],
         tasks: ['jshint', 'concat:all']
       },
       html: {
         files: ['src/**/*.html'],
         tasks: ['copy:html']
+      },
+      tests: {
+        files: ['src/**/*.js'],
+        tasks: ['karma:dev:run'],
       }
     },
   });
@@ -259,11 +283,15 @@ module.exports = function(grunt) {
    * Default tasks.
    */
   var concat_target = grunt.option('offline') ? 'offline' : 'all';
-  grunt.registerTask('default', ['clean', 'jshint', 'compass:dev', 'copy', 'concat:' + concat_target, 'preprocess', 'watch']);
+  grunt.registerTask('default', ['clean', 'jshint', 'karma:dev', 'compass:dev', 'copy', 'concat:' + concat_target, 'preprocess', 'watch']);
 
   /**
    * Production tasks. Same as `default` except we minify JS and SCSS files.
    */
-  grunt.registerTask('prod', ['clean', 'jshint', 'compass:prod', 'copy', 'concat:all', 'preprocess', 'uglify']);
+  grunt.registerTask('prod', ['clean', 'jshint', 'karma:continuous', 'compass:prod', 'copy', 'concat:all', 'preprocess', 'uglify']);
 
+  /**
+   * Running `grunt test` will run just the Karma unit tests.
+   */
+  grunt.registerTask('test', ['karma:continuous']);
 };
