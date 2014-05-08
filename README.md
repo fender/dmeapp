@@ -49,6 +49,8 @@ In the root directory, running `grunt` will go through the following process.
 7. Both local vendor and our app script is concatenated into a single JS script file and placed in `dist/js`.
 8. Grunt begins 'watching' for future changes made to any of our js, scss or html files. Once a change is made, grunt automagically runs through the build process outlined above again.
 
+You can append the `--offline` command line parameter if you would rather load certain vendor assets locally as opposed to from their CDN.
+
 We've also implemented the commant `grunt prod` which does the exact same as above except that all compiled CSS and JS is minified and uglified respectively, resulting in smaller file sizes.
 
 ### Package management
