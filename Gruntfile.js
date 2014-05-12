@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+  var concat_target = grunt.option('offline') ? 'offline' : 'all';
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
@@ -41,6 +43,7 @@ module.exports = function(grunt) {
       ],
       offline_js: [
         'vendor/angular/angular.js',
+        'vendor/angular-resource/angular-resource.js',
         'vendor/angular-route/angular-route.js',
       ],
       assets: []
@@ -115,7 +118,7 @@ module.exports = function(grunt) {
           cssDir: 'dist/css',
           imagesDir: 'src/scss/sprites',
           generatedImagesDir: 'src/assets',
-          httpGeneratedImagesPath: '/assets',
+          httpGeneratedImagesPath: '../assets',
         }
       },
       prod: {
@@ -126,7 +129,7 @@ module.exports = function(grunt) {
           cssDir: 'dist/css',
           imagesDir: 'src/scss/sprites',
           generatedImagesDir: 'src/assets',
-          httpGeneratedImagesPath: '/assets',
+          httpGeneratedImagesPath: '../assets',
         }
       },
     },
@@ -169,7 +172,7 @@ module.exports = function(grunt) {
           'src/**/*.js',
         ],
         browsers: ['Chrome'],
-        frameworks: ['jasmine'],        
+        frameworks: ['jasmine'],
       },
       dev: {
         reporters: 'dots',
@@ -207,7 +210,7 @@ module.exports = function(grunt) {
           'module.suffix'
         ],
         dest: 'dist/js/<%= pkg.name %>-<%= pkg.version %>.js'
-      }   
+      }
     },
 
     /**
@@ -220,11 +223,11 @@ module.exports = function(grunt) {
         inline: true,
         context: {
           OFFLINE: grunt.option('offline') || false
-        }         
+        }
       },
       all: {
         src: [
-          'dist/index.html', 
+          'dist/index.html',
         ],
       },
     },
@@ -253,7 +256,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['<%= app_files.js %>'],
-        tasks: ['jshint', 'concat:all']
+        tasks: ['jshint', 'concat:' + concat_target]
       },
       html: {
         files: ['src/**/*.html'],
@@ -282,7 +285,6 @@ module.exports = function(grunt) {
   /**
    * Default tasks.
    */
-  var concat_target = grunt.option('offline') ? 'offline' : 'all';
   grunt.registerTask('default', ['clean', 'jshint', 'karma:dev', 'compass:dev', 'copy', 'concat:' + concat_target, 'preprocess', 'watch']);
 
   /**

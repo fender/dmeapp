@@ -16,9 +16,17 @@ $susy: (
     .l-content {
       @include span(9);
     }
+  }
 
-    .l-sidebar {
-      @include span(last 3);
+  .l-left-sidebar {
+    @include span(3);
+
+    & + .l-content {
+      @include span(last 9);
     }
+  }
+
+  .l-right-sidebar {
+    @include span(last 3);
   }
 }

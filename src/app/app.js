@@ -1,16 +1,16 @@
-angular.module('dmeApp', ['ngRoute', 'dmeApp.library'])
+angular.module('dmeApp', ['ngRoute', 'dmeApp.api', 'dmeApp.library'])
 
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
-    .when('/library', {
-      templateUrl: 'library.html',
+    .when('/videos', {
+      templateUrl: 'dist/library.html',
       controller: 'LibraryController',
     })
     .when('/styleguide', {
-      templateUrl: 'styleguide.html',
+      templateUrl: 'dist/styleguide.html',
     })
     .otherwise({
-      templateUrl: 'front.html',
+      templateUrl: 'dist/front.html',
     });
 
   $locationProvider.html5Mode(true);

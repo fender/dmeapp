@@ -1,3 +1,15 @@
 //
 // Contains our custom Library page style.
 //
+.library-item {
+	@include span(6);
+	@include border-radius($global-radius);
+	@include box-sizing(border-box); // TODO 'susy' way to do this?
+	background: $silver;
+	border: 1px solid $silver-border;
+	padding: 1em;
+
+	&:nth-child(even) {
+		@include span(last 6);
+	}
+}

@@ -1,4 +1,37 @@
 <div class="l-container l-has-sidebar">
-  <div class="l-content">Coming</div>
-  <div class="l-sidebar">Soon</div>
+	<div class="l-left-sidebar">
+
+  <input type="text" ng-model="params.keywords" placeholder="Filter by keyword">
+
+  <label ng-repeat="(type,enabled) in params.types">
+      <input type="checkbox" ng-model="params.types[type]"> {{type}}<br>
+  </label>
+
+  <label ng-repeat="(category,enabled) in params.categories">
+      <input type="checkbox" ng-model="params.categories[category]"> {{category}}<br>
+  </label>
+
+  <label ng-repeat="(version,enabled) in params.versions">
+      <input type="checkbox" ng-model="params.versions[version]"> {{version}}<br>
+  </label>
+
+  <label ng-repeat="(option,enabled) in params.options">
+      <input type="checkbox" ng-model="params.options[option]"> {{option}}<br>
+  </label>
+
+  </div>
+  <div class="l-content">
+    <label>Sort by</label>
+    <select ng-model="params.sort">
+      <option value="created">Release date</option>
+      <option value="rating">Popularity</option>
+    </select>
+    <p>Params: {{params}}</p>
+  	<div class="library-item">
+  		Item A
+  	</div>
+  	<div class="library-item">
+  		Item B
+  	</div>
+  </div>
 </div>

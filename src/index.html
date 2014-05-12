@@ -23,19 +23,24 @@
         <nav ng-controller="NavController">
           <ul class="l-header-menu no-bullet" ng-class="{ open: toggleNav }">
             <li>
-              <a href="/" ng-class="{ active: linkIsActive('/') }">Home</a>
+              <a href="/" target="_self" ng-class="{ active: linkIsActive('/') }">Home</a>
             </li>
             <li>
-              <a href="#">Account</a>
+              <div ng-switch on="user.loggedIn">
+                <a href="/user" target="_self" ng-switch-when="true">Account</a>
+              </div>
             </li>
             <li>
-              <a href="/library" ng-class="{ active: linkIsActive('/library') }">Library</a>
+              <a href="/videos" ng-class="{ active: linkIsActive('/videos') }">Library</a>
             </li>
             <li>
-              <a href="#">Blog</a>
+              <a href="/blog" target="_self">Blog</a>
             </li>
             <li>
-              <a href="#">Logout</a>
+              <div ng-switch on="user.loggedIn">
+                <a href="/user/login" target="_self" ng-switch-when="false">Login</a>
+                <a href="/user/logout" target="_self" ng-switch-when="true">Logout</a>
+              </div>
             </li>
           </ul>
         </nav>
@@ -50,31 +55,31 @@
       <div class="l-container">
         <ul class="l-footer-menu no-bullet">
           <li>
-            <a href="">About</a>
+            <a href="/about" target="_self">About</a>
           </li>
           <li>
-            <a href="">Apps</a>
+            <a href="/apps" target="_self">Apps</a>
           </li>
           <li>
-            <a href="">Gift Certificates</a>
+            <a href="/gift-certificates" target="_self">Gift Certificates</a>
           </li>
           <li>
-            <a href="">FAQ</a>
+            <a href="/faq" target="_self">FAQ</a>
           </li>
           <li>
-            <a href="">Help</a>
+            <a href="/help" target="_self">Help</a>
           </li>
           <li>
-            <a href="">Affiliate Program</a>
+            <a href="/affiliates" target="_self">Affiliate Program</a>
           </li>
           <li>
-            <a href="">Privacy Policy</a>
+            <a href="/privacy" target="_self">Privacy Policy</a>
           </li>
           <li>
-            <a href="">Legal</a>
+            <a href="/terms-conditions" target="_self">Legal</a>
           </li>
           <li>
-            <a href="">Contact us</a>
+            <a href="/contact" target="_self">Contact us</a>
           </li>
         </ul>
         <ul class="social-links no-bullet">
@@ -83,13 +88,14 @@
           <li><a class="global-facebook" href="https://www.facebook.com/pages/Drupalizeme/226965084026508" alt="Facebook" target="_blank">Facebook</a></li>
           <li><a class="global-google-plus" href="https://plus.google.com/104131087331701396621/posts" alt="Google+" target="_blank">Google+</a></li>
           <li><a class="global-itunes" href="https://itunes.apple.com/us/podcast/lullabot-lullabot-podcast/id117672529" alt="iTunes" target="_blank">iTunes</a></li>
-          <li><a class="global-rss" href="#" alt="RSS">RSS</a></li>
+          <li><a class="global-rss" href="/blog/rss" target="_self" alt="RSS">RSS</a></li>
         </ul>
         <div class="copyright">© Copyright 2014 Lullabot. All rights reserved.</div>
       </div>
     </footer>
     <!-- @if OFFLINE=false -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
     <!-- @endif -->
     <script type="text/javascript" src="js/dmeapp-0.0.0.js"></script>
