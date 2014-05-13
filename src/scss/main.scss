@@ -18,15 +18,16 @@
 // Import vendor stylesheets.
 @import '../../vendor/normalize.scss/normalize';
 
-// Import global variables and mixins.
+// Import global variables, mixins and components.
 @import 'variables';
 @import 'mixins';
+@import 'global';
+@import 'layout';
 
 // Import our components.
-@import 'components/global';
-@import 'components/layout';
 @import 'components/tables';
 @import 'components/type';
+@import 'components/media';
 
 // Now that all app-wide styles have been applied, we can load the styles for
 // the components that our submodules introduce.

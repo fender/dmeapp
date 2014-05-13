@@ -1,0 +1,22 @@
+//
+// Media styles are ideal for building lists or grids of components like on the
+// library page.
+//
+
+.media-wrapper--grid {
+	.media {
+		@include span(6);
+
+		&:nth-child(even) {
+			@include span(last 6);
+		}
+	}
+}
+
+.media {
+	@include border-radius($global-radius);
+	@include box-sizing(border-box); // TODO 'susy' way to do this?
+	background: $silver;
+	border: 1px solid $silver-border;
+	padding: 1em;
+}

@@ -1,10 +1,8 @@
-angular.module('dmeApp.library', ['dmeApp.video'])
+angular.module('dmeApp.library', [])
 
-.controller('LibraryController', ['$scope', 'VideoService', function($scope, VideoService) {
+.controller('LibraryController', ['$scope', 'SeriesService', 'VideoService', function($scope, SeriesService, VideoService) {
 	// Declare default library filter parameters.
 	$scope.params = {
-		group: true,
-		sort: 'created',
 		keywords: '',
 		categories: {
 			'Module Development': false,
@@ -19,30 +17,39 @@ angular.module('dmeApp.library', ['dmeApp.video'])
 			'Drupal 7': false,
 			'Drupal 8': false,
 		},
-		options: {
-			'Not Watched': false,
-			'Watched': false,
-			'Closed Captions': false,
-		},
+		not_watched: false,
+		watched: false,
+		closed_captions: false,
+		page: 1,
+		pagesize: 15,
+		group_by_series: true,
+		sort: 'created',
 	};
 
   $scope.updateResults = function() {
-	  VideoService.query($scope.params, function(videos) {
-	  	console.log(videos);
-	  	$scope.videos = videos;
+  	// Remove any previous results.
+  	$scope.items = {};
+
+  	// Temporarily disable filter interaction.
+  	$scope.disableFilters = true;
+
+  	var service = $scope.params.group_by_series ? SeriesService : VideoService;
+		service.query($scope.params, function(items) {
+	  	$scope.items = items;
+	  	$scope.disableFilters = false;
 	  });
   };
 
 	// When a parameters value is changed, update the library results.
-	$scope.$watch('params', function(newVal, oldVal) {
-		// Ignore keyword filter changes here.
-		if (newVal.keywords === oldVal.keywords) {
-			$scope.updateResults();
+	$scope.$watch('params', function(newValue, oldValue) {
+		// Don't do anything if parameters didn't change. Also ignore keyword filter
+		// changes as we handle that separately.
+		if (newValue === oldValue || newValue.keywords === oldValue.keywords) {
+		  return;
 		}
-  }, true);
 
-	// Stores current video results.
-	$scope.videos = {};
+		$scope.updateResults();
+  }, true);
 
 	// Load initial results.
 	$scope.updateResults();

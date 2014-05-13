@@ -1,4 +1,10 @@
-angular.module('dmeApp', ['ngRoute', 'dmeApp.api', 'dmeApp.library'])
+angular.module('dmeApp', [
+  'ngRoute',
+  'dmeApp.api',
+  'dmeApp.series',
+  'dmeApp.video',
+  'dmeApp.library'
+])
 
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
