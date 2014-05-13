@@ -7,9 +7,13 @@ Before using this application you'll want to make sure you have all the required
 3. Clone this repository and navigate to the root.
 4. Install required node packages, `npm install`.
 5. Using Bundler, install required gems, `bundle install`.
-6. Run `grunt prod` to build and compile the app files with [Grunt](http://gruntjs.com/).
-7. Run a local server, `npm start`.
-8. Point your browser to `http://localhost:8000/`.
+6. Run `grunt` to build and compile the app files with [Grunt](http://gruntjs.com/).
+7. Until we go fully decoupled, you will need to configure your Apache to serve the `/dist` folder. Edit your Apache config so that at the very least the path alias `/dist` is redirected to the apps `/dist` directory. For example, add this to your VirtualHost:
+
+```
+Alias /dist /Users/jfender/Documents/Workspace/dmeapp/dist # Required
+Alias /videos /Users/jfender/Documents/Workspace/dmeapp/dist # Serves Library page from dmeapp
+```
 
 ### File structure
 
@@ -38,7 +42,7 @@ There is also 2 directories you may notice that are not part of the git repo as 
 
 So you want to develop huh? Well you're in luck. Using Grunt, we've made it simple to automate the development workflow of a large front-end app such as this.
 
-In the root directory, running `grunt` will go through the following process.
+Running `grunt` in the root directory will build a development environment for dmeapp by going through the following steps.
 
 1. `dist` is cleaned (i.e. deleted).
 2. Our custom scripts are checked for syntax errors with [JSHint](www.jshint.com).
@@ -51,7 +55,7 @@ In the root directory, running `grunt` will go through the following process.
 
 You can append the `--offline` command line parameter if you would rather load certain vendor assets locally as opposed to from their CDN.
 
-We've also implemented the commant `grunt prod` which does the exact same as above except that all compiled CSS and JS is minified and uglified respectively, resulting in smaller file sizes.
+When you're ready to compile for production, run command `grunt prod`. It goes through the same flow as above except that all compiled CSS and JS is minified and uglified respectively, resulting in smaller file sizes. This will also point the API URI to the production server so be extra careful when doing this!
 
 ### Package management
 
@@ -75,7 +79,3 @@ There is also a few simple coding standards to follow when writing SCSS in this 
 * Use `//` for comment blocks (instead of `/* */`).
 
 AngularJS coding standards coming soon..
-
-### Known issues
-
-If you navigate to a sub-page (e.g. http://localhost:8000/library) and hit refresh you will receive a 404. This is because we need to rewrite all URLs to point to the root index.html which handles our app routing.

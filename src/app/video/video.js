@@ -5,8 +5,13 @@ angular.module('dmeApp.video', [])
 	var VideoService = {};
 
 	VideoService.query = function(params) {
-		Api.Videos.query(params, function() {
+		// TODO this doesn't work
+		params.type = 'video';
+
+		Api.Nodes.query(params, function(data) {
 			// format results
+
+			return data;
 		});
 	};
 

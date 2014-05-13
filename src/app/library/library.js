@@ -3,12 +3,9 @@ angular.module('dmeApp.library', ['dmeApp.video'])
 .controller('LibraryController', ['$scope', 'VideoService', function($scope, VideoService) {
 	// Declare default library filter parameters.
 	$scope.params = {
+		group: true,
 		sort: 'created',
 		keywords: '',
-		types: {
-			'Series': true,
-			'Video': false,
-		},
 		categories: {
 			'Module Development': false,
 			'Theming': false,
@@ -29,16 +26,24 @@ angular.module('dmeApp.library', ['dmeApp.video'])
 		},
 	};
 
+  $scope.updateResults = function() {
+	  VideoService.query($scope.params, function(videos) {
+	  	console.log(videos);
+	  	$scope.videos = videos;
+	  });
+  };
+
 	// When a parameters value is changed, update the library results.
-	// Organize videos into the series on the client side.
-	$scope.$watch('params.types', function() {
-		// This is being triggered for every key entry on keywords too.
-		console.log($scope.params);
+	$scope.$watch('params', function(newVal, oldVal) {
+		// Ignore keyword filter changes here.
+		if (newVal.keywords === oldVal.keywords) {
+			$scope.updateResults();
+		}
   }, true);
 
-	// Can we simplify this? Do we need 'var videos'?
-	// Add to .run?
-  var videos = VideoService.query($scope.params, function() {
-  	$scope.videos = videos;
-  });
+	// Stores current video results.
+	$scope.videos = {};
+
+	// Load initial results.
+	$scope.updateResults();
 }]);

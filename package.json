@@ -3,7 +3,7 @@
   "description": "The Drupalize.Me front-end application",
   "homepage": "http://drupalize.me",
   "version": "0.0.0",
-  "repository": "https://github.com/angular/angular-seed",
+  "repository": "https://github.com/fender/dmeapp",
   "private": true,
   "devDependencies": {
     "bower": "^1.3.1",
@@ -17,12 +17,8 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-karma": "^0.8.3",
     "grunt-preprocess": "^4.0.0",
-    "http-server": "^0.6.1",
     "karma": "^0.12.14",
     "karma-jasmine": "^0.1.5",
     "shelljs": "^0.2.6"
-  },
-  "scripts": {
-    "start": "http-server dist/ -p 8000"
   }
 }
