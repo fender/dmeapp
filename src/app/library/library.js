@@ -54,7 +54,7 @@ angular.module('dmeApp.library', [])
   			terms.push(tid);
   		}
   	});
-  	return terms;
+  	return terms.length ? terms.join(',') : [];
   };
 
 	// When a parameters value is changed, update the library results.

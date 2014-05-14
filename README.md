@@ -61,9 +61,13 @@ Running `grunt` in the root directory will build a development environment for d
 
 You can append the `--offline` command line parameter if you would rather load vendor JS locally as opposed to from their CDN. The list of files that are loaded using this parameter can be found in **vendor_files.offline_js** in `Gruntfile.js`.
 
+#### API path
+By default the API path points to `http://drupalize.me/api/v1`. As the API runs on a different domain to our local server, we are unable to make authenticated requests. To change the API path, copy `default.config.js` to `config.js` and update it there. To test authenticated functionality, you will need to setup our Drupal site locally and serve the `dist` folder from Apache.
+
+
 #### Compiling for production
 
-When you're ready to compile for production, run command `grunt prod`. It goes through the same flow as above except that all compiled CSS and JS is minified and uglified respectively, resulting in smaller file sizes. This will also point the API URI to the production server so be extra careful when doing this!
+When you're ready to compile for production, run command `grunt prod`. It goes through the same flow as above except that all compiled CSS and JS is minified and uglified respectively, resulting in smaller file sizes.
 
 #### Package management
 

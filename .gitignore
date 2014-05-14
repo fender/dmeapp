@@ -3,3 +3,4 @@ node_modules/
 .project
 dist/
 .sass-cache/
+config.js

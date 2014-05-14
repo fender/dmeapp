@@ -56,7 +56,13 @@ module.exports = function(grunt) {
      * spec files.
      */
     app_files: {
-      js: ['src/**/*.js', 'templates/templates.js', '!src/**/*.spec.js'],
+      js: [
+        'default.config.js',
+        'config.js',
+        'src/**/*.js',
+        'templates/templates.js',
+        '!src/**/*.spec.js'
+      ],
     },
 
     /**
@@ -183,6 +189,8 @@ module.exports = function(grunt) {
           '<%= vendor_files.js %>',
           '<%= vendor_files.offline_js %>',
           '<%= vendor_files.test_js %>',
+          'default.config.js',
+          'config.js',
           'src/**/*.js',
         ],
         browsers: ['Chrome'],
