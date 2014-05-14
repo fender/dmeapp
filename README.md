@@ -61,11 +61,11 @@ Running `grunt` in the root directory will build a development environment for d
 
 You can append the `--offline` command line parameter if you would rather load vendor JS locally as opposed to from their CDN. The list of files that are loaded using this parameter can be found in **vendor_files.offline_js** in `Gruntfile.js`.
 
-#### Production
+#### Compiling for production
 
 When you're ready to compile for production, run command `grunt prod`. It goes through the same flow as above except that all compiled CSS and JS is minified and uglified respectively, resulting in smaller file sizes. This will also point the API URI to the production server so be extra careful when doing this!
 
-### Package management
+#### Package management
 
 We use the Node package manager (npm) to keep our node modules up to date. If you need to install a new node module dependency, make sure you also add it to our `package.json` by using the following example command.
 
@@ -75,7 +75,7 @@ For our vendor packages (front-end assets that we want to include in our app) we
 
 `bower install <package_name> --save`
 
-### Coding standards
+#### Coding standards
 
 We write our [SMACSS](http://smacss.com/) adhering CSS using [Sass](http://sass-lang.com/), [Compass](http://compass-style.org/) and [Susy](http://susy.oddbird.net/). You should probably know how all of those work before attempting to write any SCSS!
 
@@ -86,4 +86,4 @@ There is also a few simple coding standards to follow when writing SCSS in this 
 * Use hex color codes #000 unless using rgba.
 * Use `//` for comment blocks (instead of `/* */`).
 
-AngularJS coding standards coming soon..
+We follow the [AngularJS Style Guide](https://google-styleguide.googlecode.com/svn/trunk/angularjs-google-style.html) which implements and extends the [Google Javascript Style Guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml).
