@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
 
   var concat_target = grunt.option('offline') ? 'offline' : 'all';
+  var modRewrite = require('connect-modrewrite');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -278,9 +279,37 @@ module.exports = function(grunt) {
     },
 
     /**
+     * We use `connect` to host a local server. We add a custom middleware to
+     * rewrite any path that does not contain a '.' (period) to /index.html.
+     */
+    connect: {
+      options: {
+        port: 9000,
+        livereload: 35729,
+        hostname: 'localhost',
+      },
+      livereload: {
+        options: {
+          base: ['dist/'],
+          middleware: function(connect, options) {
+            var middlewares = [];
+            middlewares.push(modRewrite(['^[^\\.]*$ /index.html [L]']));
+            options.base.forEach(function(base) {
+              middlewares.push(connect.static(base));
+            });
+            return middlewares;
+          }
+        }
+      }
+    },
+
+    /**
      * Watch for changes in style or script files and re-compile as necessary.
      */
     watch: {
+      options: {
+        livereload: true
+      },
       compass: {
         files: ['src/**/*.{scss,sass}'],
         tasks: ['compass:dev']
@@ -311,6 +340,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -328,6 +358,11 @@ module.exports = function(grunt) {
    * Production tasks. Same as `default` except we minify JS and SCSS files.
    */
   grunt.registerTask('prod', ['clean', 'jshint', 'karma:continuous', 'compass:prod', 'copy', 'ngtemplates', 'concat:all', 'clean:templates', 'preprocess', 'uglify']);
+
+  /**
+   * Running `grunt server` runs our connect server until cancelled.
+   */
+  grunt.registerTask('server', ['connect:livereload:keepalive']);
 
   /**
    * Running `grunt test` will run just the Karma unit tests.

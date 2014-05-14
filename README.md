@@ -8,12 +8,8 @@ Before using this application you'll want to make sure you have all the required
 4. Install required node packages, `npm install`.
 5. Using Bundler, install required gems, `bundle install`.
 6. Run `grunt` to build and compile the app files with [Grunt](http://gruntjs.com/).
-7. Until we go fully decoupled, you will need to configure your Apache to serve the `/dist` folder. Edit your Apache config so that at the very least the path alias `/dist` is redirected to the apps `/dist` directory. For example, add this to your VirtualHost:
-
-```
-Alias /dist /Users/jfender/Documents/Workspace/dmeapp/dist # Required
-Alias /videos /Users/jfender/Documents/Workspace/dmeapp/dist # Serves Library page from dmeapp
-```
+7. In a separate terminal tab, run `grunt server` to start a local web server.
+8. Point your browser to `http://localhost:9000` and dance a little jig.
 
 ### File structure
 
@@ -44,16 +40,28 @@ So you want to develop huh? Well you're in luck. Using Grunt, we've made it simp
 
 Running `grunt` in the root directory will build a development environment for dmeapp by going through the following steps.
 
-1. `dist` is cleaned (i.e. deleted).
+1. `dist` and `templates` are cleaned (i.e. deleted).
 2. Our custom scripts are checked for syntax errors with [JSHint](www.jshint.com).
-3. `main.scss` from `src/scss` is compiled by Compass. All of our style and any vendor style is outputted to a single file, `main.css` and placed in `dist/css`.
-4. App assets are copied from `src/assets` to `dist/assets`. This includes any sprites that Compass compiled in the previous step.
-5. Vendor assets are copied from `vendor/assets` to `dist/assets`.
-6. All HTML template files from within `src/app` are copied to `dist/`.
-7. Both local vendor and our app script is concatenated into a single JS script file and placed in `dist/js`.
-8. Grunt begins 'watching' for future changes made to any of our js, scss or html files. Once a change is made, grunt automagically runs through the build process outlined above again.
+3. [Karma](http://karma-runner.github.io/0.12/index.html) unit tests are executed.
+4. `main.scss` from `src/scss` is compiled by Compass. All of our style and any vendor style is outputted to a single file, `main.css` and placed in `dist/css`.
+5. App assets are copied from `src/assets` to `dist/assets`. This includes any sprites that Compass compiled in the previous step.
+6. Vendor assets are copied from `vendor/assets` to `dist/assets`.
+7. Root HTML files are copied to `dist/` (i.e. index.html).
+8. All template HTML files are copied from `src/app` and flattened into `templates`.
+9. The HTML files in `templates` are added to the AngularJS [$templateCache](https://docs.angularjs.org/api/ng/service/$templateCache) and minified inside `templates/templates.js`.
+10. All scripts (see **app_files.js** in `Gruntfile.js`) are concatenated into a single JS script file and placed in `dist/js`.
+11. Temporary folder `templates` is cleaned.
+12. Grunt begins 'watching' for future changes made to any of our js, scss or html files. Once a change is made, grunt automagically runs through relevant build processes outlined above again.
 
-You can append the `--offline` command line parameter if you would rather load certain vendor assets locally as opposed to from their CDN.
+#### Livereload
+
+[Livereload](http://livereload.com/) functionality is enabled for this app. Whenever you make a change to any app file, browser windows pointing at `http://localhost:9000` will automatically refresh.
+
+#### Offline mode
+
+You can append the `--offline` command line parameter if you would rather load vendor JS locally as opposed to from their CDN. The list of files that are loaded using this parameter can be found in **vendor_files.offline_js** in `Gruntfile.js`.
+
+#### Production
 
 When you're ready to compile for production, run command `grunt prod`. It goes through the same flow as above except that all compiled CSS and JS is minified and uglified respectively, resulting in smaller file sizes. This will also point the API URI to the production server so be extra careful when doing this!
 
