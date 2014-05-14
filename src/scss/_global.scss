@@ -204,7 +204,6 @@ body {
 // Utility classes.
 //
 
-// Floating elements left and right.
 .left {
   float: left !important;
 }
@@ -213,7 +212,6 @@ body {
   float: right !important;
 }
 
-// Text alignment.
 .text-left {
   text-align: left;
 }
@@ -230,12 +228,12 @@ body {
   text-align: justify;
 }
 
-// Set the border-radius to our global radius.
 .radius {
   @include border-radius($global-radius);
 }
 
-// Hide an element.
-.hide {
+// Allows us to cloak elements until AngularJS has loaded.
+// See https://docs.angularjs.org/api/ng/directive/ngCloak
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }

@@ -287,15 +287,15 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['<%= app_files.js %>'],
-        tasks: ['jshint', 'concat:' + concat_target]
+        tasks: ['jshint', 'copy:templates', 'ngtemplates', 'concat:' + concat_target, 'clean:templates']
       },
       html: {
         files: ['src/*.html'],
         tasks: ['copy:html', 'preprocess']
       },
       templates: {
-        files: ['src/*/*.html'],
-        tasks: ['ngtemplates', 'concat:' + concat_target]
+        files: ['src/app/**/*.html'],
+        tasks: ['copy:templates', 'ngtemplates', 'concat:' + concat_target, 'clean:templates']
       },
       tests: {
         files: ['src/**/*.js'],

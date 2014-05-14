@@ -3,12 +3,12 @@
   <form ng-submit="updateResults()">
     <input type="text" placeholder="Filter by keyword" ng-model="params.keywords" ng-blur="updateResults()" ng-disabled="disableFilters">
 
-    <label ng-repeat="(category,enabled) in params.categories">
-        <input type="checkbox" ng-model="params.categories[category]" ng-disabled="disableFilters"> {{category}}<br>
+    <label ng-repeat="category in params.categories">
+        <input type="checkbox" ng-model="category.selected" ng-disabled="disableFilters"> {{category.name}}<br>
     </label>
 
-    <label ng-repeat="(version,enabled) in params.versions">
-        <input type="checkbox" ng-model="params.versions[version]" ng-disabled="disableFilters"> {{version}}<br>
+    <label ng-repeat="version in params.versions">
+        <input type="checkbox" ng-model="version.selected" ng-disabled="disableFilters"> {{version.name}}<br>
     </label>
 
     <label>

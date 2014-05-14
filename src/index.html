@@ -26,7 +26,7 @@
               <a href="/" target="_self" ng-class="{ active: linkIsActive('/') }">Home</a>
             </li>
             <li>
-              <div ng-switch on="user.loggedIn">
+              <div ng-switch on="user.loggedIn" ng-cloak>
                 <a href="/user" target="_self" ng-switch-when="true">Account</a>
               </div>
             </li>
@@ -37,7 +37,7 @@
               <a href="/blog" target="_self">Blog</a>
             </li>
             <li>
-              <div ng-switch on="user.loggedIn">
+              <div ng-switch on="user.loggedIn" ng-cloak>
                 <a href="/user/login" target="_self" ng-switch-when="false">Login</a>
                 <a href="/user/logout" target="_self" ng-switch-when="true">Logout</a>
               </div>
@@ -99,5 +99,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
     <!-- @endif -->
     <script type="text/javascript" src="js/dmeapp-0.0.0.js"></script>
+    <script src="//localhost:35729/livereload.js"></script>
   </body>
 </html>

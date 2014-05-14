@@ -1,23 +1,6 @@
 angular.module('dmeApp.video', [])
 
 .factory('VideoService', ['Api', function(Api) {
-	var VideoService = {};
-
-	VideoService.query = function(params, success) {
-		Api.Video.query(params, function(data) {
-			success(data);
-		});
-	};
-
-	VideoService.addToQueue = function(id) {
-
-	};
-
-	VideoService.removeFromQueue = function(id) {
-
-	};
-
-	return VideoService;
+	// TODO do we need a factory for video?
+	return {};
 }]);
-
-// TODO add directive for Video grid and list types

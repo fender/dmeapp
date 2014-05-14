@@ -1,22 +1,12 @@
 angular.module('dmeApp.library', [])
 
-.controller('LibraryController', ['$scope', 'SeriesService', 'VideoService', function($scope, SeriesService, VideoService) {
+.controller('LibraryController', ['$scope', 'Api', 'categoryTaxonomy', 'versionTaxonomy',
+	function($scope, Api, categoryTaxonomy, versionTaxonomy) {
 	// Declare default library filter parameters.
 	$scope.params = {
 		keywords: '',
-		categories: {
-			'Module Development': false,
-			'Theming': false,
-			'Site Building': false,
-			'Site Administration': false,
-			'Backend and Infrastructure': false,
-			'Community': false,
-		},
-		versions: {
-			'Drupal 6': false,
-			'Drupal 7': false,
-			'Drupal 8': false,
-		},
+		categories: {},
+		versions: {},
 		not_watched: false,
 		watched: false,
 		closed_captions: false,
@@ -26,18 +16,45 @@ angular.module('dmeApp.library', [])
 		sort: 'created',
 	};
 
+	// Populate the taxonomy filters.
+	angular.forEach(categoryTaxonomy, function(name, tid) {
+		$scope.params.categories[tid] = {name: name, selected: false};
+	});
+	angular.forEach(versionTaxonomy, function(name, tid) {
+		$scope.params.versions[tid] = {name: name, selected: false};
+	});
+
   $scope.updateResults = function() {
-  	// Remove any previous results.
+  	// Clear previous results.
   	$scope.items = {};
 
   	// Temporarily disable filter interaction.
   	$scope.disableFilters = true;
 
-  	var service = $scope.params.group_by_series ? SeriesService : VideoService;
-		service.query($scope.params, function(items) {
-	  	$scope.items = items;
+  	// We make a copy of the parameters so as to not affect the scope.
+  	var params = angular.copy($scope.params);
+
+  	// Remove non-selected terms from taxonomy filters.
+  	params.categories = $scope.selectedTerms(params.categories);
+  	params.versions = $scope.selectedTerms(params.versions);
+
+  	// Call our API for the new results.
+  	var resource = params.group_by_series ? 'Series' : 'Video';
+		$scope.items = Api[resource].query(params, function() {
 	  	$scope.disableFilters = false;
 	  });
+  };
+
+  // Helper function that returns an array of selected term IDs from a taxonomy
+  // filter object.
+  $scope.selectedTerms = function(object) {
+  	var terms = [];
+  	angular.forEach(object, function(term, tid) {
+  		if (term.selected) {
+  			terms.push(tid);
+  		}
+  	});
+  	return terms;
   };
 
 	// When a parameters value is changed, update the library results.
