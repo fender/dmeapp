@@ -23,12 +23,13 @@ module.exports = function(grunt) {
      * added to our pages just before the </body> tag. This also merges together
      * with our project app source.
      *
-     * Note that for Angular, we are using the Google CDN which is referenced
-     * directly in our index.html. However, if you want to develop offline
-     * you can comment that line out and uncomment the angular incluedes below.
-     *
      * The `vendor_files.test_js` property holds references to vendor scripts
      * required for running our Karma unit tests.
+     *
+     * By default Angular scripts are loaded from the Google CDN and referenced
+     * in our index.html. However, if yo uwant to develop offline you can add
+     * the command line open `--offline` which will load the vendor files listed
+     * in `vendor_files.offline_js`.
      *
      * The `vendor_files.assets` property holds any assets to be copied along
      * with our app's assets. This structure is flattened, so it is not
@@ -54,19 +55,21 @@ module.exports = function(grunt) {
      * spec files.
      */
     app_files: {
-      js: ['src/**/*.js', '!src/**/*.spec.js'],
+      js: ['src/**/*.js', 'templates/templates.js', '!src/**/*.spec.js'],
     },
 
     /**
      * Empty our dist directory when `grunt clean` is executed.
      */
-    clean: [
-      'dist',
-    ],
+    clean: {
+      dist: ['dist'],
+      templates: ['templates']
+    },
 
     /**
      * The `copy` task just copies files from A to B. We use it here to copy
-     * our project assets (images, fonts, etc.) and html files.
+     * our project assets (images, fonts), root HTML files (i.e. index.html)
+     * and template HTML files.
      */
     copy: {
       app_assets: {
@@ -93,11 +96,21 @@ module.exports = function(grunt) {
       html: {
         files: [
           {
-            src: ['**/*.html'],
+            src: ['*.html'],
             dest: 'dist/',
             cwd: 'src',
             expand: true,
-            flatten: true
+          }
+        ]
+      },
+      templates: {
+        files: [
+          {
+            src: ['**/*.html'],
+            dest: 'templates/',
+            cwd: 'src/app',
+            expand: true,
+            flatten: true,
           }
         ]
       },
@@ -163,7 +176,7 @@ module.exports = function(grunt) {
     /**
      * Our Karma configuration.
      */
-     karma: {
+    karma: {
       options: {
         files: [
           '<%= vendor_files.js %>',
@@ -182,6 +195,24 @@ module.exports = function(grunt) {
         singleRun: true,
       },
      },
+
+    /**
+     * Combines and minifies our apps HTML templates into a single JS file to be
+     *  added to our AngularJS `$templateCache`.
+     */
+    ngtemplates: {
+      dmeApp: {
+        cwd: 'templates',
+        src: '*.html',
+        dest: 'templates/templates.js',
+        options: {
+          htmlmin: {
+            collapseWhitespace: true,
+            collapseBooleanAttributes: true
+          }
+        }
+      }
+    },
 
     /**
      * This concatenates all of our JS source files into a single file.
@@ -259,8 +290,12 @@ module.exports = function(grunt) {
         tasks: ['jshint', 'concat:' + concat_target]
       },
       html: {
-        files: ['src/**/*.html'],
+        files: ['src/*.html'],
         tasks: ['copy:html', 'preprocess']
+      },
+      templates: {
+        files: ['src/*/*.html'],
+        tasks: ['ngtemplates', 'concat:' + concat_target]
       },
       tests: {
         files: ['src/**/*.js'],
@@ -272,10 +307,12 @@ module.exports = function(grunt) {
   /**
    * Load our grunt plugins.
    */
+  grunt.loadNpmTasks('grunt-angular-templates');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -285,12 +322,12 @@ module.exports = function(grunt) {
   /**
    * Default tasks.
    */
-  grunt.registerTask('default', ['clean', 'jshint', 'karma:dev', 'compass:dev', 'copy', 'concat:' + concat_target, 'preprocess', 'watch']);
+  grunt.registerTask('default', ['clean', 'jshint', 'karma:dev', 'compass:dev', 'copy', 'ngtemplates', 'concat:' + concat_target, 'clean:templates', 'preprocess', 'watch']);
 
   /**
    * Production tasks. Same as `default` except we minify JS and SCSS files.
    */
-  grunt.registerTask('prod', ['clean', 'jshint', 'karma:continuous', 'compass:prod', 'copy', 'concat:all', 'preprocess', 'uglify']);
+  grunt.registerTask('prod', ['clean', 'jshint', 'karma:continuous', 'compass:prod', 'copy', 'ngtemplates', 'concat:all', 'clean:templates', 'preprocess', 'uglify']);
 
   /**
    * Running `grunt test` will run just the Karma unit tests.

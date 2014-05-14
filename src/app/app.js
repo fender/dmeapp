@@ -9,14 +9,14 @@ angular.module('dmeApp', [
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/videos', {
-      templateUrl: 'dist/library.html',
+      templateUrl: 'library.html',
       controller: 'LibraryController',
     })
     .when('/styleguide', {
-      templateUrl: 'dist/styleguide.html',
+      templateUrl: 'styleguide.html',
     })
     .otherwise({
-      templateUrl: 'dist/front.html',
+      templateUrl: 'front.html',
     });
 
   $locationProvider.html5Mode(true);

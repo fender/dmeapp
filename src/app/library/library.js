@@ -44,7 +44,7 @@ angular.module('dmeApp.library', [])
 	$scope.$watch('params', function(newValue, oldValue) {
 		// Don't do anything if parameters didn't change. Also ignore keyword filter
 		// changes as we handle that separately.
-		if (newValue === oldValue || newValue.keywords === oldValue.keywords) {
+		if (newValue === oldValue || newValue.keywords !== oldValue.keywords) {
 		  return;
 		}
 
