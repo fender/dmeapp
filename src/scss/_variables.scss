@@ -2,7 +2,7 @@
 // Sass variables.
 //
 
-// Colors. These are taken from our brand guide.
+// Colors (Taken from our brand guide)
 $white: #fff;
 $charcoal: #555;
 $dark-charcoal: #333;
@@ -14,11 +14,14 @@ $silver-border: #e6e6e6;
 $green: #00be4c;
 $red: #c60e00;
 
-// Fonts.
+// Fonts.\
 $body-font-family: "proxima-nova", Helvetica, Arial, Tahoma, sans-serif;
 $body-font-size: 16px;
 $line-height: 1.6;
 
-// Other.
-$medium-min: 48em; // Breakpoint for the minimum of medium screen widths.
+// Layout
+$site-width: 67.5em; // 1080px
+$medium-min: 48em; // 768px, breakpoint for the minimum of medium screen widths.
+
+// Other
 $global-radius: 5px;

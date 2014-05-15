@@ -4,7 +4,6 @@
 //
 
 .media {
-	@include box-sizing(border-box); // TODO 'susy' way to do this?
 	padding: 1em 0;
 }
 
@@ -28,21 +27,15 @@
 
 }
 
-.media-view {
-	clear: both;
-}
-
 .media-view--grid {
 	.media {
-		@include span(6);
-
-		&:nth-child(even) {
-			@include span(last 6);
-		}
+		@include gallery(6 of 12);
 	}
 }
 
 .media-view--list {
+	padding: 1.5em;
+
 	.media {
 		border-bottom: 1px solid $silver-border;
 

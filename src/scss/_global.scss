@@ -90,7 +90,7 @@ body {
 
 // Main content section.
 .l-main {
-  background: $white;
+  background: $silver;
   padding: 2em 0;
 }
 
@@ -211,8 +211,9 @@ body {
   float: right !important;
 }
 
-.drop-shadow {
-  @include box-shadow($silver-border 0 5px 0);
+.panel {
+  background: $white;
+  border-bottom: 5px solid $silver-border;
 }
 
 // Allows us to cloak elements until AngularJS has loaded.

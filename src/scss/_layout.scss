@@ -6,23 +6,17 @@ $susy: (
   columns: 12,
 );
 
+@include global-box-sizing(border-box);
+
 .l-container {
-  @include container(67.5em);
+  @include container($site-width);
   @include pad(1em);
 }
 
 @include breakpoint(48em) {
-  .l-container--has-sidebar {
+  .l-container--sidebar {
     .l-content {
       @include span(9);
-    }
-  }
-
-  .l-left-sidebar {
-    @include span(3);
-
-    & + .l-content {
-      @include span(last 9);
     }
   }
 

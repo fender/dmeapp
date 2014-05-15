@@ -2,10 +2,6 @@
 // Contains our custom Library page style.
 //
 
-.l-left-sidebar--library {
-
-}
-
 .library-filter-header {
 	background: $dark-blue;
 	color: $white;
@@ -29,4 +25,9 @@
 	input {
 		margin-right: 0.5em;
 	}
+}
+
+.library-loading {
+	@include break;
+	padding: 1.5em;
 }
