@@ -216,6 +216,10 @@ body {
   border-bottom: 5px solid $silver-border;
 }
 
+.panel--padding {
+  padding: 1.5em;
+}
+
 // Allows us to cloak elements until AngularJS has loaded.
 // See https://docs.angularjs.org/api/ng/directive/ngCloak
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
