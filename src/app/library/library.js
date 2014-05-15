@@ -24,9 +24,10 @@ angular.module('dmeApp.library', [])
 		$scope.params.versions[tid] = {name: name, selected: false};
 	});
 
+	// This function is called every time we want to retrieve new media results.
   $scope.updateResults = function() {
   	// Clear previous results.
-  	$scope.items = {};
+  	$scope.media = {};
 
   	// Temporarily disable filter interaction.
   	$scope.disableFilters = true;
@@ -35,26 +36,41 @@ angular.module('dmeApp.library', [])
   	var params = angular.copy($scope.params);
 
   	// Remove non-selected terms from taxonomy filters.
-  	params.categories = $scope.selectedTerms(params.categories);
-  	params.versions = $scope.selectedTerms(params.versions);
+  	params.categories = $scope.selectedTerms(params.categories, true);
+  	params.versions = $scope.selectedTerms(params.versions, true);
 
   	// Call our API for the new results.
   	var resource = params.group_by_series ? 'Series' : 'Video';
-		$scope.items = Api[resource].query(params, function() {
+		$scope.media = Api[resource].query(params, function() {
 	  	$scope.disableFilters = false;
 	  });
   };
 
   // Helper function that returns an array of selected term IDs from a taxonomy
   // filter object.
-  $scope.selectedTerms = function(object) {
+  $scope.selectedTerms = function(object, comma_delimited) {
   	var terms = [];
   	angular.forEach(object, function(term, tid) {
   		if (term.selected) {
   			terms.push(tid);
   		}
   	});
-  	return terms.length ? terms.join(',') : [];
+
+  	return comma_delimited ? terms.join(',') : terms;
+  };
+
+  // Clears selected terms for a given taxonomy filter object.
+  $scope.resetTerms = function(object) {
+  	angular.forEach(object, function(term, tid) {
+  		term.selected = false;
+  	});
+  };
+
+  // Clears all of the "More Options" filters.
+  $scope.resetOptions = function() {
+  	$scope.params.not_watched = false;
+  	$scope.params.watched = false;
+  	$scope.params.closed_captions = false;
   };
 
 	// When a parameters value is changed, update the library results.

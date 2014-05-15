@@ -203,7 +203,6 @@ body {
 //
 // Utility classes.
 //
-
 .left {
   float: left !important;
 }
@@ -212,24 +211,8 @@ body {
   float: right !important;
 }
 
-.text-left {
-  text-align: left;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-justify {
-  text-align: justify;
-}
-
-.radius {
-  @include border-radius($global-radius);
+.drop-shadow {
+  @include box-shadow($silver-border 0 5px 0);
 }
 
 // Allows us to cloak elements until AngularJS has loaded.

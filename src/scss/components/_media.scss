@@ -3,7 +3,36 @@
 // library page.
 //
 
-.media-wrapper--grid {
+.media {
+	@include box-sizing(border-box); // TODO 'susy' way to do this?
+	padding: 1em 0;
+}
+
+.media-image {
+
+}
+
+.media-title {
+
+}
+
+.media-subtitle {
+
+}
+
+.media-description {
+
+}
+
+.media-links {
+
+}
+
+.media-view {
+	clear: both;
+}
+
+.media-view--grid {
 	.media {
 		@include span(6);
 
@@ -13,10 +42,16 @@
 	}
 }
 
-.media {
-	@include border-radius($global-radius);
-	@include box-sizing(border-box); // TODO 'susy' way to do this?
-	background: $silver;
-	border: 1px solid $silver-border;
-	padding: 1em;
+.media-view--list {
+	.media {
+		border-bottom: 1px solid $silver-border;
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+}
+
+.media-view-selector {
+	cursor: pointer;
 }

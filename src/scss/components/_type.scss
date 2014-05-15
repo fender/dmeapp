@@ -84,6 +84,23 @@ p {
   margin-bottom: 1.25em;
 }
 
+// Utility classes for text alignment.
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
 // Lists.
 ul,
 ol {

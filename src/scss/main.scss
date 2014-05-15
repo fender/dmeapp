@@ -25,9 +25,10 @@
 @import 'layout';
 
 // Import our components.
+@import 'components/form';
+@import 'components/media';
 @import 'components/tables';
 @import 'components/type';
-@import 'components/media';
 
 // Now that all app-wide styles have been applied, we can load the styles for
 // the components that our submodules introduce.

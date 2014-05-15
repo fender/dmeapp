@@ -1,3 +1,32 @@
 //
 // Contains our custom Library page style.
 //
+
+.l-left-sidebar--library {
+
+}
+
+.library-filter-header {
+	background: $dark-blue;
+	color: $white;
+	margin: 0;
+	overflow: hidden;
+	padding: 0.75em 1em;
+}
+
+.library-filters-clear {
+	font-weight: normal;
+}
+
+.library-filters {
+	padding: 0.5em 1em;
+}
+
+.library-filter {
+	display: block;
+	padding: 0.25em 0;
+
+	input {
+		margin-right: 0.5em;
+	}
+}

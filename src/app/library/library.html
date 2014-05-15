@@ -1,44 +1,73 @@
-<div class="l-container l-has-sidebar">
-	<div class="l-left-sidebar">
+<div class="l-container l-container--has-sidebar">
   <form ng-submit="updateResults()">
     <input type="text" placeholder="Filter by keyword" ng-model="params.keywords" ng-blur="updateResults()" ng-disabled="disableFilters">
-
-    <label ng-repeat="category in params.categories">
-        <input type="checkbox" ng-model="category.selected" ng-disabled="disableFilters"> {{category.name}}<br>
-    </label>
-
-    <label ng-repeat="version in params.versions">
-        <input type="checkbox" ng-model="version.selected" ng-disabled="disableFilters"> {{version.name}}<br>
-    </label>
-
-    <label>
-        <input type="checkbox" ng-model="params.not_watched" ng-disabled="disableFilters"> Not Watched<br>
-    </label>
-    <label>
-        <input type="checkbox" ng-model="params.watched" ng-disabled="disableFilters"> Watched<br>
-    </label>
-    <label>
-        <input type="checkbox" ng-model="params.closed_captions" ng-disabled="disableFilters"> Closed Captions<br>
-    </label>
   </form>
 
+	<div class="l-left-sidebar l-left-sidebar--library drop-shadow">
+    <h5 class="library-filter-header">
+      Categories
+      <a href="#" class="library-filters-clear right" ng-click="resetTerms(params.categories)" ng-show="!disableFilters && selectedTerms(params.categories).length">Clear</a>
+    </h5>
+    <div class="library-filters">
+      <label ng-repeat="category in params.categories" class="library-filter">
+          <input type="checkbox" ng-model="category.selected" ng-disabled="disableFilters">{{category.name}}
+      </label>
+    </div>
+
+    <h5 class="library-filter-header">
+      Versions
+      <a href="#" class="library-filters-clear right" ng-click="resetTerms(params.versions)" ng-show="!disableFilters && selectedTerms(params.versions).length">Clear</a>
+    </h5>
+    <div class="library-filters">
+      <label ng-repeat="version in params.versions" class="library-filter">
+          <input type="checkbox" ng-model="version.selected" ng-disabled="disableFilters">{{version.name}}
+      </label>
+    </div>
+
+    <h5 class="library-filter-header">
+      More Options
+      <a href="#" class="library-filters-clear right" ng-click="resetOptions()" ng-show="!disableFilters && params.not_watched || params.watched || params.closed_captions">Clear</a>
+    </h5>
+    <div class="library-filters">
+      <label class="library-filter">
+          <input type="checkbox" ng-model="params.not_watched" ng-disabled="disableFilters">Not Watched
+      </label>
+      <label class="library-filter">
+          <input type="checkbox" ng-model="params.watched" ng-disabled="disableFilters">Watched
+      </label>
+      <label class="library-filter">
+          <input type="checkbox" ng-model="params.closed_captions" ng-disabled="disableFilters">Closed Captions
+      </label>
+    </div>
   </div>
+
   <div class="l-content">
-    <label>
-        <input type="checkbox" ng-model="params.group_by_series"> Group by Series<br>
-    </label>
-    <label>Sort by</label>
-    <select ng-model="params.sort">
-      <option value="created">Release date</option>
-      <option value="rating">Popularity</option>
-      <option value="a-z">Title A-Z</option>
-      <option value="z-a">Title Z-A</option>
-    </select>
+    <div class="left">
+      <label ng-init="mediaFormat = 'list'">View</label>
+      <span class="media-view-selector media-view-selector--list" ng-click="mediaFormat = 'list'">List</span>
+      <span class="media-view-selector media-view-selector--grid" ng-click="mediaFormat = 'grid'">Grid</span>
+    </div>
 
-    <p ng-hide="items.length">Loading...</p>
+    <div class="right">
+      <label>Sort by</label>
+      <select ng-model="params.sort">
+        <option value="created">Release date</option>
+        <option value="rating">Popularity</option>
+        <option value="a-z">Title A-Z</option>
+        <option value="z-a">Title Z-A</option>
+      </select>
+    </div>
 
-    <div class="media-wrapper" ng-show="items.length">
-      <div class="media" ng-repeat="item in items">
+    <div class="right">
+      <label class="library-filter">
+          <input type="checkbox" ng-model="params.group_by_series">Group by Series
+      </label>
+    </div>
+
+    <p ng-hide="media.length">Loading...</p>
+
+    <div class="media-view media-view--{{mediaFormat}}" ng-class="{'drop-shadow': mediaFormat == 'list'}" ng-show="media.length">
+      <div class="media" ng-class="{'drop-shadow': mediaFormat == 'grid'}" ng-repeat="item in media">
         {{item.title}}
       </div>
     </div>
