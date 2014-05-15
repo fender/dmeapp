@@ -291,14 +291,12 @@ module.exports = function(grunt) {
      * rewrite any path that does not contain a '.' (period) to /index.html.
      */
     connect: {
-      options: {
-        port: 9000,
-        livereload: 35729,
-        hostname: 'localhost',
-      },
       livereload: {
         options: {
+          port: 9000,
+          hostname: 'localhost',
           base: ['dist/'],
+          livereload: true,
           middleware: function(connect, options) {
             var middlewares = [];
             middlewares.push(modRewrite(['^[^\\.]*$ /index.html [L]']));
