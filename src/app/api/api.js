@@ -26,10 +26,12 @@ angular.module('dmeApp.api', ['ngResource'])
 }])
 
 .factory('Api', ['$resource', function($resource) {
-  return {
-  	Connect: $resource(api_path + '/system/connect'),
+	var Api = {
+		Connect: $resource(api_path + '/system/connect'),
   	Series: $resource(api_path + '/series/:id', {id: '@id'}),
     Video: $resource(api_path + '/video/:id', {id: '@id'}),
-  };
+	};
+
+  return Api;
 }]);
 

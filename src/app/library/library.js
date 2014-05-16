@@ -1,10 +1,9 @@
 angular.module('dmeApp.library', [])
 
-.controller('LibraryController', ['$scope', 'Api', 'categoryTaxonomy', 'versionTaxonomy',
-	function($scope, Api, categoryTaxonomy, versionTaxonomy) {
+.controller('LibraryController', ['$scope', 'selectedTermsFilter', 'Api', 'categoryTaxonomy', 'versionTaxonomy',
+	function($scope, selectedTermsFilter, Api, categoryTaxonomy, versionTaxonomy) {
 	// Declare default library filter parameters.
 	$scope.params = {
-		keywords: '',
 		categories: {},
 		versions: {},
 		not_watched: false,
@@ -35,28 +34,15 @@ angular.module('dmeApp.library', [])
   	// We make a copy of the parameters so as to not affect the scope.
   	var params = angular.copy($scope.params);
 
-  	// Remove non-selected terms from taxonomy filters.
-  	params.categories = $scope.selectedTerms(params.categories, true);
-  	params.versions = $scope.selectedTerms(params.versions, true);
+  	// Convert selected terms into a comma delimited string.
+  	params.categories = selectedTermsFilter(params.categories, ',');
+    params.versions = selectedTermsFilter(params.versions, ',');
 
   	// Call our API for the new results.
   	var resource = params.group_by_series ? 'Series' : 'Video';
 		$scope.media = Api[resource].query(params, function() {
 	  	$scope.disableFilters = false;
 	  });
-  };
-
-  // Helper function that returns an array of selected term IDs from a taxonomy
-  // filter object.
-  $scope.selectedTerms = function(object, comma_delimited) {
-  	var terms = [];
-  	angular.forEach(object, function(term, tid) {
-  		if (term.selected) {
-  			terms.push(tid);
-  		}
-  	});
-
-  	return comma_delimited ? terms.join(',') : terms;
   };
 
   // Clears selected terms for a given taxonomy filter object.
@@ -66,7 +52,7 @@ angular.module('dmeApp.library', [])
   	});
   };
 
-  // Clears all of the "More Options" filters.
+  // Clears the "More Options" filters.
   $scope.resetOptions = function() {
   	$scope.params.not_watched = false;
   	$scope.params.watched = false;
@@ -75,9 +61,7 @@ angular.module('dmeApp.library', [])
 
 	// When a parameters value is changed, update the library results.
 	$scope.$watch('params', function(newValue, oldValue) {
-		// Don't do anything if parameters didn't change. Also ignore keyword filter
-		// changes as we handle that separately.
-		if (newValue === oldValue || newValue.keywords !== oldValue.keywords) {
+		if (newValue === oldValue) {
 		  return;
 		}
 
@@ -86,4 +70,23 @@ angular.module('dmeApp.library', [])
 
 	// Load initial results.
 	$scope.updateResults();
-}]);
+}])
+
+/**
+ * Custom filter for returning selected taxonomy term filters as an array or,
+ * optionally, as a delimited string.
+ *
+ * Syntax: <object> | selected:<delimter>
+ */
+.filter('selectedTerms', function() {
+  return function(object, delimiter) {
+    var terms = [];
+    angular.forEach(object, function(term, tid) {
+      if (term.selected) {
+        terms.push(tid);
+      }
+    });
+
+    return delimiter ? terms.join(delimiter) : terms;
+  };
+});

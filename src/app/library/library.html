@@ -2,7 +2,7 @@
 	<div class="l-right-sidebar l-right-sidebar--library panel">
     <h5 class="library-filter-header">
       Categories
-      <a href="#" class="library-filters-clear right" ng-click="resetTerms(params.categories)" ng-show="!disableFilters && selectedTerms(params.categories).length">Clear</a>
+      <a href="#" class="library-filters-clear right" ng-click="resetTerms(params.categories)" ng-show="!disableFilters && (params.categories | selectedTerms).length">Clear</a>
     </h5>
     <div class="library-filters">
       <label ng-repeat="category in params.categories" class="library-filter">
@@ -12,7 +12,7 @@
 
     <h5 class="library-filter-header">
       Versions
-      <a href="#" class="library-filters-clear right" ng-click="resetTerms(params.versions)" ng-show="!disableFilters && selectedTerms(params.versions).length">Clear</a>
+      <a href="#" class="library-filters-clear right" ng-click="resetTerms(params.versions)" ng-show="!disableFilters && (params.versions | selectedTerms).length">Clear</a>
     </h5>
     <div class="library-filters">
       <label ng-repeat="version in params.versions" class="library-filter">
@@ -38,10 +38,6 @@
   </div>
 
   <div class="l-content">
-    <form ng-submit="updateResults()">
-      <input type="text" placeholder="Filter by keyword" ng-model="params.keywords" ng-blur="updateResults()" ng-disabled="disableFilters">
-    </form>
-
     <div class="library-header">
       <div class="left">
         <label ng-init="mediaFormat = 'list'">View</label>
@@ -53,9 +49,7 @@
         <label>Sort by</label>
         <select ng-model="params.sort">
           <option value="created">Release date</option>
-          <option value="rating">Popularity</option>
-          <option value="a-z">Title A-Z</option>
-          <option value="z-a">Title Z-A</option>
+          <option value="title">Title</option>
         </select>
       </div>
 
@@ -70,7 +64,24 @@
 
     <div class="media-view media-view--{{mediaFormat}}" ng-class="{'panel': mediaFormat == 'list'}" ng-show="media.length">
       <div class="media" ng-class="{'panel': mediaFormat == 'grid'}" ng-repeat="item in media">
-        {{item.title}}
+        <div class="media-title">
+          {{item.title}}
+        </div>
+        <!-- {{item.description.value}} -->
+
+        <p class="media-subtitle">
+          <span ng-repeat="tid in item.categories">
+            {{params.categories[tid].name}}{{!$last || $last && item.versions ? ', ' : ''}}
+          </span>
+          <span ng-repeat="tid in item.versions">
+            {{params.versions[tid].name}}{{!$last ? ', ' : ''}}
+          </span>
+        </p>
+
+        <div class="media-links">
+          {{item.videos.length}} videos <em class="text-green" ng-show="item.watched_count.length">({{item.watched_count}} watched)</em>
+          <a href="#">Add to Queue</a>
+        </div>
       </div>
     </div>
   </div>

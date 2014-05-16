@@ -84,7 +84,7 @@ p {
   margin-bottom: 1.25em;
 }
 
-// Utility classes for text alignment.
+// Utility classes for text.
 .text-left {
   text-align: left;
 }
@@ -99,6 +99,10 @@ p {
 
 .text-justify {
   text-align: justify;
+}
+
+.text-green {
+  color: $green;
 }
 
 // Lists.
