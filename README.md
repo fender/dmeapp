@@ -53,9 +53,9 @@ Running `grunt` in the root directory will build a development environment for d
 11. Temporary folder `templates` is cleaned.
 12. Grunt begins 'watching' for future changes made to any of our js, scss or html files. Once a change is made, grunt automagically runs through relevant build processes outlined above again.
 
-#### Livereload
+#### LiveReload
 
-[Livereload](http://livereload.com/) functionality is enabled for this app. Whenever you make a change to any app file, browser windows pointing at `http://localhost:9000` will automatically refresh.
+[LiveReload](http://livereload.com/) functionality is enabled for this app. Whenever you make a change to any app file, browser windows pointing at `http://localhost:9000` will automatically refresh.
 
 #### Offline mode
 
