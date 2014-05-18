@@ -1,17 +1,13 @@
 angular.module('dmeApp', [
   'ngRoute',
-  'dmeApp.api',
+  'dmeApp.library',
   'dmeApp.series',
+  'dmeApp.user',
   'dmeApp.video',
-  'dmeApp.library'
 ])
 
 .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
-    .when('/videos', {
-      templateUrl: 'library.html',
-      controller: 'LibraryController',
-    })
     .when('/styleguide', {
       templateUrl: 'styleguide.html',
     })

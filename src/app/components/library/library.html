@@ -85,12 +85,6 @@
       </div>
     </div>
 
-    <ul class="pager">
-      <li class="pager-first" ng-hide="page == 1">first</li>
-      <li class="pager-prev" ng-hide="page == 1 || results.pager_total == 1">prev</li>
-      <li class="pager-current">{{params.page}}</li>
-      <li class="pager-next" ng-hide="page == results.pager_total || results.pager_total == 1">next</li>
-      <li class="pager-last" ng-hide="page == results.pager_total || results.pager_total == 1">last</li>
-    </ul>
+    <dme-pager current-page="params.page" page-size="params.pagesize" total-pages="results.pager_total" total-items="results.pager_total_items" ng-show="results.items"></dme-pager>
   </div>
 </div>

@@ -1,4 +1,14 @@
-angular.module('dmeApp.library', [])
+angular.module('dmeApp.library', [
+  'dmeApp.api',
+  'dmeApp.pager'
+])
+
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/videos', {
+    templateUrl: 'library.html',
+    controller: 'LibraryController',
+  });
+}])
 
 .controller('LibraryController', ['$scope', 'selectedTermsFilter', 'Api', 'categoryTaxonomy', 'versionTaxonomy',
 	function($scope, selectedTermsFilter, Api, categoryTaxonomy, versionTaxonomy) {
@@ -46,7 +56,6 @@ angular.module('dmeApp.library', [])
 		$scope.results = Api[resource].query(params, function() {
 	  	$scope.disableFilters = false;
 	  });
-    console.log($scope.results);
   };
 
   // Clears selected terms for a given taxonomy filter object.

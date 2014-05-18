@@ -13,7 +13,7 @@ $susy: (
   @include pad(1em);
 }
 
-@include breakpoint(48em) {
+@include breakpoint($medium-min) {
   .l-container--sidebar {
     .l-content {
       @include span(9);

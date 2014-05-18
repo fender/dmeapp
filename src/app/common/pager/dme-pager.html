@@ -1,1 +1,29 @@
-PAGER TEST :)
+<div class="pager">
+	<div class="pager-links">
+		<a class="pager-link" ng-click="currentPage = currentPage - 1" ng-show="currentPage > 1">
+			<span class="pager-arrow">&#9664;</span>
+		</a>
+	  <a class="pager-link" ng-click="currentPage = 1" ng-show="currentPage > 1">1</a>
+		<a class="pager-link" ng-click="currentPage = 2" ng-show="currentPage > 2">2</a>
+
+		<span class="pager-item" ng-show="currentPage > 5">...</span>
+
+		<a class="pager-link" ng-click="currentPage = currentPage - 2" ng-show="currentPage > 4">{{currentPage - 2}}</a>
+		<a class="pager-link" ng-click="currentPage = currentPage - 1" ng-show="currentPage > 3">{{currentPage - 1}}</a>
+	  <span class="pager-item">{{currentPage}}</span>
+	  <a class="pager-link" ng-click="currentPage = currentPage + 1" ng-show="currentPage <= totalPages - 3">{{currentPage + 1}}</a>
+		<a class="pager-link" ng-click="currentPage = currentPage + 2" ng-show="currentPage <= totalPages - 4">{{currentPage + 2}}</a>
+
+		<span class="pager-item" ng-show="currentPage + 4 < totalPages">...</span>
+
+	  <a class="pager-link" ng-click="currentPage = totalPages - 1" ng-show="currentPage < totalPages - 1">{{totalPages - 1}}</a>
+		<a class="pager-link" ng-click="currentPage = totalPages" ng-show="currentPage < totalPages">{{totalPages}}</a>
+		<a class="pager-link" ng-click="currentPage = currentPage + 1" ng-show="currentPage < totalPages">
+			<span class="pager-arrow">&#9654;</span>
+		</a>
+	</div>
+
+	<div class="pager-status text-small">
+		Showing {{firstResult()}} - {{lastResult()}} of {{totalItems}} results
+	</div>
+</div>

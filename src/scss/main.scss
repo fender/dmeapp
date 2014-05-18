@@ -30,6 +30,7 @@
 @import 'components/tables';
 @import 'components/type';
 
-// Now that all app-wide styles have been applied, we can load the styles for
-// the components that our submodules introduce.
+// Now that all global styles have been applied, we can load styles that are
+// defined in our apps directories.
+@import '../app/common/pager/pager.scss';
 @import '../app/components/library/library.scss';

@@ -1,0 +1,43 @@
+.pager {
+	margin-top: 1em;
+}
+
+.pager-link,
+.pager-item {
+	background: $white;
+	border: 1px solid $silver-border;
+	display: inline-block;
+	font-weight: normal;
+	padding: 0.25em 0.75em;
+}
+
+.pager-link {
+	&:hover {
+		background: $blue;
+		color: $white;
+	}
+}
+
+.pager-item {
+	color: $charcoal;
+}
+
+.pager-arrow {
+	font-size: 0.75em;
+	vertical-align: middle;
+}
+
+.pager-status {
+	margin-top: 0.5em;
+}
+
+@include breakpoint($medium-min) {
+	.pager-links {
+		float: left;
+	}
+
+	.pager-status {
+		float: right;
+	}
+}
+
