@@ -23,6 +23,7 @@
     "grunt-preprocess": "^4.0.0",
     "karma": "^0.12.14",
     "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4",
     "shelljs": "^0.2.6"
   }
 }

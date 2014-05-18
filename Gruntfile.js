@@ -193,7 +193,7 @@ module.exports = function(grunt) {
           'config.js',
           'src/**/*.js',
         ],
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
         frameworks: ['jasmine'],
       },
       dev: {
