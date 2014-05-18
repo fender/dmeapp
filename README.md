@@ -16,9 +16,9 @@ Before using this application you'll want to make sure you have all the required
 Here is a quick run down on the file structure of this repository.
 
 * `src` - Our apps code belongs in here.
-  * `/index.html` - This is the route web page for our app.
-  * `/app` - This is the meat of our app. To keep things modular, we divide functionality up into directories. For example, directory `/library` contains the AngularJS scripts, SCSS files and HTML templates directly related to our Library page.
-    * `/app.js` - This is our app launcher script. It loads all of our submodules and sets up app-wide functionality such as routing.
+  * `/app` - This is the meat of our app. All AngularJS scripts and templates go here. To keep things modular, we divide functionality up into directories. `app/common` contains common re-usable functionality such as our api or pager. `app/components` contains each section of functionality on our site. For example, directory `library` contains the AngularJS scripts, SCSS files and HTML templates directly related to our Library page. 
+    * `/app.js` - This is our app launcher script. It initializes all of our components.
+    * `/index.html` - The route web page for our app.
   * `/assets` - Any assets to be used in the app, such as images, should be placed here.
   * `/scss` - Contains our Sass. The root folder contains our initializers, mixins and variables.
     * `/components` - All of our components style is written here.
@@ -40,17 +40,17 @@ So you want to develop huh? Well you're in luck. Using Grunt, we've made it simp
 
 Running `grunt` in the root directory will build a development environment for dmeapp by going through the following steps.
 
-1. `dist` and `templates` are cleaned (i.e. deleted).
+1. `dist` and `tmp` are cleaned (i.e. deleted).
 2. Our custom scripts are checked for syntax errors with [JSHint](www.jshint.com).
 3. [Karma](http://karma-runner.github.io/0.12/index.html) unit tests are executed.
 4. `main.scss` from `src/scss` is compiled by Compass. All of our style and any vendor style is outputted to a single file, `main.css` and placed in `dist/css`.
 5. App assets are copied from `src/assets` to `dist/assets`. This includes any sprites that Compass compiled in the previous step.
 6. Vendor assets are copied from `vendor/assets` to `dist/assets`.
 7. Root HTML files are copied to `dist/` (i.e. index.html).
-8. All template HTML files are copied from `src/app` and flattened into `templates`.
-9. The HTML files in `templates` are added to the AngularJS [$templateCache](https://docs.angularjs.org/api/ng/service/$templateCache) and minified inside `templates/templates.js`.
+8. All template HTML files are copied from `src/app` and flattened into `tmp`.
+9. The HTML files in `tmp` are added to the AngularJS [$templateCache](https://docs.angularjs.org/api/ng/service/$templateCache) and minified inside `tmp/templates.js`.
 10. All scripts (see **app_files.js** in `Gruntfile.js`) are concatenated into a single JS script file and placed in `dist/js`.
-11. Temporary folder `templates` is cleaned.
+11. Temporary folder `tmp` is cleaned.
 12. Grunt begins 'watching' for future changes made to any of our js, scss or html files. Once a change is made, grunt automagically runs through relevant build processes outlined above again.
 
 #### LiveReload
@@ -63,7 +63,6 @@ You can append the `--offline` command line parameter if you would rather load v
 
 #### API path
 By default the API path points to `http://drupalize.me/api/v1`. As the API runs on a different domain to our local server, we are unable to make authenticated requests. To change the API path, copy `default.config.js` to `config.js` and update it there. To test authenticated functionality, you will need to setup our Drupal site locally and serve the `dist` folder from Apache.
-
 
 #### Compiling for production
 
