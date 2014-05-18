@@ -60,10 +60,10 @@
       </div>
     </div>
 
-    <div class="library-loading panel" ng-hide="media.length">Loading...</div>
+    <div class="library-loading panel" ng-hide="results.items">Loading...</div>
 
-    <div class="media-view media-view--{{mediaFormat}}" ng-class="{'panel': mediaFormat == 'list'}" ng-show="media.length">
-      <div class="media" ng-class="{'panel': mediaFormat == 'grid'}" ng-repeat="item in media">
+    <div class="media-view media-view--{{mediaFormat}}" ng-class="{'panel': mediaFormat == 'list'}" ng-show="results.items">
+      <div class="media" ng-class="{'panel': mediaFormat == 'grid'}" ng-repeat="item in results.items">
         <div class="media-title">
           {{item.title}}
         </div>
@@ -79,10 +79,18 @@
         </p>
 
         <div class="media-links">
-          {{item.videos.length}} videos <em class="text-green" ng-show="item.watched_count.length">({{item.watched_count}} watched)</em>
+          {{item.videos.length}} videos <em class="text-green" ng-show="item.watched_count">({{item.watched_count}} watched)</em>
           <a href="#">Add to Queue</a>
         </div>
       </div>
     </div>
+
+    <ul class="pager">
+      <li class="pager-first" ng-hide="page == 1">first</li>
+      <li class="pager-prev" ng-hide="page == 1 || results.pager_total == 1">prev</li>
+      <li class="pager-current">{{params.page}}</li>
+      <li class="pager-next" ng-hide="page == results.pager_total || results.pager_total == 1">next</li>
+      <li class="pager-last" ng-hide="page == results.pager_total || results.pager_total == 1">last</li>
+    </ul>
   </div>
 </div>

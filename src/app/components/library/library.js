@@ -12,7 +12,7 @@ angular.module('dmeApp.library', [])
 		page: 1,
 		pagesize: 15,
 		group_by_series: true,
-		sort: 'created',
+		sort: 'title',
 	};
 
 	// Populate the taxonomy filters.
@@ -26,7 +26,7 @@ angular.module('dmeApp.library', [])
 	// This function is called every time we want to retrieve new media results.
   $scope.updateResults = function() {
   	// Clear previous results.
-  	$scope.media = {};
+  	$scope.results = {};
 
   	// Temporarily disable filter interaction.
   	$scope.disableFilters = true;
@@ -38,11 +38,15 @@ angular.module('dmeApp.library', [])
   	params.categories = selectedTermsFilter(params.categories, ',');
     params.versions = selectedTermsFilter(params.versions, ',');
 
+    // API requires a zero-based index for the pager.
+    params.page -= 1;
+
   	// Call our API for the new results.
   	var resource = params.group_by_series ? 'Series' : 'Video';
-		$scope.media = Api[resource].query(params, function() {
+		$scope.results = Api[resource].query(params, function() {
 	  	$scope.disableFilters = false;
 	  });
+    console.log($scope.results);
   };
 
   // Clears selected terms for a given taxonomy filter object.

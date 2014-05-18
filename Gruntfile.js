@@ -52,25 +52,29 @@ module.exports = function(grunt) {
     },
 
     /**
-     * `app_files.js` makes it easier to reference our app JS and exclude test
-     * spec files.
+     * These settings make it easier to reference specific file structures of
+     * our app.
      */
     app_files: {
       js: [
         'default.config.js',
         'config.js',
-        'src/**/*.js',
-        'templates/templates.js',
-        '!src/**/*.spec.js'
+        'src/app/**/*.js',
+        'tmp/templates.js',
+        '!src/app/**/*.spec.js'
+      ],
+      templates: [
+        'src/app/components/**/*.html',
+        'src/app/common/**/*.html'
       ],
     },
 
     /**
-     * Empty our dist directory when `grunt clean` is executed.
+     * Empty our dist and tmp directories when `grunt clean` is executed.
      */
     clean: {
       dist: ['dist'],
-      templates: ['templates']
+      tmp: ['tmp']
     },
 
     /**
@@ -105,7 +109,7 @@ module.exports = function(grunt) {
           {
             src: ['*.html'],
             dest: 'dist/',
-            cwd: 'src',
+            cwd: 'src/app',
             expand: true,
           }
         ]
@@ -113,9 +117,8 @@ module.exports = function(grunt) {
       templates: {
         files: [
           {
-            src: ['**/*.html'],
-            dest: 'templates/',
-            cwd: 'src/app',
+            src: ['<%= app_files.templates %>'],
+            dest: 'tmp/',
             expand: true,
             flatten: true,
           }
@@ -191,7 +194,7 @@ module.exports = function(grunt) {
           '<%= vendor_files.test_js %>',
           'default.config.js',
           'config.js',
-          'src/**/*.js',
+          'src/app/**/*.js',
         ],
         browsers: ['PhantomJS'],
         frameworks: ['jasmine'],
@@ -211,9 +214,9 @@ module.exports = function(grunt) {
      */
     ngtemplates: {
       dmeApp: {
-        cwd: 'templates',
+        cwd: 'tmp',
         src: '*.html',
-        dest: 'templates/templates.js',
+        dest: 'tmp/templates.js',
         options: {
           htmlmin: {
             collapseWhitespace: true,
@@ -322,18 +325,18 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['<%= app_files.js %>'],
-        tasks: ['jshint', 'copy:templates', 'ngtemplates', 'concat:' + concat_target, 'clean:templates']
+        tasks: ['jshint', 'copy:templates', 'ngtemplates', 'concat:' + concat_target, 'clean:tmp']
       },
       html: {
-        files: ['src/*.html'],
+        files: ['src/app/*.html'],
         tasks: ['copy:html', 'preprocess']
       },
       templates: {
-        files: ['src/app/**/*.html'],
-        tasks: ['copy:templates', 'ngtemplates', 'concat:' + concat_target, 'clean:templates']
+        files: ['<%= app_files.templates %>'],
+        tasks: ['copy:templates', 'ngtemplates', 'concat:' + concat_target, 'clean:tmp']
       },
       tests: {
-        files: ['src/**/*.js'],
+        files: ['src/app/**/*.js'],
         tasks: ['karma:dev:run'],
       }
     },
@@ -358,12 +361,12 @@ module.exports = function(grunt) {
   /**
    * Default tasks.
    */
-  grunt.registerTask('default', ['clean', 'jshint', 'karma:dev', 'compass:dev', 'copy', 'ngtemplates', 'concat:' + concat_target, 'clean:templates', 'preprocess', 'watch']);
+  grunt.registerTask('default', ['clean', 'jshint', 'karma:dev', 'compass:dev', 'copy', 'ngtemplates', 'concat:' + concat_target, 'clean:tmp', 'preprocess', 'watch']);
 
   /**
    * Production tasks. Same as `default` except we minify JS and SCSS files.
    */
-  grunt.registerTask('prod', ['clean', 'jshint', 'karma:continuous', 'compass:prod', 'copy', 'ngtemplates', 'concat:all', 'clean:templates', 'preprocess', 'uglify']);
+  grunt.registerTask('prod', ['clean', 'jshint', 'karma:continuous', 'compass:prod', 'copy', 'ngtemplates', 'concat:all', 'clean:tmp', 'preprocess', 'uglify']);
 
   /**
    * Running `grunt server` runs our connect server until cancelled.
