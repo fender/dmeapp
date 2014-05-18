@@ -16,7 +16,7 @@ Before using this application you'll want to make sure you have all the required
 Here is a quick run down on the file structure of this repository.
 
 * `src` - Our apps code belongs in here.
-  * `/app` - This is the meat of our app. All AngularJS scripts and templates go here. To keep things modular, we divide functionality up into directories. `app/common` contains common functionality such as our api or pager. `app/components` contains each section of functionality on our site. For example, directory `/library` contains the AngularJS scripts, SCSS files and HTML templates directly related to our Library page. 
+  * `/app` - This is the meat of our app. All AngularJS scripts and templates go here. To keep things modular, we divide functionality up into directories. `app/common` contains common re-usable functionality such as our api or pager. `app/components` contains each section of functionality on our site. For example, directory `library` contains the AngularJS scripts, SCSS files and HTML templates directly related to our Library page. 
     * `/app.js` - This is our app launcher script. It initializes all of our components.
     * `/index.html` - The route web page for our app.
   * `/assets` - Any assets to be used in the app, such as images, should be placed here.
