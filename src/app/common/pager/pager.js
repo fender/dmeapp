@@ -15,6 +15,10 @@ angular.module('dmeApp.pager', [])
   	},
     templateUrl: 'dme-pager.html',
     link: function($scope, element, attrs) {
+      $scope.$watch('currentPage', function() {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+      });
+
     	$scope.firstResult = function() {
     		return $scope.currentPage == 1 ? 1 : (($scope.currentPage - 1) * $scope.pageSize) + 1;
     	};

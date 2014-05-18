@@ -2,37 +2,37 @@
 	<div class="l-right-sidebar l-right-sidebar--library panel">
     <h5 class="library-filter-header">
       Categories
-      <a href="#" class="library-filters-clear right" ng-click="resetTerms(params.categories)" ng-show="!disableFilters && (params.categories | selectedTerms).length">Clear</a>
+      <a href="" class="library-filters-clear right" ng-click="resetTerms(params.categories)" ng-show="!loadingResults && (params.categories | selectedTerms).length">Clear</a>
     </h5>
     <div class="library-filters">
       <label ng-repeat="category in params.categories" class="library-filter">
-          <input type="checkbox" ng-model="category.selected" ng-disabled="disableFilters">{{category.name}}
+          <input type="checkbox" ng-model="category.selected" ng-disabled="loadingResults">{{category.name}}
       </label>
     </div>
 
     <h5 class="library-filter-header">
       Versions
-      <a href="#" class="library-filters-clear right" ng-click="resetTerms(params.versions)" ng-show="!disableFilters && (params.versions | selectedTerms).length">Clear</a>
+      <a href="" class="library-filters-clear right" ng-click="resetTerms(params.versions)" ng-show="!loadingResults && (params.versions | selectedTerms).length">Clear</a>
     </h5>
     <div class="library-filters">
       <label ng-repeat="version in params.versions" class="library-filter">
-          <input type="checkbox" ng-model="version.selected" ng-disabled="disableFilters">{{version.name}}
+          <input type="checkbox" ng-model="version.selected" ng-disabled="loadingResults">{{version.name}}
       </label>
     </div>
 
     <h5 class="library-filter-header">
       More Options
-      <a href="#" class="library-filters-clear right" ng-click="resetOptions()" ng-show="!disableFilters && params.not_watched || params.watched || params.closed_captions">Clear</a>
+      <a href="" class="library-filters-clear right" ng-click="resetOptions()" ng-show="!loadingResults && (params.not_watched || params.watched || params.closed_captions)">Clear</a>
     </h5>
     <div class="library-filters">
       <label class="library-filter">
-          <input type="checkbox" ng-model="params.not_watched" ng-disabled="disableFilters">Not Watched
+          <input type="checkbox" ng-model="params.not_watched" ng-disabled="loadingResults">Not Watched
       </label>
       <label class="library-filter">
-          <input type="checkbox" ng-model="params.watched" ng-disabled="disableFilters">Watched
+          <input type="checkbox" ng-model="params.watched" ng-disabled="loadingResults">Watched
       </label>
       <label class="library-filter">
-          <input type="checkbox" ng-model="params.closed_captions" ng-disabled="disableFilters">Closed Captions
+          <input type="checkbox" ng-model="params.closed_captions" ng-disabled="loadingResults">Closed Captions
       </label>
     </div>
   </div>
@@ -55,12 +55,13 @@
 
       <div class="right">
         <label class="library-filter">
-            <input type="checkbox" ng-model="params.group_by_series">Group by Series
+            <input type="checkbox" ng-model="group_by_series" ng-change="updateResults()">Group by Series
         </label>
       </div>
     </div>
 
-    <div class="library-loading panel" ng-hide="results.items">Loading...</div>
+    <div class="library-status panel" ng-show="loadingResults">Loading...</div>
+    <div class="library-status panel" ng-show="!loadingResults && !results.items">No results found.</div>
 
     <div class="media-view media-view--{{mediaFormat}}" ng-class="{'panel': mediaFormat == 'list'}" ng-show="results.items">
       <div class="media" ng-class="{'panel': mediaFormat == 'grid'}" ng-repeat="item in results.items">
@@ -80,7 +81,7 @@
 
         <div class="media-links">
           {{item.videos.length}} videos <em class="text-green" ng-show="item.watched_count">({{item.watched_count}} watched)</em>
-          <a href="#">Add to Queue</a>
+          <a href="">Add to Queue</a>
         </div>
       </div>
     </div>
