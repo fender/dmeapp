@@ -1,6 +1,7 @@
 angular.module('dmeApp.library', [
   'dmeApp.api',
-  'dmeApp.pager'
+  'dmeApp.pager',
+  'dmeApp.queue'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -22,7 +23,7 @@ angular.module('dmeApp.library', [
 		watched: search.watched === 'true',
 		closed_captions: search.closed_captions === 'true',
 		sort: search.sort ? search.sort : 'created',
-    page: search.page ? search.page : 1,
+    page: search.page ? parseInt(search.page) : 1,
     pagesize: 15,
 	};
 

@@ -320,7 +320,7 @@ module.exports = function(grunt) {
         livereload: true
       },
       compass: {
-        files: ['src/**/**/*.{scss,sass}'],
+        files: ['src/**/*.{scss,sass}'],
         tasks: ['compass:dev']
       },
       js: {

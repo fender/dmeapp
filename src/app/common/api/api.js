@@ -13,6 +13,7 @@ angular.module('dmeApp.api', ['ngResource'])
 .factory('Api', ['$resource', function($resource) {
 	var Api = {
 		Connect: $resource(api_path + '/system/connect'),
+		Flag: $resource(api_path + '/flag/flag'),
   	Series: $resource(api_path + '/series/:id', {id: '@id'}, {'query': {method: 'GET', isArray: false}}),
     Video: $resource(api_path + '/video/:id', {id: '@id'}),
 	};

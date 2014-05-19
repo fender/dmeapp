@@ -81,7 +81,7 @@
 
         <div class="media-links">
           {{item.videos.length}} videos <em class="text-green" ng-show="item.watched_count">({{item.watched_count}} watched)</em>
-          <a href="">Add to Queue</a>
+          <dme-queue node-id="item.nid" in-queue="item.queued"></dme-queue>
         </div>
       </div>
     </div>
