@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/fender/dmeapp.png?branch=master)](https://travis-ci.org/fender/dmeapp)
+
 ### Getting started
 
 Before using this application you'll want to make sure you have all the required dependencies. Here is a quick guide on getting started.
