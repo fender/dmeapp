@@ -13,12 +13,11 @@ angular.module('dmeApp.library', [
 
 .controller('LibraryController', ['$scope', '$location', 'selectedTermsFilter', 'Api', 'categoryTaxonomy', 'versionTaxonomy',
 	function($scope, $location, selectedTermsFilter, Api, categoryTaxonomy, versionTaxonomy) {
-  var search = $location.search();
 
-  // Declare default filter parameters. Use the URL query if available.
+  // Declare default filter params using the URL query if available.
+  var search = $location.search();
 	$scope.params = {
-		categories: {},
-		versions: {},
+    group_by_series: search.group_by_series ? search.group_by_series === 'true' : true,
 		not_watched: search.not_watched === 'true',
 		watched: search.watched === 'true',
 		closed_captions: search.closed_captions === 'true',
@@ -27,20 +26,19 @@ angular.module('dmeApp.library', [
     pagesize: 15,
 	};
 
-  $scope.group_by_series = true;
+  // Populates a filter param with given taxonomy.
+  var populateTerms = function(param, taxonomy) {
+    $scope.params[param] = {};
+    angular.forEach(taxonomy, function(name, tid) {
+      var regexp = new RegExp(tid + '(?=,|$)+'); // Checks for tid in URL query.
+      $scope.params[param][tid] = {name: name, selected: regexp.test(search[param])};
+    });
+  };
 
-	// Populate the taxonomy filters.
-  // TODO move this to its own function and test RegExp further.
-	angular.forEach(categoryTaxonomy, function(name, tid) {
-    var selected = search.categories.match(tid + '(?=,|$)+') ? true : false;
-		$scope.params.categories[tid] = {name: name, selected: selected};
-	});
-	angular.forEach(versionTaxonomy, function(name, tid) {
-    var selected = search.versions.match(tid + '(?=,|$)+') ? true : false;
-		$scope.params.versions[tid] = {name: name, selected: selected};
-	});
+  populateTerms('categories', categoryTaxonomy);
+  populateTerms('versions', versionTaxonomy);
 
-  // Clears selected terms for a given taxonomy filter object.
+  // Clears selected terms for a given taxonomy filter parameter.
   $scope.resetTerms = function(object) {
   	angular.forEach(object, function(term, tid) {
   		term.selected = false;
@@ -62,15 +60,15 @@ angular.module('dmeApp.library', [
     // We make a copy of the parameters so as to not affect the scope.
     var params = angular.copy($scope.params);
 
-    // Convert selected terms into a comma delimited string.
+    // Convert selected terms into comma delimited strings.
     params.categories = selectedTermsFilter(params.categories, ',');
     params.versions = selectedTermsFilter(params.versions, ',');
 
     // API requires a zero-based index for the pager.
     params.page -= 1;
 
-    // Call our API for the new results.
-    var resource = $scope.group_by_series ? 'Series' : 'Video';
+    // Call required API resource for the new results.
+    var resource = $scope.params.group_by_series ? 'Series' : 'Video';
     $scope.results = Api[resource].query(params, function() {
       $scope.loadingResults = false;
     });
@@ -94,8 +92,14 @@ angular.module('dmeApp.library', [
           param = selectedTermsFilter(param, ',');
         }
         else if (typeof param == 'boolean') {
-          // To show in the URL query we must cast true booleans to strings.
-          param = param ? 'true' : null;
+          if (!param && key != 'group_by_series') {
+            // Setting params to null clears them from the URL query.
+            param = null;
+          }
+          else {
+            // To place in the URL query we must cast booleans to strings.
+            param = param.toString();
+          }
         }
 
         $location.search(key, param);
