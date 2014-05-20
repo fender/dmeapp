@@ -3,48 +3,54 @@
 // library page.
 //
 
+.media-view {
+	padding: 1em;
+}
+
 .media {
-	padding: 1em 0;
+	border-bottom: 1px solid $silver-border;
+	margin-bottom: 1em;
+	padding-bottom: 1em;
+
+	&:last-child {
+		border-bottom: none;
+		margin-bottom: 0;
+		padding-bottom: 0.5em;
+	}
+}
+
+.media,
+.media-body {
+	overflow: hidden;
 }
 
 .media-image {
-
+	display: block;
+	margin-right: 1em;
+	width: 200px;
 }
 
 .media-title {
-
+	margin: 0;
 }
 
 .media-subtitle {
-
+	@extend .text-small;
+	color: $light-charcoal;
+	font-style: italic;
 }
 
 .media-description {
-
+	@extend .text-small;
+	line-height: 1.4em;
+	margin-bottom: 0.25em;
 }
 
 .media-links {
+	@extend .text-small;
+	margin: 0;
 
-}
-
-.media-view--grid {
-	.media {
-		@include gallery(6 of 12);
+	a {
+		color: $light-charcoal;
 	}
-}
-
-.media-view--list {
-	padding: 1.5em;
-
-	.media {
-		border-bottom: 1px solid $silver-border;
-
-		&:last-child {
-			border-bottom: none;
-		}
-	}
-}
-
-.media-view-selector {
-	cursor: pointer;
 }

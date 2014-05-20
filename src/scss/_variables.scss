@@ -4,8 +4,9 @@
 
 // Colors (Taken from our brand guide)
 $white: #fff;
-$charcoal: #555;
-$dark-charcoal: #333;
+$charcoal: #333;
+$light-charcoal: #666;
+$lightest-charcoal: #999;
 $blue: #137cc1;
 $dark-blue: #00293f;
 $orange: #fd7037;
@@ -14,14 +15,15 @@ $silver-border: #e6e6e6;
 $green: #00be4c;
 $red: #c60e00;
 
-// Fonts.\
+// Fonts
 $body-font-family: "proxima-nova", Helvetica, Arial, Tahoma, sans-serif;
 $body-font-size: 16px;
+$small-font-size: 0.875em;
 $line-height: 1.6;
 
 // Layout
 $site-width: 67.5em; // 1080px
-$medium-min: 48em; // 768px, breakpoint for the minimum of medium screen widths.
+$medium: 48em; // 768px, breakpoint for medium screen widths.
 
 // Other
 $global-radius: 5px;

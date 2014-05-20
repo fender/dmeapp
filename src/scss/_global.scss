@@ -139,7 +139,7 @@ body {
 }
 
 // Responsive layout.
-@include breakpoint($medium-min) {
+@include breakpoint($medium) {
   .l-header {
     padding: 2em 0;
   }
@@ -198,11 +198,18 @@ body {
       }
     }
   }
+
+  // Utility classes.
+  .hide-mobile {
+    display: inline-block !important;
+  }
+
+  .show-mobile {
+    display: none !important;
+  }
 }
 
-//
 // Utility classes.
-//
 .left {
   float: left !important;
 }
@@ -218,6 +225,14 @@ body {
 
 .panel--padding {
   padding: 1.5em;
+}
+
+.block {
+  margin-bottom: 2em;
+}
+
+.hide-mobile {
+  display: none;
 }
 
 // Allows us to cloak elements until AngularJS has loaded.

@@ -242,7 +242,7 @@ module.exports = function(grunt) {
           '<%= app_files.js %>',
           'module.suffix'
         ],
-        dest: 'dist/js/<%= pkg.name %>-<%= pkg.version %>.js'
+        dest: 'dist/js/dmeapp.js'
       },
       offline: {
         src: [
@@ -252,20 +252,21 @@ module.exports = function(grunt) {
           '<%= app_files.js %>',
           'module.suffix'
         ],
-        dest: 'dist/js/<%= pkg.name %>-<%= pkg.version %>.js'
+        dest: 'dist/js/dmeapp.js'
       }
     },
 
     /**
      * When the command line parameter --offline is present, we set the
      * OFFLINE variable to true. We then preprocess our index.html file
-     * which can then conditionally load external script files.
+     * which can conditionally load external script files.
      */
     preprocess: {
       options: {
         inline: true,
         context: {
-          OFFLINE: grunt.option('offline') || false
+          OFFLINE: grunt.option('offline') || false,
+          VERSION: 'v<%= pkg.version %>',
         }
       },
       all: {

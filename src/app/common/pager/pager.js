@@ -9,9 +9,7 @@ angular.module('dmeApp.pager', [])
   	restrict: 'E',
   	scope: {
   		currentPage: '=currentPage',
-  		pageSize: '=pageSize',
-  		totalPages: '=totalPages',
-  		totalItems: '=totalItems',
+  		totalPages: '=totalPages'
   	},
     templateUrl: 'dme-pager.html',
     link: function($scope, element, attrs) {
@@ -19,14 +17,5 @@ angular.module('dmeApp.pager', [])
         document.body.scrollTop = document.documentElement.scrollTop = 0;
       });
     },
-    controller: function($scope) {
-      $scope.firstResult = function() {
-        return $scope.currentPage == 1 ? 1 : (($scope.currentPage - 1) * $scope.pageSize) + 1;
-      };
-
-      $scope.lastResult = function() {
-        return $scope.currentPage == $scope.totalPages ? $scope.totalItems : $scope.currentPage * $scope.pageSize;
-      };
-    }
   };
 });

@@ -4,6 +4,7 @@
 
 $susy: (
   columns: 12,
+  column-width: 4.5em
 );
 
 @include global-box-sizing(border-box);
@@ -13,14 +14,14 @@ $susy: (
   @include pad(1em);
 }
 
-@include breakpoint($medium-min) {
+@include breakpoint($medium) {
   .l-container--sidebar {
     .l-content {
-      @include span(9);
+      margin-right: span(3 static wide);
     }
   }
 
   .l-right-sidebar {
-    @include span(last 3);
+    @include span(last 3 static);
   }
 }

@@ -31,13 +31,3 @@
 	margin-top: 0.5em;
 }
 
-@include breakpoint($medium-min) {
-	.pager-links {
-		float: left;
-	}
-
-	.pager-status {
-		float: right;
-	}
-}
-

@@ -1,6 +1,7 @@
 angular.module('dmeApp.library', [
   'dmeApp.api',
   'dmeApp.pager',
+  'dmeApp.playlist',
   'dmeApp.queue'
 ])
 
@@ -14,6 +15,9 @@ angular.module('dmeApp.library', [
 
 .controller('LibraryController', ['$scope', '$location', 'selectedTermsFilter', 'Api', 'categoryTaxonomy', 'versionTaxonomy',
 	function($scope, $location, selectedTermsFilter, Api, categoryTaxonomy, versionTaxonomy) {
+
+  // Debug code. TODO remove
+  $scope.mediaFormat = 'list';
 
   // Declare default filter params using the URL query if available.
   var search = $location.search();
@@ -70,9 +74,18 @@ angular.module('dmeApp.library', [
 
     // Call required API resource for the new results.
     var resource = $scope.params.group_by_series ? 'Series' : 'Video';
-    $scope.results = Api[resource].query(params, function() {
+    Api[resource].query(params, function(results) {
+      $scope.results = results;
       $scope.loadingResults = false;
     });
+  };
+
+  $scope.firstResult = function() {
+    return $scope.params.page == 1 ? 1 : (($scope.params.page - 1) * $scope.params.pagesize) + 1;
+  };
+
+  $scope.lastResult = function() {
+    return $scope.params.page == $scope.results.pager_total ? $scope.results.pager_total_items : $scope.params.page * $scope.params.pagesize;
   };
 
   // Listen for changes to our params object.

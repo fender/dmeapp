@@ -12,12 +12,12 @@ angular.module('dmeApp.queue', [])
       inQueue: '=inQueue',
   	},
     templateUrl: 'dme-queue.html',
-    controller: function($scope) {
-      $scope.toggleQueue = function() {
+    link: function(scope) {
+      scope.toggleQueue = function() {
         var params = {
           flag_name: 'queue',
-          content_id: $scope.nodeId,
-          action: $scope.inQueue ? 'unflag' : 'flag',
+          content_id: scope.nodeId,
+          action: scope.inQueue ? 'unflag' : 'flag',
           uid: 6807
         };
 

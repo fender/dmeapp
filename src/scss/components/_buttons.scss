@@ -1,0 +1,31 @@
+.button {
+	@include border-radius($global-radius);
+	cursor: pointer;
+	background: $silver;
+	display: inline-block;
+	font-weight: bold;
+	line-height: 1;
+	padding: 0.75em 2em;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.button--blue {
+	background: $blue;
+	color: $white;
+
+	&:hover {
+		background: $orange;
+		color: $white;
+	}
+}
+
+.button--orange {
+	background: $orange;
+	color: $white;
+
+	&:hover {
+		background: $blue;
+		color: $white;
+	}
+}

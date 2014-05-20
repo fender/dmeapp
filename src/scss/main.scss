@@ -25,6 +25,7 @@
 @import 'layout';
 
 // Import our components.
+@import 'components/buttons';
 @import 'components/form';
 @import 'components/media';
 @import 'components/tables';
@@ -33,4 +34,5 @@
 // Now that all global styles have been applied, we can load styles that are
 // defined in our apps directories.
 @import '../app/common/pager/pager.scss';
+@import '../app/common/playlist/playlist.scss';
 @import '../app/components/library/library.scss';

@@ -1,0 +1,17 @@
+<div class="playlist-header" ng-show="headerText">{{headerText}}</div>
+<div class="playlist-content">
+	<div class="playlist-loading" ng-show="loadingResults">Loading...</div>
+	<ul>
+		<li class="playlist-item" ng-repeat="item in results.items">
+			<a href="{{item.url}}" class="playlist-item-link" target="_self">
+				<span class="playlist-item-count">{{$index + 1}}</span>
+				<span class="playlist-item-title">{{item.title}}</span>
+				<div class="playlist-item-meta">
+					<span class="playlist-item-free" ng-show="item.is_free">FREE</span>
+					<span class="playlist-item-percent"></span>
+				</div>
+				<span class="playlist-item-duration">{{item.total_time}}</span>
+			</a>
+		</li>
+	</ul>
+</div>
