@@ -1,7 +1,10 @@
-.button {
-	@include border-radius($global-radius);
+/* ==========================================================================
+   Button
+   ========================================================================== */
+
+.btn {
+	@extend .borderRadius;
 	cursor: pointer;
-	background: $silver;
 	display: inline-block;
 	font-weight: bold;
 	line-height: 1;
@@ -10,7 +13,11 @@
 	white-space: nowrap;
 }
 
-.button--blue {
+.btnDefault {
+	background: $silver;
+}
+
+.btnPrimary {
 	background: $blue;
 	color: $white;
 
@@ -20,7 +27,7 @@
 	}
 }
 
-.button--orange {
+.btnSecondary {
 	background: $orange;
 	color: $white;
 

@@ -1,38 +1,53 @@
-// This is the main application stylesheet. It should include or import all
-// stylesheets used throughout the application as this is the only stylesheet
-// in the Grunt configuration that is automatically processed.
+/* ==========================================================================
+   This is the main application stylesheet. It should include or import all
+   stylesheets used throughout the application as this is the only stylesheet
+   in the Grunt configuration that is automatically processed.
+   ========================================================================== */
 
-@import 'susy';
-@import 'breakpoint';
+@import "susy";
+@import "breakpoint";
 
-// Import the compass utlities to be used by our stylesheets.
-@import 'compass/css3/background-size';
+// Compass utlities to be used by our stylesheets
+@import "compass/css3/background-size";
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
 @import "compass/css3/box-sizing";
-@import 'compass/css3/images';
+@import "compass/css3/images";
 @import "compass/css3/opacity";
 @import "compass/css3/transition";
-@import 'compass/utilities/sprites';
+@import "compass/utilities/sprites";
 
-// Import vendor stylesheets.
-@import '../../vendor/normalize.scss/normalize';
+// Vendor stylesheets
+@import "../../vendor/normalize.scss/normalize";
 
-// Import global variables, mixins and components.
-@import 'variables';
-@import 'mixins';
-@import 'global';
-@import 'layout';
+// Global variables
+@import "variables";
 
-// Import our components.
-@import 'components/buttons';
-@import 'components/form';
-@import 'components/media';
-@import 'components/tables';
-@import 'components/type';
+// Utilities
+@import "utils/float";
+@import "utils/hideShow";
+@import "utils/radius";
+@import "utils/scrollbar";
+@import "utils/sprite";
+@import "utils/textAlign";
+@import "utils/textSize";
+
+// Components
+@import "components/banner";
+@import "components/block";
+@import "components/button";
+@import "components/form";
+@import "components/free";
+@import "components/layout";
+@import "components/list";
+@import "components/loading";
+@import "components/media";
+@import "components/panel";
+@import "components/template";
+@import "components/typography";
 
 // Now that all global styles have been applied, we can load styles that are
 // defined in our apps directories.
-@import '../app/common/pager/pager.scss';
-@import '../app/common/playlist/playlist.scss';
-@import '../app/components/library/library.scss';
+@import "../app/common/pager/pager.scss";
+@import "../app/common/playlist/playlist.scss";
+@import "../app/components/library/library.scss";

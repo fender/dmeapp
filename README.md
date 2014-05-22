@@ -18,12 +18,13 @@ Before using this application you'll want to make sure you have all the required
 Here is a quick run down on the file structure of this repository.
 
 * `src` - Our apps code belongs in here.
-  * `/app` - This is the meat of our app. All AngularJS scripts and templates go here. To keep things modular, we divide functionality up into directories. `app/common` contains common re-usable functionality such as our api or pager. `app/components` contains each section of functionality on our site. For example, directory `library` contains the AngularJS scripts, SCSS files and HTML templates directly related to our Library page. 
+  * `/app` - This is the meat of our app. All AngularJS scripts and templates go here. To keep things modular, we divide functionality up into directories. `app/common` contains common re-usable functionality such as our api or pager. `app/components` contains each section of functionality on our site. For example, directory `library` contains the AngularJS scripts, SCSS files and HTML templates directly related to our Library page.
     * `/app.js` - This is our app launcher script. It initializes all of our components.
     * `/index.html` - The route web page for our app.
   * `/assets` - Any assets to be used in the app, such as images, should be placed here.
-  * `/scss` - Contains our Sass. The root folder contains our initializers, mixins and variables.
-    * `/components` - All of our components style is written here.
+  * `/scss` - Contains our Sass. The root folder contains our initializer and variables.
+    * `/utils` - Utility style is defined here.
+    * `/components` - All component building blocks are defined here.
     * `/sprites` - Sprite image files are separated by sprite map name. Compass uses each folder to create a sprite image.
   * `vendor` - Contains all vendor packages that are installed via [Bower](http://bower.io/). Hands off!
   * `Gruntfile.js` - This file tells Grunt about our automated workflows.
@@ -82,13 +83,16 @@ For our vendor packages (front-end assets that we want to include in our app) we
 
 #### Coding standards
 
-We write our [SMACSS](http://smacss.com/) adhering CSS using [Sass](http://sass-lang.com/), [Compass](http://compass-style.org/) and [Susy](http://susy.oddbird.net/). You should probably know how all of those work before attempting to write any SCSS!
+We write our CSS using [Sass](http://sass-lang.com/), [Compass](http://compass-style.org/) and [Susy](http://susy.oddbird.net/). You should probably know how all of those work before attempting to write any SCSS!
 
-There is also a few simple coding standards to follow when writing SCSS in this app:
+We do not strictly follow [OOCSS](https://github.com/stubbornella/oocss/wiki) or [SMACSS](http://smacss.com/) but instead learn lessons from both.
+
+Coding standards to follow when writing SCSS in this app:
+* Write as little new style as possible. Re-use components.
+* Define selectors and variables in lowerCamelCase.
 * Use soft-tabs with a two space indent.
 * Put spaces after `:` in property declarations.
 * Put spaces before `{` in rule declarations.
 * Use hex color codes #000 unless using rgba.
-* Use `//` for comment blocks (instead of `/* */`).
 
 We follow the [AngularJS Style Guide](https://google-styleguide.googlecode.com/svn/trunk/angularjs-google-style.html) which implements and extends the [Google Javascript Style Guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml).

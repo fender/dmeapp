@@ -1,15 +1,7 @@
 /* ==========================================================================
-   Queue link
+   Radius
    ========================================================================== */
 
-.queueLink {
-
-}
-
-.queueLinkAdd {
-
-}
-
-.queueLinkRemove {
-
+.borderRadius {
+  @include border-radius($globalRadius);
 }

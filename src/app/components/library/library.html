@@ -1,74 +1,71 @@
-<div class="library-banner">
-  <div class="l-container">
+<div class="banner bannerTop bannerBlue">
+  <div class="container">
     <h1>Library</h1>
     <p>Containing over 800 Drupal training videos, our library provides more Drupal content than anyone, anywhere. Find out why our users have racked up thousands of hours watching our premium Drupal training videos. Easy to follow learning paths are available, <a href="">try our guides</a>.</p>
   </div>
 </div>
 
-<div class="l-container l-container--sidebar">
-	<div class="l-right-sidebar">
-    <div class="block panel panel--padding show-mobile">
+<div class="container has-sidebar">
+	<div class="sidebar">
+    <div class="block panel panelPadded showMobile">
       <a href="" ng-click="showFilters = !showFilters">Filters</a>
     </div>
 
-    <div class="block panel" ng-class="{'hide-mobile': showFilters == undefined || !showFilters}">
-      <h5 class="library-filters-header">
+    <div class="block panel" ng-class="{'hideMobile': showFilters == undefined || !showFilters}">
+      <h5 class="libraryFiltersHeader">
         Categories
-        <a href="" class="library-filters-clear right" ng-click="resetTerms(params.categories)" ng-show="!loadingResults && (params.categories | selectedTerms).length">Clear</a>
+        <a href="" class="libraryFiltersClear floatRight" ng-click="resetTerms(params.categories)" ng-show="!loadingResults && (params.categories | selectedTerms).length">Clear</a>
       </h5>
-      <div class="library-filters">
-        <label ng-repeat="category in params.categories" class="library-filter">
+      <div class="libraryFilters">
+        <label ng-repeat="category in params.categories" class="libraryFilter">
             <input type="checkbox" ng-model="category.selected" ng-disabled="loadingResults">{{category.name}}
         </label>
       </div>
 
-      <h5 class="library-filters-header">
+      <h5 class="libraryFiltersHeader">
         Versions
-        <a href="" class="library-filters-clear right" ng-click="resetTerms(params.versions)" ng-show="!loadingResults && (params.versions | selectedTerms).length">Clear</a>
+        <a href="" class="libraryFiltersClear floatRight" ng-click="resetTerms(params.versions)" ng-show="!loadingResults && (params.versions | selectedTerms).length">Clear</a>
       </h5>
-      <div class="library-filters">
-        <label ng-repeat="version in params.versions" class="library-filter">
+      <div class="libraryFilters">
+        <label ng-repeat="version in params.versions" class="libraryFilter">
             <input type="checkbox" ng-model="version.selected" ng-disabled="loadingResults">{{version.name}}
         </label>
       </div>
 
-      <h5 class="library-filters-header">
+      <h5 class="libraryFiltersHeader">
         More Options
-        <a href="" class="library-filters-clear right" ng-click="resetOptions()" ng-show="!loadingResults && (params.not_watched || params.watched || params.closed_captions)">Clear</a>
+        <a href="" class="library-filters-clear floatRight" ng-click="resetOptions()" ng-show="!loadingResults && (params.not_watched || params.watched || params.closed_captions)">Clear</a>
       </h5>
-      <div class="library-filters">
-        <label class="library-filter">
+      <div class="libraryFilters">
+        <label class="libraryFilter">
             <input type="checkbox" ng-model="params.not_watched" ng-disabled="loadingResults">Not Watched
         </label>
-        <label class="library-filter">
+        <label class="libraryFilter">
             <input type="checkbox" ng-model="params.watched" ng-disabled="loadingResults">Watched
         </label>
-        <label class="library-filter">
+        <label class="libraryFilter">
             <input type="checkbox" ng-model="params.closed_captions" ng-disabled="loadingResults">Closed Captions
         </label>
       </div>
     </div>
 
-    <div class="library-guides block panel panel--padding hide-mobile">
+    <div class="libraryGuides block panel panelPadded hideMobile">
       <h4>Guides</h4>
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.
       </p>
-      <a class="button button--blue">Explore Guides</a>
+      <a class="btn btnPrimary">Explore Guides</a>
     </div>
   </div>
 
-  <div class="l-content l-content--library">
+  <div class="content contentlibrary">
     <div class="panel">
-      <div class="library-header">
-        <div class="left" ng-show="results.items">
-          <span class="hide-mobile">Showing</span> {{firstResult()}} - {{lastResult()}} of {{results.pager_total_items}} series
-          <!-- <label ng-init="mediaFormat = 'list'">View</label>
-          <span class="media-view-selector media-view-selector--list" ng-click="mediaFormat = 'list'">List</span>
-          <span class="media-view-selector media-view-selector--grid" ng-click="mediaFormat = 'grid'">Grid</span> -->
+      <div class="panelHeader">
+        <div class="floatLeft" ng-show="results.items">
+          <span class="hideMobile">Showing</span> {{firstResult()}} - {{lastResult()}} of {{results.pager_total_items}} series
         </div>
 
-        <div class="right library-sort">
+        <div class="floatRight">
           <label>Sort by</label>
           <select ng-model="params.sort">
             <option value="created">Release date</option>
@@ -83,18 +80,18 @@
         </div> -->
       </div>
 
-      <div class="library-loading" ng-show="loadingResults">Loading...</div>
-      <div class="library-status" ng-show="!loadingResults && !results.items">No results found.</div>
-      <div class="media-view media-view--{{mediaFormat}}" ng-class="{'panels': mediaFormat == 'list'}" ng-show="results.items">
-        <div class="media" ng-class="{'panel': mediaFormat == 'grid'}" ng-repeat="item in results.items">
-          <a href="{{item.url}}" target="_self" ng-class="{left: mediaFormat == 'list'}">
-            <img class="media-image" ng-src="{{item.screenshot}}">
+      <div class="loading" ng-show="loadingResults">Loading...</div>
+      <div class="libraryStatus" ng-show="!loadingResults && !results.items">No results found.</div>
+      <div class="mediaList" ng-show="results.items">
+        <div class="media" ng-repeat="item in results.items">
+          <a href="{{item.url}}" target="_self">
+            <img ng-src="{{item.screenshot}}">
           </a>
-          <div class="media-body">
-            <h4 class="media-title">
+          <div class="mediaBody">
+            <h4 class="mediaTitle">
               <a href="{{item.url}}" target="_self">{{item.title}}</a>
             </h4>
-            <div class="media-subtitle">
+            <div class="mediaSubtitle">
               <span ng-repeat="tid in item.categories">
                 {{params.categories[tid].name}}{{!$last || $last && item.versions ? ', ' : ''}}
               </span>
@@ -102,13 +99,13 @@
                 {{params.versions[tid].name}}{{!$last ? ', ' : ''}}
               </span>
             </div>
-            <p class="media-description">
+            <p class="mediaDescription">
               {{item.description.summary | limitTo: 120}}{{item.description.summary.length > 120 ? '...' : ''}}
             </p>
-            <ul class="media-links inline-list">
+            <ul class="mediaLinks listInline">
               <li>
                 <a href="" ng-click="showPlaylist = showPlaylist ? false : true">{{item.videos.length}} videos</a>
-                <em class="text-green" ng-show="item.watched_count">({{item.watched_count}} watched)</em>
+                <em class="mediaWatchedCount" ng-show="item.watched_count">({{item.watched_count}} watched)</em>
               </li>
               <li>
                 <dme-queue node-id="item.nid" in-queue="item.queued"></dme-queue>
@@ -116,7 +113,7 @@
             </ul>
 
             <div ng-if="showPlaylist != undefined">
-              <dme-playlist playlist-id="item.nid" ng-show="showPlaylist" class="playlist--dark"></dme-playlist>
+              <dme-playlist playlist-id="item.nid" ng-show="showPlaylist" class="playlistDark"></dme-playlist>
             </div>
           </div>
         </div>

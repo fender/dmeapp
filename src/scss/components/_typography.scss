@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+// Typography resets
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+th,
+td {
+  margin:0;
+  padding:0;
+}
+
+// Base font styles
+body {
+  color: $charcoal;
+  font-family: $bodyFontFamily;
+  font-size: $bodyFontSize;
+  line-height: $lineHeight;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Links
+a {
+  color: $blue;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    color: $orange;
+  }
+}
+
+p {
+  a {
+    font-weight: normal;
+  }
+}
+
+// Headers
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $charcoal;
+  font-weight: bold;
+  margin: 0.2em 0 0.5em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.750em;
+}
+
+h3 {
+  font-size: 1.375em;
+}
+
+h4 {
+  font-size: 1.125em;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: 0.875em;
+}
+
+.lightHeader {
+  color: $charcoal;
+  font-weight: normal;
+}
+
+// Paragraphs
+p {
+  margin-bottom: 1.25em;
+}
+
+
+// Horizontal rules
+hr {
+  border: solid $silverBorder;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+  margin: 2em 0;
+}
+
+// Blockquotes
+blockquote {
+  border-left: 1px solid $silverBorder;
+  color: lighten($charcoal, 10%);
+  margin-bottom: 1em;
+  padding: 0.5em 1em;
+
+  cite {
+    color: $charcoal;
+    display: block;
+    font-size: 0.75em;
+
+    &:before {
+      content: "\2014 \0020";
+    }
+  }
+}
