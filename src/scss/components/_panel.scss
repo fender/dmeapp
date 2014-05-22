@@ -1,0 +1,20 @@
+/* ==========================================================================
+   Panel
+   ========================================================================== */
+
+.panel {
+  background: $white;
+  border-bottom: 5px solid $silverBorder;
+}
+
+.panelPadded {
+  padding: 1.5em;
+}
+
+.panelHeader {
+  background: $white;
+  border-bottom: 1px solid $silverBorder;
+  color: $lightCharcoal;
+  overflow: hidden;
+  padding: 0.75em 1em;
+}

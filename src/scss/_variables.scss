@@ -1,29 +1,29 @@
-//
-// Sass variables.
-//
+/* ==========================================================================
+  Variables
+  ========================================================================== */
 
-// Colors (Taken from our brand guide)
+// Color (Taken from our brand guide)
 $white: #fff;
 $charcoal: #333;
-$light-charcoal: #666;
-$lightest-charcoal: #999;
+$lightCharcoal: #666;
+$lightestCharcoal: #999;
 $blue: #137cc1;
-$dark-blue: #00293f;
+$darkBlue: #00293f;
 $orange: #fd7037;
 $silver: #f5f5f5;
-$silver-border: #e6e6e6;
+$silverBorder: #e6e6e6;
 $green: #00be4c;
 $red: #c60e00;
 
-// Fonts
-$body-font-family: "proxima-nova", Helvetica, Arial, Tahoma, sans-serif;
-$body-font-size: 16px;
-$small-font-size: 0.875em;
-$line-height: 1.6;
+// Font
+$bodyFontFamily: "proxima-nova", Helvetica, Arial, Tahoma, sans-serif;
+$bodyFontSize: 16px;
+$smallFontSize: 0.875em;
+$lineHeight: 1.6;
 
 // Layout
-$site-width: 67.5em; // 1080px
-$medium: 48em; // 768px, breakpoint for medium screen widths.
+$siteWidth: 67.5em; // 1080px
+$breakpointMedium: 48em; // 768px, breakpoint for medium screen widths.
 
 // Other
-$global-radius: 5px;
+$globalRadius: 5px;

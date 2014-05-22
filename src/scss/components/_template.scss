@@ -1,13 +1,12 @@
-//
-// This file contains style that is used globally on our site usually relating
-// directly to DOM in our index.html template and any utility classes.
-//
+/* ==========================================================================
+   Drupalize.Me template
+   ========================================================================== */
 
 // We sprite any images that appear on every page.
-@import "global/*.png";
-@import "global2x/*.png";
-@include all-global-sprites;
-@include all-retina-sprites($global-sprites, $global2x-sprites);
+@import "template/*.png";
+@import "template2x/*.png";
+@include all-template-sprites;
+@include all-retina-sprites($template-sprites, $template2x-sprites);
 
 // Base styles.
 html,
@@ -15,22 +14,14 @@ body {
   background: $silver;
 }
 
-body {
-  color: $charcoal;
-  font-family: $body-font-family;
-  font-size: $body-font-size;
-  line-height: $line-height;
-  -webkit-font-smoothing: antialiased;
-}
-
 // Header section.
-.l-header {
+.header {
   background: $white;
-  border-bottom: 1px solid $silver-border;
+  border-bottom: 1px solid $silverBorder;
   padding: 1em 0;
 }
 
-.l-header-menu {
+.menu {
   clear: left;
   display: none;
   margin: 0;
@@ -41,7 +32,7 @@ body {
   }
 
   li {
-    border-bottom: 1px solid $silver-border;
+    border-bottom: 1px solid $silverBorder;
 
     &:last-child {
       border-bottom: none;
@@ -55,7 +46,7 @@ body {
   }
 }
 
-.site-logo {
+.logo {
   display: block;
   height: 38px;
   overflow: hidden;
@@ -63,7 +54,7 @@ body {
   width: 177px;
 }
 
-.toggle-responsive-nav {
+.responsiveMenu {
   margin-top: 0.5em;
 
   a {
@@ -89,44 +80,44 @@ body {
 }
 
 // Main content section.
-.l-main {
+.main {
   background: $silver;
   padding: 2em 0;
 }
 
 // Footer section.
-.l-footer {
+.footer {
   background: $silver;
-  border-top: 1px solid $silver-border;
+  border-top: 1px solid $silverBorder;
   padding: 2em 0;
+}
 
-  .copyright {
-    font-size: 0.8em;
+.copyright {
+  font-size: 0.8em;
+}
+
+.socialLinks {
+  height: 25px;
+  margin: 2em 0;
+
+  li {
+    display: inline-block;
   }
 
-  .social-links {
+  a {
+    display: block;
     height: 25px;
-    margin: 2em 0;
+    overflow: hidden;
+    text-indent: -99999px;
+    width: 25px;
 
-    li {
-      display: inline-block;
-    }
-
-    a {
-      display: block;
-      height: 25px;
-      overflow: hidden;
-      text-indent: -99999px;
-      width: 25px;
-
-      &:hover {
-        @include opacity(0.8);
-      }
+    &:hover {
+      @include opacity(0.8);
     }
   }
 }
 
-.l-footer-menu {
+.footerMenu {
   margin: 0;
 
   li {
@@ -139,12 +130,12 @@ body {
 }
 
 // Responsive layout.
-@include breakpoint($medium) {
-  .l-header {
+@include breakpoint($breakpointMedium) {
+  .header {
     padding: 2em 0;
   }
 
-  .l-header-menu {
+  .menu {
     clear: none;
     display: block;
     float: right;
@@ -164,17 +155,17 @@ body {
       &.active,
       &:hover {
         background: $silver;
-        border-color: $silver-border;
+        border-color: $silverBorder;
         color: $orange;
       }
     }
   }
 
-  .toggle-responsive-nav {
+  .responsiveMenu {
     display: none;
   }
 
-  .l-footer-menu {
+  .footerMenu {
     li {
       display: inline-block;
 
@@ -184,7 +175,7 @@ body {
 
         &:after {
           content: '//';
-          color: $silver-border;
+          color: $silverBorder;
           margin: 0 0.5em;
         }
       }
@@ -198,45 +189,4 @@ body {
       }
     }
   }
-
-  // Utility classes.
-  .hide-mobile {
-    display: inline-block !important;
-  }
-
-  .show-mobile {
-    display: none !important;
-  }
-}
-
-// Utility classes.
-.left {
-  float: left !important;
-}
-
-.right {
-  float: right !important;
-}
-
-.panel {
-  background: $white;
-  border-bottom: 5px solid $silver-border;
-}
-
-.panel--padding {
-  padding: 1.5em;
-}
-
-.block {
-  margin-bottom: 2em;
-}
-
-.hide-mobile {
-  display: none;
-}
-
-// Allows us to cloak elements until AngularJS has loaded.
-// See https://docs.angularjs.org/api/ng/directive/ngCloak
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
 }

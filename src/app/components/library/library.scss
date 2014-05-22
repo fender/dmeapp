@@ -1,81 +1,33 @@
-//
-// Contains our custom Library page style.
-//
+/* ==========================================================================
+   Library page
+   ========================================================================== */
 
-.library-banner {
-	background: $blue;
-	margin: -2.5em 0 2.5em;
-	padding: 2.5em 0;
-
-	h1, p, a {
-		color: $white;
-	}
-
-	a {
-		text-decoration: underline;
-
-		&:hover {
-			color: $orange;
-		}
-	}
-}
-
-.l-content--library {
+.contentlibrary {
 	position: relative;
 }
 
-.library-loading {
-	@include box-shadow(0 0 5px $silver);
-	background: $silver;
-	border: 1px solid $silver-border;
-	font-weight: bold;
-	left: 50%;
-	margin: 1em 0 0 -25px;
-	padding: 1em;
-	position: absolute;
-	text-align: center;
-	width: 7em;
-}
-
-.library-status {
+.libraryStatus {
 	@include break;
 	padding: 1.5em;
 }
 
-.library-header {
-	background: $white;
-	border-bottom: 1px solid $silver-border;
-	color: $light-charcoal;
-	overflow: hidden;
-	padding: 0.75em 1em;
-	// .library-filter {
-	// 	padding: 0;
-	// }
-}
-
-.library-sort {
-	label {
-		margin-right: 0.5em;
-	}
-}
-
-.library-filters-header {
-	background: $dark-blue;
+.libraryFiltersHeader {
+	background: $darkBlue;
 	color: $white;
 	margin: 0;
 	padding: 0.75em 1em;
 }
 
-.library-filters-clear {
+.libraryFiltersClear {
 	color: $white;
 	font-weight: normal;
 }
 
-.library-filters {
+.libraryFilters {
 	padding: 0.5em 1em;
 }
 
-.library-filter {
+.libraryFilter {
 	display: inline-block;
 	padding: 0.25em 0;
 	width: 100%;
@@ -90,6 +42,6 @@
 	}
 }
 
-.library-guides {
+.libraryGuides {
 	border-top: 10px solid $blue;
 }

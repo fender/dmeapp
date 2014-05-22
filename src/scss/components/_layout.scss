@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+$susy: (
+  columns: 12,
+  column-width: 4.5em
+);
+
+@include global-box-sizing(border-box);
+
+.container {
+  @include container($siteWidth);
+  @include pad(1em);
+}
+
+@include breakpoint($breakpointMedium) {
+  .has-sidebar {
+    .content {
+      margin-right: span(3 static wide);
+    }
+  }
+
+  .sidebar {
+    @include span(last 3 static);
+  }
+}

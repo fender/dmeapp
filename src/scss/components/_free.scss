@@ -1,15 +1,12 @@
 /* ==========================================================================
-   Queue link
+   Free label
    ========================================================================== */
 
-.queueLink {
-
-}
-
-.queueLinkAdd {
-
-}
-
-.queueLinkRemove {
-
+.free {
+  @include border-radius(3px);
+  background: $green;
+  color: $white;
+  font-size: 0.9em;
+  margin-right: 0.5em;
+  padding: 0.1em 0.5em;
 }

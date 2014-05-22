@@ -1,56 +1,56 @@
-//
-// Media styles are ideal for building lists or grids of components like on the
-// library page.
-//
+/* ==========================================================================
+   Media objects
+   ========================================================================== */
 
-.media-view {
+.mediaList {
 	padding: 1em;
 }
 
 .media {
-	border-bottom: 1px solid $silver-border;
+	border-bottom: 1px solid $silverBorder;
 	margin-bottom: 1em;
 	padding-bottom: 1em;
+	overflow: hidden;
 
 	&:last-child {
 		border-bottom: none;
 		margin-bottom: 0;
 		padding-bottom: 0.5em;
 	}
+
+	img {
+		display: block;
+		float: left;
+		margin-right: 1em;
+		width: 200px;
+	}
 }
 
-.media,
-.media-body {
-	overflow: hidden;
-}
-
-.media-image {
-	display: block;
-	margin-right: 1em;
-	width: 200px;
-}
-
-.media-title {
+.mediaTitle {
 	margin: 0;
 }
 
-.media-subtitle {
-	@extend .text-small;
-	color: $light-charcoal;
+.mediaSubtitle {
+	@extend .txtSmall;
+	color: $lightCharcoal;
 	font-style: italic;
 }
 
-.media-description {
-	@extend .text-small;
+.mediaDescription {
+	@extend .txtSmall;
 	line-height: 1.4em;
 	margin-bottom: 0.25em;
 }
 
-.media-links {
-	@extend .text-small;
+.mediaLinks {
+	@extend .txtSmall;
 	margin: 0;
 
 	a {
-		color: $light-charcoal;
+		color: $lightCharcoal;
 	}
+}
+
+.mediaWatchedCount {
+	color: $green;
 }

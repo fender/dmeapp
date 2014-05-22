@@ -12,16 +12,16 @@
     <!-- @endif -->
   </head>
   <body ng-app="dmeApp">
-    <header class="l-header">
-      <div class="l-container">
-        <div class="left">
-          <a class="site-logo global-logo" href="/" target="_self">Drupalize.Me</a>
+    <header class="header">
+      <div class="container">
+        <div class="floatLeft">
+          <a class="logo template-logo" href="/" target="_self">Drupalize.Me</a>
         </div>
-        <div class="toggle-responsive-nav right">
+        <div class="responsiveMenu floatRight">
           <a href="#" ng-click="toggleNav = !toggleNav" ng-init="toggleNav = false">Menu</a>
         </div>
         <nav ng-controller="NavController">
-          <ul class="l-header-menu no-bullet" ng-class="{ open: toggleNav }">
+          <ul class="menu listNoBullets" ng-class="{ open: toggleNav }">
             <li>
               <a href="/" target="_self" ng-class="{ active: linkIsActive('/') }">Home</a>
             </li>
@@ -47,11 +47,11 @@
       </div>
     </header>
 
-    <main role="main" class="l-main" ng-view></main>
+    <main role="main" class="main" ng-view></main>
 
-    <footer class="l-footer text-center">
-      <div class="l-container">
-        <ul class="l-footer-menu no-bullet">
+    <footer class="footer txtC">
+      <div class="container">
+        <ul class="footerMenu listNoBullets">
           <li>
             <a href="/about" target="_self">About</a>
           </li>
@@ -80,13 +80,13 @@
             <a href="/contact" target="_self">Contact us</a>
           </li>
         </ul>
-        <ul class="social-links no-bullet">
-          <li><a class="global-drupal" href="https://drupal.org/marketplace/drupalizeme" alt="Drupal.org" target="_blank">Drupal.org</a></li>
-          <li><a class="global-twitter" href="http://twitter.com/drupalizeme" alt="Twitter" target="_blank">Twitter</a></li>
-          <li><a class="global-facebook" href="https://www.facebook.com/pages/Drupalizeme/226965084026508" alt="Facebook" target="_blank">Facebook</a></li>
-          <li><a class="global-google-plus" href="https://plus.google.com/104131087331701396621/posts" alt="Google+" target="_blank">Google+</a></li>
-          <li><a class="global-itunes" href="https://itunes.apple.com/us/podcast/lullabot-lullabot-podcast/id117672529" alt="iTunes" target="_blank">iTunes</a></li>
-          <li><a class="global-rss" href="/blog/rss" target="_self" alt="RSS">RSS</a></li>
+        <ul class="socialLinks listNoBullets">
+          <li><a class="template-drupal" href="https://drupal.org/marketplace/drupalizeme" alt="Drupal.org" target="_blank">Drupal.org</a></li>
+          <li><a class="template-twitter" href="http://twitter.com/drupalizeme" alt="Twitter" target="_blank">Twitter</a></li>
+          <li><a class="template-facebook" href="https://www.facebook.com/pages/Drupalizeme/226965084026508" alt="Facebook" target="_blank">Facebook</a></li>
+          <li><a class="template-google-plus" href="https://plus.google.com/104131087331701396621/posts" alt="Google+" target="_blank">Google+</a></li>
+          <li><a class="template-itunes" href="https://itunes.apple.com/us/podcast/lullabot-lullabot-podcast/id117672529" alt="iTunes" target="_blank">iTunes</a></li>
+          <li><a class="template-rss" href="/blog/rss" target="_self" alt="RSS">RSS</a></li>
         </ul>
         <div class="copyright">© Copyright 2014 Lullabot. All rights reserved.</div>
       </div>
