@@ -16,6 +16,7 @@ angular.module('dmeApp.playlist', [])
       scope.loadingResults = true;
       scope.results = Api.Video.query({series: scope.playlistId}, function() {
         scope.loadingResults = false;
+        console.log(scope.results);
       });
     },
   };

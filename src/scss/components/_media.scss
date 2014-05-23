@@ -17,13 +17,18 @@
 		margin-bottom: 0;
 		padding-bottom: 0.5em;
 	}
+}
 
-	img {
-		display: block;
-		float: left;
-		margin-right: 1em;
-		width: 200px;
-	}
+.mediaObject {
+	display: block;
+	float: left;
+	margin-bottom: 1em;
+	width: 100px;
+}
+
+.mediaBody {
+	margin-left: 100px;
+	padding-left: 1em;
 }
 
 .mediaTitle {
@@ -53,4 +58,24 @@
 
 .mediaWatchedCount {
 	color: $green;
+}
+
+@include breakpoint($breakpointSmall) {
+	.mediaObject {
+		width: 150px;
+	}
+
+	.mediaBody {
+		margin-left: 150px;
+	}
+}
+
+@include breakpoint($breakpointMedium) {
+	.mediaObject {
+		width: 200px;
+	}
+
+	.mediaBody {
+		margin-left: 200px;
+	}
 }

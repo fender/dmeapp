@@ -1,7 +1,8 @@
-<div class="banner bannerTop bannerBlue">
+<div class="banner bannerTop bannerBlue" ng-show="showLibraryBanner()">
   <div class="container">
     <h1>Library</h1>
     <p>Containing over 800 Drupal training videos, our library provides more Drupal content than anyone, anywhere. Find out why our users have racked up thousands of hours watching our premium Drupal training videos. Easy to follow learning paths are available, <a href="">try our guides</a>.</p>
+    <a href="" class="bannerClose" ng-click="closeLibraryBanner()">Close</a>
   </div>
 </div>
 
@@ -85,7 +86,7 @@
       <div class="mediaList" ng-show="results.items">
         <div class="media" ng-repeat="item in results.items">
           <a href="{{item.url}}" target="_self">
-            <img ng-src="{{item.screenshot}}">
+            <img class="mediaObject" ng-src="{{item.screenshot}}">
           </a>
           <div class="mediaBody">
             <h4 class="mediaTitle">
@@ -111,10 +112,9 @@
                 <dme-queue node-id="item.nid" in-queue="item.queued"></dme-queue>
               </li>
             </ul>
-
-            <div ng-if="showPlaylist != undefined">
-              <dme-playlist playlist-id="item.nid" ng-show="showPlaylist" class="playlistDark"></dme-playlist>
-            </div>
+          </div>
+          <div ng-if="showPlaylist != undefined">
+            <dme-playlist playlist-id="item.nid" ng-show="showPlaylist" class="playlistDark"></dme-playlist>
           </div>
         </div>
       </div>

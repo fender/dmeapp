@@ -3,10 +3,11 @@
 }
 
 .playlistContent {
+  @include break;
 	@extend %scrollbar;
+  @extend .txtSmall;
   background: white;
 	font-weight: bold;
-  font-size: .85em;
   max-height: 330px;
   overflow-y: auto;
 }
@@ -28,16 +29,11 @@
       background: $green;
       color: $white;
 
-      .playlistProgress {
-        color: $white;
-      }
-
       .playlistCount {
-        height: 16px;
+        height: 1em;
         text-align: left;
         text-indent: -9999px;
         top: 1.25em;
-        width: 16px;
       }
 
       .playlistDuration {
@@ -50,6 +46,10 @@
   	display: block;
   	padding: 1em 4.25em 1em 3.5em;
 
+    &:not([href]) {
+      color: $charcoal;
+    }
+
     &:hover {
       background: $silver;
     }
@@ -57,7 +57,7 @@
 }
 
 .playlistCount {
-	color: #555;
+	color: $lightCharcoal;
 	left: 1.5em;
 	position: absolute;
 	text-align: right;
@@ -65,6 +65,7 @@
 }
 
 .playlistMeta {
+  // TODO needed?
 	@extend .txtSmall;
 	color: $lightestCharcoal;
 }

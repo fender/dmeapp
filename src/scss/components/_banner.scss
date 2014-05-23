@@ -17,12 +17,22 @@
       color: $orange;
     }
   }
+
+  > .container {
+    position: relative;
+  }
 }
 
-.bannerFirst {
-  margin-top: 2.5em;
+.bannerTop {
+  margin-top: -2.5em;
 }
 
 .bannerBlue {
   background: $blue;
+}
+
+.bannerClose {
+  position: absolute;
+  top: 0;
+  right: 1em;
 }

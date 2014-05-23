@@ -3,9 +3,10 @@
 	<div class="playlistLoading" ng-show="loadingResults">Loading...</div>
 	<ul class="playlist">
 		<li ng-repeat="item in results.items">
-			<a href="{{item.url}}" target="_self">
+			<a ng-href="{{item.coming_soon ? null : item.url}}" target="_self">
 				<span class="playlistCount">{{$index + 1}}</span>
 				<span class="playlistTitle">{{item.title}}</span>
+				<span class="comingSoon" ng-show="item.coming_soon">Coming Soon</span>
 				<div class="playlistMeta">
 					<span class="free" ng-show="item.is_free">FREE</span>
 					<span class="playlistProgress"></span>

@@ -16,20 +16,7 @@ angular.module('dmeApp.library', [
 .controller('LibraryController', ['$scope', '$location', 'selectedTermsFilter', 'Api', 'categoryTaxonomy', 'versionTaxonomy',
 	function($scope, $location, selectedTermsFilter, Api, categoryTaxonomy, versionTaxonomy) {
 
-  // Debug code. TODO remove
-  $scope.mediaFormat = 'list';
-
-  // Declare default filter params using the URL query if available.
-  var search = $location.search();
-	$scope.params = {
-    group_by_series: search.group_by_series ? search.group_by_series === 'true' : true,
-		not_watched: search.not_watched === 'true',
-		watched: search.watched === 'true',
-		closed_captions: search.closed_captions === 'true',
-		sort: search.sort ? search.sort : 'created',
-    page: search.page ? parseInt(search.page) : 1,
-    pagesize: 15,
-	};
+  $scope.results = {};
 
   // Populates a filter param with given taxonomy.
   var populateTerms = function(param, taxonomy) {
@@ -40,9 +27,6 @@ angular.module('dmeApp.library', [
     });
   };
 
-  populateTerms('categories', categoryTaxonomy);
-  populateTerms('versions', versionTaxonomy);
-
   // Clears selected terms for a given taxonomy filter parameter.
   $scope.resetTerms = function(object) {
   	angular.forEach(object, function(term, tid) {
@@ -50,7 +34,6 @@ angular.module('dmeApp.library', [
   	});
   };
 
-  // Clears the "More Options" filters.
   $scope.resetOptions = function() {
   	$scope.params.not_watched = false;
   	$scope.params.watched = false;
@@ -80,13 +63,38 @@ angular.module('dmeApp.library', [
     });
   };
 
+  // Returns the first result index shown on the current page.
   $scope.firstResult = function() {
     return $scope.params.page == 1 ? 1 : (($scope.params.page - 1) * $scope.params.pagesize) + 1;
   };
 
+  // Returns the last result index shown on the current page.
   $scope.lastResult = function() {
     return $scope.params.page == $scope.results.pager_total ? $scope.results.pager_total_items : $scope.params.page * $scope.params.pagesize;
   };
+
+  $scope.showLibraryBanner = function() {
+    return !localStorage.getItem('hideLibraryBanner');
+  };
+
+  $scope.closeLibraryBanner = function() {
+    localStorage.setItem('hideLibraryBanner', true);
+  };
+
+  // Declare default filter params using the URL query if available.
+  var search = $location.search();
+  $scope.params = {
+    group_by_series: search.group_by_series ? search.group_by_series === 'true' : true,
+    not_watched: search.not_watched === 'true',
+    watched: search.watched === 'true',
+    closed_captions: search.closed_captions === 'true',
+    sort: search.sort ? search.sort : 'created',
+    page: search.page ? parseInt(search.page) : 1,
+    pagesize: 15,
+  };
+
+  populateTerms('categories', categoryTaxonomy);
+  populateTerms('versions', versionTaxonomy);
 
   // Listen for changes to our params object.
   $scope.$watch('params', function(newParams, oldParams) {
