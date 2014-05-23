@@ -83,11 +83,9 @@ For our vendor packages (front-end assets that we want to include in our app) we
 
 #### Coding standards
 
-We write our CSS using [Sass](http://sass-lang.com/), [Compass](http://compass-style.org/) and [Susy](http://susy.oddbird.net/). You should probably know how all of those work before attempting to write any SCSS!
+We write our CSS using [Sass](http://sass-lang.com/), [Compass](http://compass-style.org/) and [Susy](http://susy.oddbird.net/). You should probably know how all of those work before attempting to write any SCSS! We do not strictly follow [OOCSS](https://github.com/stubbornella/oocss/wiki) or [SMACSS](http://smacss.com/) but instead learn lessons from both.
 
-We do not strictly follow [OOCSS](https://github.com/stubbornella/oocss/wiki) or [SMACSS](http://smacss.com/) but instead learn lessons from both.
-
-Coding standards to follow when writing SCSS in this app:
+When writing SCSS in this app, follow these coding standards:
 * Write as little new style as possible. Re-use components.
 * Define selectors and variables in lowerCamelCase.
 * Use soft-tabs with a two space indent.
