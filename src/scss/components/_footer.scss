@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  background: $silver;
+  border-top: 1px solid $silverBorder;
+  padding: 2em 0;
+  text-align: center;
+}
+
+.footer__menu {
+  list-style: none;
+  margin: 0;
+
+  li {
+    a {
+      display: block;
+      font-weight: normal;
+      padding: 0.5em 0;
+    }
+  }
+}
+
+@include breakpoint($mediumBreakpoint) {
+  .footer__menu {
+    li {
+      display: inline-block;
+
+      a {
+        font-size: 0.9em;
+        padding: 0;
+
+        &:after {
+          content: '//';
+          color: $silverBorder;
+          margin: 0 0.5em;
+        }
+      }
+
+      &:last-child {
+        a {
+          &:after {
+            content: '';
+          }
+        }
+      }
+    }
+  }
+}

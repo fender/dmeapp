@@ -1,6 +1,6 @@
 <div class="pager">
 	<a href="" ng-click="currentPage = currentPage - 1" ng-show="currentPage > 1">
-		<span class="arrow">&#9664;</span>
+		<span class="pager__arrow">&#9664;</span>
 	</a>
   <a href="" ng-click="currentPage = 1" ng-show="currentPage > 1">1</a>
 	<a href="" ng-click="currentPage = 2" ng-show="currentPage > 2">2</a>
@@ -18,6 +18,6 @@
   <a href="" ng-click="currentPage = totalPages - 1" ng-show="currentPage < totalPages - 1">{{totalPages - 1}}</a>
 	<a href="" ng-click="currentPage = totalPages" ng-show="currentPage < totalPages">{{totalPages}}</a>
 	<a href="" ng-click="currentPage = currentPage + 1" ng-show="currentPage < totalPages">
-		<span class="arrow">&#9654;</span>
+		<span class="pager__arrow">&#9654;</span>
 	</a>
 </div>

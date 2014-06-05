@@ -1,11 +1,15 @@
-.playlistLoading {
-	padding: 1em 2em;
+/* ==========================================================================
+   Playlist
+   ========================================================================== */
+
+.playlist__loading {
+	padding: 1em 2em; // TODO needed?
 }
 
-.playlistContent {
+.playlist__content {
   @include break;
-	@extend %scrollbar;
-  @extend .txtSmall;
+	@extend .scrollbar;
+  @extend .small-text;
   background: white;
 	font-weight: bold;
   max-height: 330px;
@@ -15,48 +19,62 @@
 .playlist {
   margin: 0;
   padding: 0;
+}
 
-  li {
-  	border-bottom: 1px solid $silverBorder;
-  	list-style: none;
-  	position: relative;
-
-    &:last-child {
-      border-bottom: 0;
-    }
-
-    &.active {
-      background: $green;
-      color: $white;
-
-      .playlistCount {
-        height: 1em;
-        text-align: left;
-        text-indent: -9999px;
-        top: 1.25em;
-      }
-
-      .playlistDuration {
-        color: $white;
-      }
-    }
+.playlist--dark {
+  .playlist__content {
+    background: $silver;
+    border: 1px solid $silverBorder;
+    margin-top: 1em;
   }
 
-  a {
-  	display: block;
-  	padding: 1em 4.25em 1em 3.5em;
-
-    &:not([href]) {
-      color: $charcoal;
-    }
-
-    &:hover {
-      background: $silver;
+  .playlist {
+    a:hover {
+      background: $white;
     }
   }
 }
 
-.playlistCount {
+.playlist__item {
+  border-bottom: 1px solid $silverBorder;
+  list-style: none;
+  position: relative;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &.is-active {
+    background: $green;
+    color: $white;
+
+    .playlist__item__count {
+      height: 1em;
+      text-align: left;
+      text-indent: -9999px;
+      top: 1.25em;
+    }
+
+    .playlist__item__duration {
+      color: $white;
+    }
+  }
+}
+
+.playlist__item__link {
+  display: block;
+  padding: 1em 4.25em 1em 3.5em;
+
+  &:not([href]) {
+    color: $charcoal;
+  }
+
+  &:hover {
+    background: $silver;
+  }
+}
+
+.playlist__item__count {
 	color: $lightCharcoal;
 	left: 1.5em;
 	position: absolute;
@@ -64,30 +82,16 @@
 	width: 1em;
 }
 
-.playlistMeta {
+.playlist__item__meta {
   // TODO needed?
-	@extend .txtSmall;
+	@extend .small-text;
 	color: $lightestCharcoal;
 }
 
-.playlistDuration {
-	@extend .txtSmall;
+.playlist__item__duration {
+	@extend .small-text;
   color: $lightestCharcoal;
   position: absolute;
   right: 1.5em;
   top: 1.5em;
-}
-
-.playlistDark {
-	.playlistContent {
-		background: $silver;
-		border: 1px solid $silverBorder;
-		margin-top: 1em;
-	}
-
-	.playlist {
-		a:hover {
-			background: $white;
-		}
-	}
 }

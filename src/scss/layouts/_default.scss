@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Layout
+   Defines the default grid layout components.
    ========================================================================== */
 
 $susy: (
@@ -9,19 +9,23 @@ $susy: (
 
 @include global-box-sizing(border-box);
 
-.container {
+.l-main {
+  padding: 2.5em 0;
+}
+
+.l-container {
   @include container($siteWidth);
   @include pad(1em);
 }
 
-@include breakpoint($breakpointMedium) {
-  .has-sidebar {
-    .content {
+@include breakpoint($mediumBreakpoint) {
+  .l-container--sidebar {
+    .l-content {
       margin-right: span(3 static wide);
     }
   }
 
-  .sidebar {
+  .l-sidebar {
     @include span(last 3 static);
   }
 }

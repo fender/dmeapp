@@ -7,7 +7,6 @@
 @import "susy";
 @import "breakpoint";
 
-// Compass utlities to be used by our stylesheets
 @import "compass/css3/background-size";
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
@@ -17,37 +16,42 @@
 @import "compass/css3/transition";
 @import "compass/utilities/sprites";
 
-// Vendor stylesheets
+// Initializes custom variables and mixins.
+@import "init";
+
+// Vendor stylesheets.
 @import "../../vendor/normalize.scss/normalize";
 
-// Global variables
-@import "variables";
+// Base styles.
+@import "base/form";
+@import "base/html";
+@import "base/list";
+@import "base/typography";
 
-// Utilities
-@import "utils/float";
-@import "utils/hideShow";
-@import "utils/radius";
-@import "utils/scrollbar";
-@import "utils/sprite";
-@import "utils/textAlign";
-@import "utils/textSize";
+// Layout components.
+@import "layouts/default";
+@import "layouts/utils";
 
-// Components
+// Custom compass sprites.
+@import "sprites/sprites";
+
+// Custom components.
 @import "components/banner";
 @import "components/block";
 @import "components/button";
-@import "components/comingSoon";
-@import "components/form";
+@import "components/coming-soon";
 @import "components/free";
-@import "components/layout";
-@import "components/list";
+@import "components/footer";
+@import "components/header";
+@import "components/inline-list";
 @import "components/loading";
 @import "components/media";
 @import "components/panel";
-@import "components/template";
-@import "components/typography";
+@import "components/scrollbar";
+@import "components/small-text";
+@import "components/social-links";
 
-// Now that all global styles have been applied, we can load styles that are
+// Now that all global styles have been applied, we can load components that are
 // defined in our apps directories.
 @import "../app/common/pager/pager.scss";
 @import "../app/common/playlist/playlist.scss";

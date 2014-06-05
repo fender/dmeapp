@@ -1,29 +1,8 @@
 /* ==========================================================================
-   Lists
+   Inline list
    ========================================================================== */
 
-ul,
-ol {
-  margin-bottom: 0.75em;
-
-  li {
-    ul,
-    ol {
-      list-style: inherit;
-      margin-bottom: 0;
-    }
-  }
-}
-
-ul {
-  margin-left: 1.2em;
-}
-
-ol {
-  margin-left: 1.5em;
-}
-
-.listInline {
+.inline-list {
   list-style: none;
   margin-left: 0;
 
@@ -35,8 +14,4 @@ ol {
       margin-right: 0;
     }
   }
-}
-
-.listNoBullets {
-  list-style: none;
 }

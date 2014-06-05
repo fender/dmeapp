@@ -1,72 +1,72 @@
-<div class="banner bannerTop bannerBlue" ng-show="showLibraryBanner()">
-  <div class="container">
+<div class="banner banner--top banner--blue" ng-show="showLibraryBanner()">
+  <div class="l-container">
     <h1>Library</h1>
     <p>Containing over 800 Drupal training videos, our library provides more Drupal content than anyone, anywhere. Find out why our users have racked up thousands of hours watching our premium Drupal training videos. Easy to follow learning paths are available, <a href="">try our guides</a>.</p>
-    <a href="" class="bannerClose" ng-click="closeLibraryBanner()">Close</a>
+    <a href="" class="banner__close" ng-click="closeLibraryBanner()">Close</a>
   </div>
 </div>
 
-<div class="container has-sidebar">
-	<div class="sidebar">
-    <div class="block panel panelPadded showMobile">
+<div class="l-container l-container--sidebar">
+	<div class="l-sidebar">
+    <div class="block panel panel--padded l-show-mobile">
       <a href="" ng-click="showFilters = !showFilters">Filters</a>
     </div>
 
-    <div class="block panel" ng-class="{'hideMobile': showFilters == undefined || !showFilters}">
-      <h5 class="libraryFiltersHeader">
+    <div class="block panel" ng-class="{'l-hide-mobile': showFilters == undefined || !showFilters}">
+      <h5 class="library__filters__header">
         Categories
-        <a href="" class="libraryFiltersClear floatRight" ng-click="resetTerms(params.categories)" ng-show="!loadingResults && (params.categories | selectedTerms).length">Clear</a>
+        <a href="" class="library__filters__clear l-float-right" ng-click="resetTerms(params.categories)" ng-show="!loadingResults && (params.categories | selectedTerms).length">Clear</a>
       </h5>
-      <div class="libraryFilters">
-        <label ng-repeat="category in params.categories" class="libraryFilter">
+      <div class="library__filters">
+        <label ng-repeat="category in params.categories" class="library__filters__filter">
             <input type="checkbox" ng-model="category.selected" ng-disabled="loadingResults">{{category.name}}
         </label>
       </div>
 
-      <h5 class="libraryFiltersHeader">
+      <h5 class="library__filters__header">
         Versions
-        <a href="" class="libraryFiltersClear floatRight" ng-click="resetTerms(params.versions)" ng-show="!loadingResults && (params.versions | selectedTerms).length">Clear</a>
+        <a href="" class="library__filters__clear l-float-right" ng-click="resetTerms(params.versions)" ng-show="!loadingResults && (params.versions | selectedTerms).length">Clear</a>
       </h5>
-      <div class="libraryFilters">
-        <label ng-repeat="version in params.versions" class="libraryFilter">
+      <div class="library__filters">
+        <label ng-repeat="version in params.versions" class="library__filters__filter">
             <input type="checkbox" ng-model="version.selected" ng-disabled="loadingResults">{{version.name}}
         </label>
       </div>
 
-      <h5 class="libraryFiltersHeader">
+      <h5 class="library__filters__header">
         More Options
-        <a href="" class="library-filters-clear floatRight" ng-click="resetOptions()" ng-show="!loadingResults && (params.not_watched || params.watched || params.closed_captions)">Clear</a>
+        <a href="" class="library-filters-clear l-float-right" ng-click="resetOptions()" ng-show="!loadingResults && (params.not_watched || params.watched || params.closed_captions)">Clear</a>
       </h5>
-      <div class="libraryFilters">
-        <label class="libraryFilter">
+      <div class="library__filters">
+        <label class="library__filters__filter">
             <input type="checkbox" ng-model="params.not_watched" ng-disabled="loadingResults">Not Watched
         </label>
-        <label class="libraryFilter">
+        <label class="library__filters__filter">
             <input type="checkbox" ng-model="params.watched" ng-disabled="loadingResults">Watched
         </label>
-        <label class="libraryFilter">
+        <label class="library__filters__filter">
             <input type="checkbox" ng-model="params.closed_captions" ng-disabled="loadingResults">Closed Captions
         </label>
       </div>
     </div>
 
-    <div class="libraryGuides block panel panelPadded hideMobile">
+    <div class="library__guides block panel panel--padded l-hide-mobile">
       <h4>Guides</h4>
       <p>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.
       </p>
-      <a class="btn btnPrimary">Explore Guides</a>
+      <a class="button button--primary">Explore Guides</a>
     </div>
   </div>
 
-  <div class="content contentlibrary">
+  <div class="l-content l-content--library">
     <div class="panel">
-      <div class="panelHeader">
-        <div class="floatLeft" ng-show="results.items">
-          <span class="hideMobile">Showing</span> {{firstResult()}} - {{lastResult()}} of {{results.pager_total_items}} series
+      <div class="panel__header">
+        <div class="l-float-left" ng-show="results.items">
+          <span class="l-hide-mobile">Showing</span> {{firstResult()}} - {{lastResult()}} of {{results.pager_total_items}} series
         </div>
 
-        <div class="floatRight">
+        <div class="l-float-right">
           <label>Sort by</label>
           <select ng-model="params.sort">
             <option value="created">Release date</option>
@@ -82,17 +82,19 @@
       </div>
 
       <div class="loading" ng-show="loadingResults">Loading...</div>
-      <div class="libraryStatus" ng-show="!loadingResults && !results.items">No results found.</div>
-      <div class="mediaList" ng-show="results.items">
+      <div class="library__status" ng-show="!loadingResults && !results.items">No results found.</div>
+      <div class="media__list" ng-show="results.items">
         <div class="media" ng-repeat="item in results.items">
           <a href="{{item.url}}" target="_self">
-            <img class="mediaObject" ng-src="{{item.screenshot}}">
+            <img class="media__object" ng-src="{{item.screenshot}}">
           </a>
-          <div class="mediaBody">
-            <h4 class="mediaTitle">
+          <div class="media__body">
+            <h4 class="media__title">
               <a href="{{item.url}}" target="_self">{{item.title}}</a>
+              <span class="" ng-show="item.cc">CC</span>
+              <span class="" ng-show="item.hd">HD</span>
             </h4>
-            <div class="mediaSubtitle">
+            <div class="media__subtitle">
               <span ng-repeat="tid in item.categories">
                 {{params.categories[tid].name}}{{!$last || $last && item.versions ? ', ' : ''}}
               </span>
@@ -100,13 +102,13 @@
                 {{params.versions[tid].name}}{{!$last ? ', ' : ''}}
               </span>
             </div>
-            <p class="mediaDescription">
+            <p class="media__description">
               {{item.description.summary | limitTo: 120}}{{item.description.summary.length > 120 ? '...' : ''}}
             </p>
-            <ul class="mediaLinks listInline">
+            <ul class="media__links">
               <li>
                 <a href="" ng-click="showPlaylist = showPlaylist ? false : true">{{item.videos.length}} videos</a>
-                <em class="mediaWatchedCount" ng-show="item.watched_count">({{item.watched_count}} watched)</em>
+                <em class="media__watched-count" ng-show="item.watched_count">({{item.watched_count}} watched)</em>
               </li>
               <li>
                 <dme-queue node-id="item.nid" in-queue="item.queued"></dme-queue>
@@ -114,7 +116,7 @@
             </ul>
           </div>
           <div ng-if="showPlaylist != undefined">
-            <dme-playlist playlist-id="item.nid" ng-show="showPlaylist" class="playlistDark"></dme-playlist>
+            <dme-playlist playlist-id="item.nid" ng-show="showPlaylist" class="playlist--dark"></dme-playlist>
           </div>
         </div>
       </div>

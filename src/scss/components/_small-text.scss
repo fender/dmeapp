@@ -1,11 +1,7 @@
 /* ==========================================================================
-   Floating
+   Text size
    ========================================================================== */
 
-.floatLeft {
-  float: left !important;
-}
-
-.floatRight {
-  float: right !important;
+.small-text {
+  font-size: $smallFontSize;
 }

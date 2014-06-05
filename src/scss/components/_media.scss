@@ -2,7 +2,7 @@
    Media objects
    ========================================================================== */
 
-.mediaList {
+.media__list {
 	padding: 1em;
 }
 
@@ -19,36 +19,37 @@
 	}
 }
 
-.mediaObject {
+.media__object {
 	display: block;
 	float: left;
 	margin-bottom: 1em;
 	width: 100px;
 }
 
-.mediaBody {
+.media__body {
 	margin-left: 100px;
 	padding-left: 1em;
 }
 
-.mediaTitle {
+.media__title {
 	margin: 0;
 }
 
-.mediaSubtitle {
-	@extend .txtSmall;
+.media__subtitle {
+	@extend .small-text;
 	color: $lightCharcoal;
 	font-style: italic;
 }
 
-.mediaDescription {
-	@extend .txtSmall;
+.media__description {
+	@extend .small-text;
 	line-height: 1.4em;
 	margin-bottom: 0.25em;
 }
 
-.mediaLinks {
-	@extend .txtSmall;
+.media__links {
+	@extend .small-text;
+	@extend .inline-list;
 	margin: 0;
 
 	a {
@@ -56,26 +57,26 @@
 	}
 }
 
-.mediaWatchedCount {
+.media__watched-count {
 	color: $green;
 }
 
-@include breakpoint($breakpointSmall) {
-	.mediaObject {
+@include breakpoint($smallBreakpoint) {
+	.media__object {
 		width: 150px;
 	}
 
-	.mediaBody {
+	.media__body {
 		margin-left: 150px;
 	}
 }
 
-@include breakpoint($breakpointMedium) {
-	.mediaObject {
+@include breakpoint($mediumBreakpoint) {
+	.media__object {
 		width: 200px;
 	}
 
-	.mediaBody {
+	.media__body {
 		margin-left: 200px;
 	}
 }

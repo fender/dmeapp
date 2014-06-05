@@ -18,20 +18,20 @@
     }
   }
 
-  > .container {
+  > .l-container {
     position: relative;
   }
 }
 
-.bannerTop {
+.banner--top {
   margin-top: -2.5em;
 }
 
-.bannerBlue {
+.banner--blue {
   background: $blue;
 }
 
-.bannerClose {
+.banner__close {
   position: absolute;
   top: 0;
   right: 1em;

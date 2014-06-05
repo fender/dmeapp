@@ -1,0 +1,25 @@
+/* ==========================================================================
+   Layout utility components.
+   ========================================================================== */
+
+.l-float-left {
+  float: left !important;
+}
+
+.l-float-right {
+  float: right !important;
+}
+
+.l-hide-mobile {
+  display: none;
+}
+
+@include breakpoint($mediumBreakpoint) {
+  .l-hide-mobile {
+    display: inline-block !important;
+  }
+
+  .l-show-mobile {
+    display: none !important;
+  }
+}

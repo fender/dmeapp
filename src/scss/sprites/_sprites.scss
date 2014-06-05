@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Sprite
+   Compiles images into compass sprites.
    ========================================================================== */
 
 // This mixin initializes retina sprite maps so that they overwrite the default
@@ -28,3 +28,9 @@
     }
   }
 }
+
+// Global sprite.
+@import "template/*.png";
+@import "template2x/*.png";
+@include all-template-sprites;
+@include all-retina-sprites($template-sprites, $template2x-sprites);

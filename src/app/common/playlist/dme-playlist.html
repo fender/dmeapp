@@ -1,17 +1,17 @@
-<div class="playlistHeader" ng-show="headerText">{{headerText}}</div>
-<div class="playlistContent">
-	<div class="playlistLoading" ng-show="loadingResults">Loading...</div>
+<div class="playlist__header" ng-show="headerText">{{headerText}}</div>
+<div class="playlist__content">
+	<div class="playlist__loading" ng-show="loadingResults">Loading...</div>
 	<ul class="playlist">
-		<li ng-repeat="item in results.items">
-			<a ng-href="{{item.coming_soon ? null : item.url}}" target="_self">
-				<span class="playlistCount">{{$index + 1}}</span>
-				<span class="playlistTitle">{{item.title}}</span>
-				<span class="comingSoon" ng-show="item.coming_soon">Coming Soon</span>
-				<div class="playlistMeta">
+		<li class="playlist__item" ng-repeat="item in results.items">
+			<a class="playlist__item__link" ng-href="{{item.coming_soon ? null : item.url}}" target="_self">
+				<span class="playlist__item__count">{{$index + 1}}</span>
+				<span class="playlist__item__title">{{item.title}}</span>
+				<span class="coming-soon" ng-show="item.coming_soon">Coming Soon</span>
+				<div class="playlist__item__meta">
 					<span class="free" ng-show="item.is_free">FREE</span>
-					<span class="playlistProgress"></span>
+					<span class="playlist__item__progress"></span>
 				</div>
-				<span class="playlistDuration">{{item.total_time}}</span>
+				<span class="playlist__item__duration">{{item.total_time}}</span>
 			</a>
 		</li>
 	</ul>

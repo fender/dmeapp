@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Drupalize.Me</title>
-    <link rel="stylesheet" href="css/main.css?<!-- @echo VERSION -->"/>
+    <link rel="stylesheet" href="css/styles.css?<!-- @echo VERSION -->"/>
     <!-- @if OFFLINE=false -->
     <script type="text/javascript" src="//use.typekit.net/fuf6cds.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -13,15 +13,15 @@
   </head>
   <body ng-app="dmeApp">
     <header class="header">
-      <div class="container">
-        <div class="floatLeft">
-          <a class="logo template-logo" href="/" target="_self">Drupalize.Me</a>
+      <div class="l-container">
+        <div class="l-float-left">
+          <a class="header__logo template-logo" href="/" target="_self">Drupalize.Me</a>
         </div>
-        <div class="responsiveMenu floatRight">
+        <div class="header__mobile-menu">
           <a href="#" ng-click="toggleNav = !toggleNav" ng-init="toggleNav = false">Menu</a>
         </div>
         <nav ng-controller="NavController">
-          <ul class="menu listNoBullets" ng-class="{ open: toggleNav }">
+          <ul class="header__menu" ng-class="{ open: toggleNav }">
             <li>
               <a href="/" target="_self" ng-class="{ active: linkIsActive('/') }">Home</a>
             </li>
@@ -47,11 +47,11 @@
       </div>
     </header>
 
-    <main role="main" class="main" ng-view></main>
+    <main role="main" class="l-main" ng-view></main>
 
-    <footer class="footer txtC">
-      <div class="container">
-        <ul class="footerMenu listNoBullets">
+    <footer class="footer">
+      <div class="l-container">
+        <ul class="footer__menu">
           <li>
             <a href="/about" target="_self">About</a>
           </li>
@@ -80,7 +80,7 @@
             <a href="/contact" target="_self">Contact us</a>
           </li>
         </ul>
-        <ul class="socialLinks listNoBullets">
+        <ul class="social-links">
           <li><a class="template-drupal" href="https://drupal.org/marketplace/drupalizeme" alt="Drupal.org" target="_blank">Drupal.org</a></li>
           <li><a class="template-twitter" href="http://twitter.com/drupalizeme" alt="Twitter" target="_blank">Twitter</a></li>
           <li><a class="template-facebook" href="https://www.facebook.com/pages/Drupalizeme/226965084026508" alt="Facebook" target="_blank">Facebook</a></li>
@@ -88,7 +88,7 @@
           <li><a class="template-itunes" href="https://itunes.apple.com/us/podcast/lullabot-lullabot-podcast/id117672529" alt="iTunes" target="_blank">iTunes</a></li>
           <li><a class="template-rss" href="/blog/rss" target="_self" alt="RSS">RSS</a></li>
         </ul>
-        <div class="copyright">© Copyright 2014 Lullabot. All rights reserved.</div>
+        <div class="small-text">© Copyright 2014 Lullabot. All rights reserved.</div>
       </div>
     </footer>
     <!-- @if OFFLINE=false -->

@@ -1,0 +1,36 @@
+/* ==========================================================================
+  This file initializes our applications custom variables and mixins.
+  ========================================================================== */
+
+// Color variables (Taken from our brand guide)
+$white: #fff;
+$charcoal: #333;
+$lightCharcoal: #666;
+$lightestCharcoal: #999;
+$blue: #137cc1;
+$darkBlue: #00293f;
+$orange: #fd7037;
+$silver: #f5f5f5;
+$silverBorder: #e6e6e6;
+$green: #00be4c;
+$red: #c60e00;
+
+// Font variables
+$bodyFontFamily: "proxima-nova", Helvetica, Arial, Tahoma, sans-serif;
+$bodyFontSize: 16px;
+$smallFontSize: 0.875em;
+$lineHeight: 1.6;
+
+// Layout variables
+$siteWidth: 67.5em; // 1080px
+$smallBreakpoint: 30em; // 480px, breakpoint for small screen widths.
+$mediumBreakpoint: 48em; // 768px, breakpoint for medium screen widths.
+
+// Other variables
+$globalRadius: 5px;
+
+// Hack that allows us to cloak elements until AngularJS has loaded.
+// See https://docs.angularjs.org/api/ng/directive/ngCloak
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

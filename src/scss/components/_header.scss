@@ -1,27 +1,22 @@
 /* ==========================================================================
-   Drupalize.Me template
+   Header
    ========================================================================== */
 
-// We sprite any images that appear on every page.
-@import "template/*.png";
-@import "template2x/*.png";
-@include all-template-sprites;
-@include all-retina-sprites($template-sprites, $template2x-sprites);
-
-// Base styles.
-html,
-body {
-  background: $silver;
-}
-
-// Header section.
 .header {
   background: $white;
   border-bottom: 1px solid $silverBorder;
   padding: 1em 0;
 }
 
-.menu {
+.header__logo {
+  display: block;
+  height: 38px;
+  overflow: hidden;
+  text-indent: -9999px;
+  width: 177px;
+}
+
+.header__menu {
   clear: left;
   display: none;
   margin: 0;
@@ -46,15 +41,8 @@ body {
   }
 }
 
-.logo {
-  display: block;
-  height: 38px;
-  overflow: hidden;
-  text-indent: -9999px;
-  width: 177px;
-}
-
-.responsiveMenu {
+.header__mobile-menu {
+  float: right;
   margin-top: 0.5em;
 
   a {
@@ -79,63 +67,13 @@ body {
   }
 }
 
-// Main content section.
-.main {
-  background: $silver;
-  padding: 2em 0;
-}
-
-// Footer section.
-.footer {
-  background: $silver;
-  border-top: 1px solid $silverBorder;
-  padding: 2em 0;
-}
-
-.copyright {
-  font-size: 0.8em;
-}
-
-.socialLinks {
-  height: 25px;
-  margin: 2em 0;
-
-  li {
-    display: inline-block;
-  }
-
-  a {
-    display: block;
-    height: 25px;
-    overflow: hidden;
-    text-indent: -99999px;
-    width: 25px;
-
-    &:hover {
-      @include opacity(0.8);
-    }
-  }
-}
-
-.footerMenu {
-  margin: 0;
-
-  li {
-    a {
-      display: block;
-      font-weight: normal;
-      padding: 0.5em 0;
-    }
-  }
-}
-
 // Responsive layout.
-@include breakpoint($breakpointMedium) {
+@include breakpoint($mediumBreakpoint) {
   .header {
     padding: 2em 0;
   }
 
-  .menu {
+  .header__menu {
     clear: none;
     display: block;
     float: right;
@@ -161,32 +99,7 @@ body {
     }
   }
 
-  .responsiveMenu {
+  .header__mobile-menu {
     display: none;
-  }
-
-  .footerMenu {
-    li {
-      display: inline-block;
-
-      a {
-        font-size: 0.9em;
-        padding: 0;
-
-        &:after {
-          content: '//';
-          color: $silverBorder;
-          margin: 0 0.5em;
-        }
-      }
-
-      &:last-child {
-        a {
-          &:after {
-            content: '';
-          }
-        }
-      }
-    }
   }
 }

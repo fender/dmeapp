@@ -22,10 +22,7 @@ Here is a quick run down on the file structure of this repository.
     * `/app.js` - This is our app launcher script. It initializes all of our components.
     * `/index.html` - The route web page for our app.
   * `/assets` - Any assets to be used in the app, such as images, should be placed here.
-  * `/scss` - Contains our Sass. The root folder contains our initializer and variables.
-    * `/utils` - Utility style is defined here.
-    * `/components` - All component building blocks are defined here.
-    * `/sprites` - Sprite image files are separated by sprite map name. Compass uses each folder to create a sprite image.
+  * `/scss` - Contains our Sass. `styles.scss` is responsible for loading all sass files. See below for further details.
   * `vendor` - Contains all vendor packages that are installed via [Bower](http://bower.io/). Hands off!
   * `Gruntfile.js` - This file tells Grunt about our automated workflows.
   * `bower.json` - Contains the vendor packages that our app requires. Bower uses this file to install/update packages.
@@ -81,16 +78,33 @@ For our vendor packages (front-end assets that we want to include in our app) we
 
 `bower install <package_name> --save`
 
-#### Coding standards
+#### CSS Coding Standards
 
-We write our CSS using [Sass](http://sass-lang.com/), [Compass](http://compass-style.org/) and [Susy](http://susy.oddbird.net/). You should probably know how all of those work before attempting to write any SCSS! We do not strictly follow [OOCSS](https://github.com/stubbornella/oocss/wiki) or [SMACSS](http://smacss.com/) but instead learn lessons from both.
+We write our CSS using [Sass](http://sass-lang.com/), [Compass](http://compass-style.org/) and [Susy](http://susy.oddbird.net/). You should probably know how all of those work before attempting to write any SCSS! We do not strictly follow [OOCSS](https://github.com/stubbornella/oocss/wiki) or [SMACSS](http://smacss.com/) but I highly recommend understanding their concepts first.
+
+We write our CSS and organize our files based closely on the principles outlined in "Managing Complex Projects with Design Components" by John Albin at DrupalCon Ausitn 2014 ([video](https://www.youtube.com/watch?v=q1Ia9XtJ878&feature=youtu.be), [slides](http://www.slideshare.net/JohnAlbin/managing-design)).
+
+**Directory structure**
+
+* `/base` - Styles for base html components (e.g. `<p>` or `<ul>`)
+* `/components` - Filenames match component class names (eg. `.button` style is found in `_button.scss`)
+* `/layouts` - Grid layout definitions and utilities (e.g. floating elements or hiding on mobile)
+* `/sprites` - Images to be sprited with Compass. `styles.scss` is responsible for initializing sprites.
+
+**Syntax**
 
 When writing SCSS in this app, follow these coding standards:
 * Write as little new style as possible. Re-use components.
-* Define selectors and variables in lowerCamelCase.
+* Define variables in lowerCamelCase.
 * Use soft-tabs with a two space indent.
 * Put spaces after `:` in property declarations.
 * Put spaces before `{` in rule declarations.
 * Use hex color codes #000 unless using rgba.
+* Name component classes like `.my-component`.
+* Name elements within components like `.my-component__element-name`.
+* When modifiying a class use `--` like `.my-component--modifier-name`.
+* When the state of an element is changed with JS, toggle a class like `.is-open`.
+
+#### JS Coding Standards
 
 We follow the [AngularJS Style Guide](https://google-styleguide.googlecode.com/svn/trunk/angularjs-google-style.html) which implements and extends the [Google Javascript Style Guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml).

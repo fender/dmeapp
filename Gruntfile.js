@@ -36,7 +36,7 @@ module.exports = function(grunt) {
      * with our app's assets. This structure is flattened, so it is not
      * recommended that you use wildcards.
      *
-     * Any vendor SCSS to be compiled is defined in `src/scss/main.scss`.
+     * Any vendor SCSS to be compiled is defined in `src/scss/styles.scss`.
      */
     vendor_files: {
       js: [],

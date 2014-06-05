@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Typography
+   Typography base styles.
    ========================================================================== */
 
 // Typography resets
@@ -22,8 +22,8 @@ p,
 blockquote,
 th,
 td {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
 // Base font styles
@@ -61,7 +61,7 @@ h5,
 h6 {
   color: $charcoal;
   font-weight: bold;
-  margin: 0.2em 0 0.5em;
+  margin: 0 0 0.5em;
 }
 
 h1 {
@@ -86,11 +86,6 @@ h5 {
 
 h6 {
   font-size: 0.875em;
-}
-
-.lightHeader {
-  color: $charcoal;
-  font-weight: normal;
 }
 
 // Paragraphs
