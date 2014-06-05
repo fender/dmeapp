@@ -91,6 +91,8 @@ We write our CSS and organize our files based closely on the principles outlined
 * `/layouts` - Grid layout definitions and utilities (e.g. floating elements or hiding on mobile)
 * `/sprites` - Images to be sprited with Compass. `styles.scss` is responsible for initializing sprites.
 
+Styles can also be defined in subdirectories under `src/app/components`. An example of this is the library page components. However, wherever possible, we should try to standardize components to be re-usable by placing them into the `src/scss/components` directory.
+
 **Syntax**
 
 When writing SCSS in this app, follow these coding standards:
