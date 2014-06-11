@@ -142,6 +142,8 @@ module.exports = function(grunt) {
           imagesDir: 'src/scss/sprites',
           generatedImagesDir: 'src/assets',
           httpGeneratedImagesPath: '../assets',
+          fontsDir: 'src/assets/fonts',
+          httpFontsDir: '../assets/fonts',
         }
       },
       prod: {
@@ -153,6 +155,8 @@ module.exports = function(grunt) {
           imagesDir: 'src/scss/sprites',
           generatedImagesDir: 'src/assets',
           httpGeneratedImagesPath: '../assets',
+          fontsDir: 'src/assets/fonts',
+          httpFontsDir: '../assets/fonts',
         }
       },
     },

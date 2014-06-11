@@ -3,13 +3,20 @@
    ========================================================================== */
 
 .queue-link {
+  display: inline-block;
 
-}
+  &.dme-font-plus:hover:before {
+    color: $green;
+  }
 
-.queue-links--add {
+  &.dme-font-check {
+    &:before {
+      color: $green;
+    }
 
-}
-
-.queue-link--remove {
-
+    &:hover:before {
+      color: $red;
+      content: "\e014";
+    }
+  }
 }

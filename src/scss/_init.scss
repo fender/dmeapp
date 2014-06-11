@@ -6,7 +6,7 @@
 $white: #fff;
 $charcoal: #333;
 $lightCharcoal: #666;
-$lightestCharcoal: #999;
+$lightestCharcoal: #cccccc;
 $blue: #137cc1;
 $darkBlue: #00293f;
 $orange: #fd7037;
@@ -23,8 +23,11 @@ $lineHeight: 1.6;
 
 // Layout variables
 $siteWidth: 67.5em; // 1080px
+
+// Breakpoints
 $smallBreakpoint: 30em; // 480px, breakpoint for small screen widths.
 $mediumBreakpoint: 48em; // 768px, breakpoint for medium screen widths.
+$retinaBreakpoint: min-resolution 2.0dppx;
 
 // Other variables
 $globalRadius: 5px;

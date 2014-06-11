@@ -6,20 +6,24 @@
   margin-bottom: 2.5em;
   padding: 2.5em 0;
 
+  > .l-container {
+    position: relative;
+  }
+
   h1, p, a {
     color: $white;
   }
 
-  a {
-    text-decoration: underline;
+  p {
+    margin-bottom: 0;
 
-    &:hover {
-      color: $orange;
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        color: $orange;
+      }
     }
-  }
-
-  > .l-container {
-    position: relative;
   }
 }
 
@@ -32,7 +36,13 @@
 }
 
 .banner__close {
+  @include opacity(0.7);
+  font-size: 1.3em;
   position: absolute;
   top: 0;
   right: 1em;
+
+  &:hover {
+    @include opacity(1.0);
+  }
 }

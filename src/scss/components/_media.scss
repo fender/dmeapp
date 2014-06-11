@@ -21,14 +21,44 @@
 
 .media__object {
 	display: block;
-	float: left;
 	margin-bottom: 1em;
-	width: 100px;
-}
+	position: relative;
+	width: 100%;
 
-.media__body {
-	margin-left: 100px;
-	padding-left: 1em;
+	&:hover .dme-font-play:before {
+		@include opacity(1.0);
+		background-color: $orange;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+	}
+
+	.dme-font-play {
+		left: 50%;
+		margin-left: -24px;
+		margin-top: -10px;
+		position: absolute;
+		top: 50%;
+
+		&:before {
+			padding: 0.5em 1em;
+		}
+	}
+
+	.media__object__labels i {
+		position: absolute;
+		right: 0.5em;
+
+		&:first-child {
+			top: 0.5em;
+		}
+
+		&:last-child {
+			top: 2em;
+		}
+	}
 }
 
 .media__title {
@@ -54,6 +84,16 @@
 
 	a {
 		color: $lightCharcoal;
+		display: inline-block;
+
+		&:before {
+			color: $lightestCharcoal;
+			font-size: 1.1em;
+		}
+
+		&:hover:before {
+			color: $lightCharcoal;
+		}
 	}
 }
 
@@ -63,11 +103,13 @@
 
 @include breakpoint($smallBreakpoint) {
 	.media__object {
+		float: left;
 		width: 150px;
 	}
 
 	.media__body {
 		margin-left: 150px;
+		padding-left: 1em;
 	}
 }
 

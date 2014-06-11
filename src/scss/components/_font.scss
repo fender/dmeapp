@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Defines our custom webfont icons.
+   ========================================================================== */
+
+@include font-face("dme-font", font-files("dme-font.woff", "dme-font.ttf", "dme-font.svg#dme-font"), "dme-font.eot");
+
+// Use this mixin to apply a specific font icon and color.
+@mixin dme-font($char, $color) {
+  &:before {
+    font-family: "dme-font" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: $char;
+    color: $color;
+  }
+}
+
+// Apply this to elements that place a font icon beside text.
+.font--inline:before {
+  margin-right: 0.5em;
+  vertical-align: -0.2em;
+}
+
+// Adds a dark blue rounded box around icons.
+.font--box {
+  line-height: 1;
+
+  &:before {
+    @include border-radius($globalRadius);
+    @include opacity(0.7);
+    background: $darkBlue;
+    color: $white;
+    padding: 0.1em 0.25em;
+  }
+}
+
+// Style below this point is is generated automatically via Fontastic and
+// shouldn't be altered manually.
+[data-icon]:before {
+  font-family: "dme-font" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="dme-font-"]:before,
+[class*=" dme-font-"]:before {
+  font-family: "dme-font" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dme-font-plus:before {
+  content: "\e000";
+}
+.dme-font-plus-alternative:before {
+  content: "\e002";
+}
+.dme-font-search:before {
+  content: "\e003";
+}
+.dme-font-cc:before {
+  content: "\e005";
+}
+.dme-font-check:before {
+  content: "\e006";
+}
+.dme-font-cross:before {
+  content: "\e007";
+}
+.dme-font-rss:before {
+  content: "\e008";
+}
+.dme-font-check-empty:before {
+  content: "\e009";
+}
+.dme-font-twitter:before {
+  content: "\e00a";
+}
+.dme-font-arrow-up:before {
+  content: "\e00b";
+}
+.dme-font-arrow-down:before {
+  content: "\e00c";
+}
+.dme-font-dme:before {
+  content: "\e00d";
+}
+.dme-font-eye:before {
+  content: "\e00e";
+}
+.dme-font-drupal:before {
+  content: "\e00f";
+}
+.dme-font-google:before {
+  content: "\e010";
+}
+.dme-font-facebook:before {
+  content: "\e011";
+}
+.dme-font-hd:before {
+  content: "\e012";
+}
+.dme-font-itunes:before {
+  content: "\e013";
+}
+.dme-font-minus:before {
+  content: "\e014";
+}
+.dme-font-category:before {
+  content: "\e001";
+}
+.dme-font-play:before {
+  content: "\e015";
+}
