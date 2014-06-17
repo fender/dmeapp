@@ -9,6 +9,7 @@
 				<span class="coming-soon" ng-show="item.coming_soon">Coming Soon</span>
 				<div class="playlist__item__meta">
 					<span class="free" ng-show="item.is_free">FREE</span>
+					<span class="watched" ng-show="item.watched">{{item.watched_percent}}% watched</span>
 					<span class="playlist__item__progress"></span>
 				</div>
 				<span class="playlist__item__duration">{{item.total_time}}</span>

@@ -51,12 +51,12 @@
 		position: absolute;
 		right: 0.5em;
 
-		&:first-child {
-			top: 0.5em;
-		}
-
 		&:last-child {
 			top: 2em;
+		}
+
+		&:first-child {
+			top: 0.5em;
 		}
 	}
 }
