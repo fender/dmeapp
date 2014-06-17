@@ -4,7 +4,7 @@
 
 Before using this application you'll want to make sure you have all the required dependencies. Here is a quick guide on getting started.
 
-1. Install [Node](http://nodejs.org/), `brew install node`.
+1. Install the latest version of [Node](http://nodejs.org/), `brew install node`.
 2. Install [Bundler](http://bundler.io) `gem install bundler`
 3. Clone this repository and navigate to the root.
 4. Install required node packages, `npm install`.
