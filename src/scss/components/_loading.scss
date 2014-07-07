@@ -4,13 +4,14 @@
 
 .loading {
   @include box-shadow(0 0 5px $silver);
-  background: $silver;
+  background: url('../assets/progress.gif') no-repeat center center $silver;
   border: 1px solid $silverBorder;
   font-weight: bold;
+  height: 100px;
   left: 50%;
   margin: 1em 0 0 -25px;
   padding: 1em;
   position: absolute;
   text-align: center;
-  width: 7em;
+  width: 100px;
 }
