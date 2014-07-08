@@ -22,6 +22,7 @@ angular.module('dmeApp.queue', [])
         };
 
         var result = Api.Flag.save(params, function() {
+          // TODO implement queue functionality.
           console.log(result);
         });
       };
