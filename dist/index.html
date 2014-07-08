@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Drupalize.Me</title>
+    <link rel="stylesheet" href="css/styles.css?v0.0.0"/>
+    <script type="text/javascript" src="//use.typekit.net/fuf6cds.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  </head>
+  <body ng-app="dmeApp">
+    <header class="header">
+      <div class="l-container">
+        <div class="l-float-left">
+          <a class="header__logo" href="/" target="_self">Drupalize.Me</a>
+        </div>
+        <div class="header__mobile-menu">
+          <a href="#" ng-click="toggleNav = !toggleNav" ng-init="toggleNav = false">Menu</a>
+        </div>
+        <nav ng-controller="NavController">
+          <ul class="header__menu" ng-class="{ open: toggleNav }">
+            <li>
+              <a href="/" target="_self" ng-class="{ active: linkIsActive('/') }">Home</a>
+            </li>
+            <li>
+              <div ng-switch on="user.loggedIn" ng-cloak>
+                <a href="/user" target="_self" ng-switch-when="true">Account</a>
+              </div>
+            </li>
+            <li>
+              <a href="/videos" ng-class="{ active: linkIsActive('/videos') }">Library</a>
+            </li>
+            <li>
+              <a href="/blog" target="_self">Blog</a>
+            </li>
+            <li>
+              <div ng-switch on="user.loggedIn" ng-cloak>
+                <a href="/user/login" target="_self" ng-switch-when="false">Log in</a>
+                <a href="/user/logout" target="_self" ng-switch-when="true">Logout</a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main" class="l-main" ng-view></main>
+
+    <footer class="footer">
+      <div class="l-container">
+        <ul class="footer__menu">
+          <li>
+            <a href="/about" target="_self">About</a>
+          </li>
+          <li>
+            <a href="/apps" target="_self">Apps</a>
+          </li>
+          <li>
+            <a href="/gift-certificates" target="_self">Gift Certificates</a>
+          </li>
+          <li>
+            <a href="/faq" target="_self">FAQ</a>
+          </li>
+          <li>
+            <a href="/help" target="_self">Help</a>
+          </li>
+          <li>
+            <a href="/affiliates" target="_self">Affiliate Program</a>
+          </li>
+          <li>
+            <a href="/privacy" target="_self">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="/terms-conditions" target="_self">Legal</a>
+          </li>
+          <li>
+            <a href="/contact" target="_self">Contact us</a>
+          </li>
+        </ul>
+        <ul class="social-links">
+          <li><a class="dme-font-drupal" href="https://drupal.org/marketplace/drupalizeme" alt="Drupal.org" target="_blank"></a></li>
+          <li><a class="dme-font-twitter" href="http://twitter.com/drupalizeme" alt="Twitter" target="_blank"></a></li>
+          <li><a class="dme-font-facebook" href="https://www.facebook.com/pages/Drupalizeme/226965084026508" alt="Facebook" target="_blank"></a></li>
+          <li><a class="dme-font-google" href="https://plus.google.com/104131087331701396621/posts" alt="Google+" title="Google+" target="_blank"></a></li>
+          <li><a class="dme-font-itunes" href="https://itunes.apple.com/us/podcast/lullabot-lullabot-podcast/id117672529" alt="iTunes" target="_blank"></a></li>
+          <li><a class="dme-font-rss" href="/blog/rss" target="_self" alt="RSS"></a></li>
+        </ul>
+        <div class="small-text">© Copyright 2014 Lullabot. All rights reserved.</div>
+      </div>
+    </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
+    <script type="text/javascript" src="js/dmeapp.js?v0.0.0"></script>
+  </body>
+</html>

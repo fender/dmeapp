@@ -1,6 +1,8 @@
 <div class="playlist__header" ng-show="headerText">{{headerText}}</div>
 <div class="playlist__content">
-	<div class="playlist__loading" ng-show="loadingResults">Loading...</div>
+	<div class="playlist__loading" ng-show="loadingResults">
+		<span>Loading...</span>
+	</div>
 	<ul class="playlist">
 		<li class="playlist__item" ng-repeat="item in results.items">
 			<a class="playlist__item__link" ng-href="{{item.coming_soon ? null : item.url}}" target="_self">

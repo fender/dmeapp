@@ -1,6 +1,6 @@
 {
   "name": "dmeapp",
-  "description": "The Drupalize.Me front-end application",
+  "description": "The Drupalize.Me front-end web application.",
   "homepage": "http://drupalize.me",
   "version": "0.0.0",
   "repository": "https://github.com/fender/dmeapp",

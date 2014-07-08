@@ -3,10 +3,9 @@
    ========================================================================== */
 
 .loading {
-  @include box-shadow(0 0 5px $silver);
-  background: url('../assets/progress.gif') no-repeat center center $silver;
-  border: 1px solid $silverBorder;
-  font-weight: bold;
+  @include border-radius($globalRadius);
+  @include opacity(0.95);
+  background: url('../assets/progress.gif') no-repeat center center #00293f;
   height: 100px;
   left: 50%;
   margin: 1em 0 0 -50px;

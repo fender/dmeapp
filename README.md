@@ -9,9 +9,8 @@ Before using this application you'll want to make sure you have all the required
 3. Clone this repository and navigate to the root.
 4. Install required node packages, `npm install`.
 5. Using Bundler, install required gems, `bundle install`.
-6. Run `grunt` to build and compile the app files with [Grunt](http://gruntjs.com/).
-7. In a separate terminal tab, run `grunt server` to start a local web server.
-8. Point your browser to `http://localhost:9000` and dance a little jig.
+6. Run `grunt server` to start a local web server.
+7. Point your browser to `http://localhost:9000` and dance a little jig.
 
 ### File structure
 
@@ -23,20 +22,18 @@ Here is a quick run down on the file structure of this repository.
     * `/index.html` - The route web page for our app.
   * `/assets` - Any assets to be used in the app, such as images, should be placed here.
   * `/scss` - Contains our Sass. `styles.scss` is responsible for loading all sass files. See below for further details.
-  * `vendor` - Contains all vendor packages that are installed via [Bower](http://bower.io/). Hands off!
   * `Gruntfile.js` - This file tells Grunt about our automated workflows.
   * `bower.json` - Contains the vendor packages that our app requires. Bower uses this file to install/update packages.
   * `.bowerrc` - Bower configuration file pointing to where installed packages exist.
   * `module.prefix` and `module.suffix` - Used to wrap around our AngularJS scripts to prevent conflicts.
   * `package.json` - Contains packaging info and Node module dependencies.
-
-There is also 2 directories you may notice that are not part of the git repo as they are added to our `.gitignore`.
 * `dist` - Compiled code ends up here. This is ultimately the folder that we serve clients.
+* `vendor` - Contains all vendor packages that are installed via [Bower](http://bower.io/).
 * `node_modules` - Required node modules are installed here.
 
 ### Development
 
-So you want to develop huh? Well you're in luck. Using Grunt, we've made it simple to automate the development workflow of a large front-end app such as this.
+So you want to develop huh? Well you're in luck. Using [Grunt](http://gruntjs.com/), we've made it simple to automate the development workflow of a large front-end app such as this.
 
 Running `grunt` in the root directory will build a development environment for dmeapp by going through the following steps.
 
