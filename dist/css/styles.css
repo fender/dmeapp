@@ -1176,9 +1176,6 @@ blockquote cite:before {
    ========================================================================== */
 /* line 5, ../../src/scss/components/_loading.scss */
 .loading {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
   -moz-box-shadow: 0 0 5px #cccccc;
   -webkit-box-shadow: 0 0 5px #cccccc;
   box-shadow: 0 0 5px #cccccc;
@@ -1193,7 +1190,7 @@ blockquote cite:before {
   z-index: 10;
 }
 
-/* line 20, ../../src/scss/components/_loading.scss */
+/* line 19, ../../src/scss/components/_loading.scss */
 .is-loading-content {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
@@ -1613,30 +1610,25 @@ blockquote cite:before {
 }
 
 /* line 13, ../../src/app/components/library/library.scss */
-.panel--library {
-  min-height: 187px;
-}
-
-/* line 17, ../../src/app/components/library/library.scss */
 .library__filters__header {
   color: white;
   background: #00293f;
   margin: 0;
   padding: 0.75em 1em;
 }
-/* line 23, ../../src/app/components/library/library.scss */
+/* line 19, ../../src/app/components/library/library.scss */
 .library__filters__header:before {
   color: #137cc1;
   font-size: 1.3em;
 }
 
-/* line 29, ../../src/app/components/library/library.scss */
+/* line 25, ../../src/app/components/library/library.scss */
 .library__filters__clear {
   color: white;
   font-weight: normal;
 }
 
-/* line 34, ../../src/app/components/library/library.scss */
+/* line 30, ../../src/app/components/library/library.scss */
 .library__filters {
   -moz-user-select: -moz-none;
   -ms-user-select: none;
@@ -1645,13 +1637,13 @@ blockquote cite:before {
   padding: 0.5em 1em;
 }
 
-/* line 39, ../../src/app/components/library/library.scss */
+/* line 35, ../../src/app/components/library/library.scss */
 .library__filters__filter {
   display: inline-block;
   padding: 0.25em 0;
   width: 100%;
 }
-/* line 44, ../../src/app/components/library/library.scss */
+/* line 40, ../../src/app/components/library/library.scss */
 .library__filters__filter input {
   display: none;
 }
@@ -1669,11 +1661,11 @@ blockquote cite:before {
   content: "\e006";
   color: #137cc1;
 }
-/* line 51, ../../src/app/components/library/library.scss */
+/* line 47, ../../src/app/components/library/library.scss */
 .library__filters__filter input:disabled + label:before {
   color: #cccccc;
 }
-/* line 56, ../../src/app/components/library/library.scss */
+/* line 52, ../../src/app/components/library/library.scss */
 .library__filters__filter label {
   cursor: pointer;
 }
@@ -1691,17 +1683,17 @@ blockquote cite:before {
   content: "\e009";
   color: #666666;
 }
-/* line 60, ../../src/app/components/library/library.scss */
+/* line 56, ../../src/app/components/library/library.scss */
 .library__filters__filter label:hover {
   color: #fd7037;
 }
 
 @media (min-width: 30em) {
-  /* line 67, ../../src/app/components/library/library.scss */
+  /* line 63, ../../src/app/components/library/library.scss */
   .banner--library {
     padding: 1.5em 0;
   }
-  /* line 70, ../../src/app/components/library/library.scss */
+  /* line 66, ../../src/app/components/library/library.scss */
   .banner--library > .l-container {
     background: url("../assets/library-banner.png") no-repeat left center;
     min-height: 200px;
@@ -1710,7 +1702,7 @@ blockquote cite:before {
     padding-top: 1.5em;
   }
 
-  /* line 79, ../../src/app/components/library/library.scss */
+  /* line 75, ../../src/app/components/library/library.scss */
   .library__guides {
     background: url("../assets/library-guides-bg.png") no-repeat bottom center white;
     border-top: 10px solid #137cc1;
@@ -1718,7 +1710,7 @@ blockquote cite:before {
   }
 }
 @media (min-resolution: 2dppx), (-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  /* line 87, ../../src/app/components/library/library.scss */
+  /* line 83, ../../src/app/components/library/library.scss */
   .banner--library > .l-container {
     -moz-background-size: contain;
     -o-background-size: contain;
@@ -1727,7 +1719,7 @@ blockquote cite:before {
     background-image: url("../assets/library-banner-2x.png");
   }
 
-  /* line 92, ../../src/app/components/library/library.scss */
+  /* line 88, ../../src/app/components/library/library.scss */
   .library__guides {
     -moz-background-size: contain;
     -o-background-size: contain;

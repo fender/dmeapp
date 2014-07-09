@@ -3,7 +3,6 @@
    ========================================================================== */
 
 .loading {
-  @include border-radius($globalRadius);
   @include box-shadow(0 0 5px $lightestCharcoal);
   background: url('../assets/progress.gif') no-repeat center center;
   border: 1px solid $silverBorder;
