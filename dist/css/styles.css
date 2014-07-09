@@ -1188,13 +1188,12 @@ blockquote cite:before {
   left: 50%;
   margin: -50px 0 0 -50px;
   position: fixed;
-  text-align: center;
   top: 50%;
   width: 100px;
   z-index: 10;
 }
 
-/* line 21, ../../src/scss/components/_loading.scss */
+/* line 20, ../../src/scss/components/_loading.scss */
 .is-loading-content {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
