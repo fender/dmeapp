@@ -200,7 +200,7 @@ module.exports = function(grunt) {
           'config.js',
           'src/app/**/*.js',
         ],
-        browsers: ['PhantomJS'],
+        browsers: ['phantomjs'],
         frameworks: ['jasmine'],
       },
       dev: {
