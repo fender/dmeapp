@@ -1,4 +1,4 @@
 .DS_Store
 .project
 .sass-cache/
-config.js
+/config.js

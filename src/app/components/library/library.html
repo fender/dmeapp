@@ -6,7 +6,9 @@
   </div>
 </div>
 
-<div class="l-container l-container--sidebar">
+<div class="loading" ng-show="loadingResults"></div>
+
+<div class="l-container l-container--sidebar" ng-class="{'is-loading-content': loadingResults}">
 	<div class="l-sidebar">
     <div class="block panel panel--padded l-show-mobile">
       <a href="" ng-click="showFilters = !showFilters">Filters</a>
@@ -86,7 +88,6 @@
         </div> -->
       </div>
 
-      <div class="loading" ng-show="loadingResults"></div>
       <div class="library__status" ng-show="!loadingResults && !results.items">No results found.</div>
       <div class="media__list" ng-show="results.items">
         <div class="media" ng-repeat="item in results.items">

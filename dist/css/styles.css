@@ -1179,15 +1179,25 @@ blockquote cite:before {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=95);
-  opacity: 0.95;
-  background: url("../assets/progress.gif") no-repeat center center #00293f;
+  -moz-box-shadow: 0 0 5px #cccccc;
+  -webkit-box-shadow: 0 0 5px #cccccc;
+  box-shadow: 0 0 5px #cccccc;
+  background: url("../assets/progress.gif") no-repeat center center;
+  border: 1px solid #e6e6e6;
   height: 100px;
   left: 50%;
-  margin: 1em 0 0 -50px;
-  position: absolute;
+  margin: -50px 0 0 -50px;
+  position: fixed;
   text-align: center;
+  top: 50%;
   width: 100px;
+  z-index: 10;
+}
+
+/* line 21, ../../src/scss/components/_loading.scss */
+.is-loading-content {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
 }
 
 /* ==========================================================================
