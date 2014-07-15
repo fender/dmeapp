@@ -4,15 +4,24 @@
 
 .loading {
   @include box-shadow(0 0 5px $lightestCharcoal);
-  background: url('../assets/progress.gif') no-repeat center center;
+  background: url('../assets/progress.gif') no-repeat center center $white;
   border: 1px solid $silverBorder;
+  color: $white;
+  font-size: $smallFontSize;
+  font-weight: bold;
   height: 100px;
   left: 50%;
   margin: -50px 0 0 -50px;
+  padding-top: 3em;
   position: fixed;
+  text-align: center;
   top: 50%;
   width: 100px;
   z-index: 10;
+
+  &:after {
+    content: 'Loading';
+  }
 }
 
 // Use this state for content to be temporarily dimmed whilst loading.

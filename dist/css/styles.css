@@ -1179,18 +1179,27 @@ blockquote cite:before {
   -moz-box-shadow: 0 0 5px #cccccc;
   -webkit-box-shadow: 0 0 5px #cccccc;
   box-shadow: 0 0 5px #cccccc;
-  background: url("../assets/progress.gif") no-repeat center center;
+  background: url("../assets/progress.gif") no-repeat center center white;
   border: 1px solid #e6e6e6;
+  color: white;
+  font-size: 0.875em;
+  font-weight: bold;
   height: 100px;
   left: 50%;
   margin: -50px 0 0 -50px;
+  padding-top: 3em;
   position: fixed;
+  text-align: center;
   top: 50%;
   width: 100px;
   z-index: 10;
 }
+/* line 22, ../../src/scss/components/_loading.scss */
+.loading:after {
+  content: 'Loading';
+}
 
-/* line 19, ../../src/scss/components/_loading.scss */
+/* line 28, ../../src/scss/components/_loading.scss */
 .is-loading-content {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
