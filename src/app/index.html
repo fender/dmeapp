@@ -25,11 +25,11 @@
             <li>
               <a href="/" target="_self" ng-class="{ active: linkIsActive('/') }">Home</a>
             </li>
-            <li>
-              <div ng-switch on="user.loggedIn" ng-cloak>
+            <span ng-switch on="user.loggedIn" ng-cloak>
+              <li>
                 <a href="/user" target="_self" ng-switch-when="true">Account</a>
-              </div>
-            </li>
+              </li>
+            </span>
             <li>
               <a href="/videos" ng-class="{ active: linkIsActive('/videos') }">Library</a>
             </li>

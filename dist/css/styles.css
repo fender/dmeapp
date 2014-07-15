@@ -1079,30 +1079,31 @@ blockquote cite:before {
 /* line 30, ../../src/scss/components/_header.scss */
 .header__menu li {
   border-bottom: 1px solid #e6e6e6;
+  list-style: none;
 }
-/* line 33, ../../src/scss/components/_header.scss */
+/* line 34, ../../src/scss/components/_header.scss */
 .header__menu li:last-child {
   border-bottom: none;
 }
-/* line 38, ../../src/scss/components/_header.scss */
+/* line 39, ../../src/scss/components/_header.scss */
 .header__menu a {
   display: block;
   font-size: 1.25em;
   padding: 0.5em 0;
 }
 
-/* line 45, ../../src/scss/components/_header.scss */
+/* line 46, ../../src/scss/components/_header.scss */
 .header__mobile-menu {
   float: right;
   margin-top: 0.5em;
 }
-/* line 49, ../../src/scss/components/_header.scss */
+/* line 50, ../../src/scss/components/_header.scss */
 .header__mobile-menu a {
   padding: 0.5em 1.5em 0 0;
   position: relative;
   text-transform: uppercase;
 }
-/* line 54, ../../src/scss/components/_header.scss */
+/* line 55, ../../src/scss/components/_header.scss */
 .header__mobile-menu a::after {
   content: '';
   display: block;
@@ -1117,38 +1118,38 @@ blockquote cite:before {
 }
 
 @media (min-width: 48em) {
-  /* line 73, ../../src/scss/components/_header.scss */
+  /* line 74, ../../src/scss/components/_header.scss */
   .header {
     padding: 2em 0;
   }
 
-  /* line 77, ../../src/scss/components/_header.scss */
+  /* line 78, ../../src/scss/components/_header.scss */
   .header__menu {
     clear: none;
     display: block;
     float: right;
     padding-top: 0;
   }
-  /* line 83, ../../src/scss/components/_header.scss */
+  /* line 84, ../../src/scss/components/_header.scss */
   .header__menu li {
     border-bottom: none;
     display: inline-block;
   }
-  /* line 88, ../../src/scss/components/_header.scss */
+  /* line 89, ../../src/scss/components/_header.scss */
   .header__menu a {
     border: 1px solid transparent;
     display: block;
     font-size: 1em;
     padding: 0.25em 1em;
   }
-  /* line 94, ../../src/scss/components/_header.scss */
+  /* line 95, ../../src/scss/components/_header.scss */
   .header__menu a.active, .header__menu a:hover {
     background: whitesmoke;
     border-color: #e6e6e6;
     color: #fd7037;
   }
 
-  /* line 103, ../../src/scss/components/_header.scss */
+  /* line 104, ../../src/scss/components/_header.scss */
   .header__mobile-menu {
     display: none;
   }

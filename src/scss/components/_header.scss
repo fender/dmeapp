@@ -29,6 +29,7 @@
 
   li {
     border-bottom: 1px solid $silverBorder;
+    list-style: none;
 
     &:last-child {
       border-bottom: none;
