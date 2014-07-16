@@ -69,6 +69,40 @@
   }
 }
 
+.header__search {
+  @include border-radius(1em);
+  background: $silver;
+  border: 1px solid $silverBorder;
+  float: right;
+  padding-left: 0.75em;
+  margin-left: 1em;
+
+  &:before {
+    font-size: $smallFontSize;
+    margin: 0;
+  }
+
+  &:hover input {
+    width: 10em;
+  }
+
+  form {
+    display: inline-block
+  }
+
+  input {
+    @include transition(width 0.5s ease-in);
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    width: 1em;
+
+    &:focus {
+      width: 10em;
+    }
+  }
+}
+
 // Responsive layout.
 @include breakpoint($mediumBreakpoint) {
   .header {

@@ -461,13 +461,14 @@ table {
    ========================================================================== */
 /* line 6, ../../src/scss/base/_form.scss */
 input[type=text] {
+  color: #333333;
   font-size: 0.9em;
   margin-bottom: 0.5em;
   padding: 0.5em;
   width: auto;
 }
 
-/* line 14, ../../src/scss/base/_form.scss */
+/* line 15, ../../src/scss/base/_form.scss */
 label + select {
   margin-left: 0.5em;
 }
@@ -1117,39 +1118,79 @@ blockquote cite:before {
   box-shadow: 0 10px 0 1px #137cc1, 0 16px 0 1px #137cc1, 0 22px 0 1px #137cc1;
 }
 
+/* line 72, ../../src/scss/components/_header.scss */
+.header__search {
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  background: whitesmoke;
+  border: 1px solid #e6e6e6;
+  float: right;
+  padding-left: 0.75em;
+  margin-left: 1em;
+}
+/* line 80, ../../src/scss/components/_header.scss */
+.header__search:before {
+  font-size: 0.875em;
+  margin: 0;
+}
+/* line 85, ../../src/scss/components/_header.scss */
+.header__search:hover input {
+  width: 10em;
+}
+/* line 89, ../../src/scss/components/_header.scss */
+.header__search form {
+  display: inline-block;
+}
+/* line 93, ../../src/scss/components/_header.scss */
+.header__search input {
+  -moz-transition: width 0.5s ease-in;
+  -o-transition: width 0.5s ease-in;
+  -webkit-transition: width 0.5s ease-in;
+  transition: width 0.5s ease-in;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  width: 1em;
+}
+/* line 100, ../../src/scss/components/_header.scss */
+.header__search input:focus {
+  width: 10em;
+}
+
 @media (min-width: 48em) {
-  /* line 74, ../../src/scss/components/_header.scss */
+  /* line 108, ../../src/scss/components/_header.scss */
   .header {
     padding: 2em 0;
   }
 
-  /* line 78, ../../src/scss/components/_header.scss */
+  /* line 112, ../../src/scss/components/_header.scss */
   .header__menu {
     clear: none;
     display: block;
     float: right;
     padding-top: 0;
   }
-  /* line 84, ../../src/scss/components/_header.scss */
+  /* line 118, ../../src/scss/components/_header.scss */
   .header__menu li {
     border-bottom: none;
     display: inline-block;
   }
-  /* line 89, ../../src/scss/components/_header.scss */
+  /* line 123, ../../src/scss/components/_header.scss */
   .header__menu a {
     border: 1px solid transparent;
     display: block;
     font-size: 1em;
     padding: 0.25em 1em;
   }
-  /* line 95, ../../src/scss/components/_header.scss */
+  /* line 129, ../../src/scss/components/_header.scss */
   .header__menu a.active, .header__menu a:hover {
     background: whitesmoke;
     border-color: #e6e6e6;
     color: #fd7037;
   }
 
-  /* line 104, ../../src/scss/components/_header.scss */
+  /* line 138, ../../src/scss/components/_header.scss */
   .header__mobile-menu {
     display: none;
   }

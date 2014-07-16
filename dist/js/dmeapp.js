@@ -54,9 +54,17 @@ angular.module('dmeApp', [
   219: 'Community',
 })
 
-.controller('NavController', ['$scope', '$location', function($scope, $location) {
+.controller('NavController', ['$scope', '$location', '$window', function($scope, $location, $window) {
   $scope.linkIsActive = function(viewLocation) {
     return viewLocation === $location.path();
+  };
+
+  // Untli we decouple and improve our search functionality, we simply redirect
+  // the user to the Drupal back-end search page with the entered keywords.
+  $scope.searchSubmit = function() {
+    if ($scope.search) {
+      $window.location = 'search/site/' + $scope.search;
+    }
   };
 }]);
 

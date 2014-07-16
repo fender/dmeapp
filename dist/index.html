@@ -19,6 +19,11 @@
           <a href="#" ng-click="toggleNav = !toggleNav" ng-init="toggleNav = false">Menu</a>
         </div>
         <nav ng-controller="NavController">
+          <div class="header__search dme-font-search font--inline">
+            <form ng-submit="searchSubmit()">
+              <input title="Enter the terms you wish to search for." type="text" value="" size="15" maxlength="128" ng-model="search">
+            </form>
+          </div>
           <ul class="header__menu" ng-class="{ open: toggleNav }">
             <li>
               <a href="/" target="_self" ng-class="{ active: linkIsActive('/') }">Home</a>
